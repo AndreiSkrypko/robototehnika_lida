@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<h1>Форум</h1>
+
+<ul>
+    {% for post in posts %}
+    <li>
+        <strong>{{ post.title }}</strong> - {{ post.author.username }} - {{ post.created_at }}
+        <p>{{ post.content }}</p>
+    </li>
+    {% empty %}
+    <li>Постов пока нет.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

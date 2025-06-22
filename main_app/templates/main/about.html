@@ -1,0 +1,386 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}О клубе{% endblock %}
+
+{% block content %}
+
+<!-- Контейнер с фоном -->
+<div class="position-relative"
+     style="background-image: url('{% static 'main/img/about/1.jpeg' %}');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;">
+
+    <!-- Затемняющий слой -->
+    <div class="overlay"
+         style="position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1;"></div>
+
+    <!-- Контент поверх фона -->
+    <div class="container position-relative" style="z-index: 2; margin-top: 160px; margin-bottom: 260px;">
+        <div class="row justify-content-center text-center text-white">
+            <div class="col-lg-10">
+                <h1 class="section-title fw-bold">
+                    В клубе <span style="color: #17a2b8;">ЮНЫХ ИНЖЕНЕРОВ</span><br>
+                    мы помогаем детям раскрывать потенциал и создавать будущее своими руками
+                </h1>
+
+                <div class="mt-4">
+                    <!-- Кнопка открытия модального окна -->
+                    <button type="button"
+                            class="btn text-white px-5 py-3 fw-bold shadow"
+                            style="
+                                background-color: #17a2b8;
+                                border: none;
+                                border-radius: 3px;
+                                font-size: 1.25rem;
+                                box-shadow: 0 4px 12px rgba(23, 162, 184, 0.4);
+                                transition: background-color 0.3s ease, transform 0.2s ease;"
+                            data-bs-toggle="modal"
+                            data-bs-target="#signupModal"
+                            onmouseover="this.style.backgroundColor='#138496'; this.style.transform='scale(1.03)'"
+                            onmouseout="this.style.backgroundColor='#17a2b8'; this.style.transform='scale(1)'">
+                        ЗАПИСАТЬСЯ НА БЕСПЛАТНОЕ ПРОБНОЕ ЗАНЯТИЕ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Скрипт JS для перезагрузки страницы при успешной записи с перезаписанным success -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    {% if success %}
+      var signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+      signupModal.show();
+    {% endif %}
+  });
+</script>
+
+
+<hr class="custom-divider">
+
+<div class="container my-5">
+    <h1 class="mb-5 text-center fw-bold">
+        Почему выбирают клуб "ЮНЫЕ ИНЖЕНЕРЫ"
+    </h1>
+
+    <div class="row g-4 mb-4">
+        <div class="col-12 col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-lightbulb-fill text-info" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="card-title fw-bold">5000+ учеников</h5>
+                <hr class="w-50 mx-auto my-3 text-info">
+                <p class="card-text text-muted">
+                    С каждым годом всё больше детей выбирают нас, чтобы освоить технологии будущего.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-gear-fill text-info" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="card-title fw-bold">Современные технологии</h5>
+                <hr class="w-50 mx-auto my-3 text-info">
+                <p class="card-text text-muted">
+                    Мы обучаем на практике: робототехника, кодинг, 3D-дизайн и цифровое творчество.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-person-check-fill text-info" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="card-title fw-bold">Опытные педагоги</h5>
+                <hr class="w-50 mx-auto my-3 text-info">
+                <p class="card-text text-muted">
+                    Наши наставники — инженеры, программисты и дизайнеры, которые умеют вдохновлять.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-12 col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-calendar-check-fill text-info" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="card-title fw-bold">Гибкий график</h5>
+                <hr class="w-50 mx-auto my-3 text-info">
+                <p class="card-text text-muted">
+                    Занятия проходят в удобное для семьи время — в будни и выходные.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-award-fill text-info" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="card-title fw-bold">Участие в конкурсах</h5>
+                <hr class="w-50 mx-auto my-3 text-info">
+                <p class="card-text text-muted">
+                    Наши ученики участвуют в олимпиадах и чемпионатах по ИТ и робототехнике.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card shadow-lg border-0 rounded-4 p-4 h-100 text-center">
+                <div class="mb-3">
+                    <i class="bi bi-emoji-smile-fill text-info" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="card-title fw-bold">Увлекательно и весело</h5>
+                <hr class="w-50 mx-auto my-3 text-info">
+                <p class="card-text text-muted">
+                    Каждый урок — это интересная практика, работа в команде и настоящее удовольствие.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="custom-divider">
+
+<!-- Фотокарусель наших занятий -->
+
+<div class="carousel-wrapper mx-auto">
+    <h1 class="mb-5 text-center fw-bold">Фото наших занятий</h1>
+    <button class="carousel-control carousel-control-left" onclick="scrollCarousel(-1)">‹</button>
+
+    <div class="carousel-inner-custom" id="customCarousel">
+        <div class="carousel-track" id="carouselTrack">
+            <!-- Оригинальные изображения -->
+            <div class="carousel-item-custom"><img src="{% static 'main/img/fotocarusel/photo_1_2025-03-18_19-28-04.jpg' %}" alt="Фото 5">
+            </div>
+            <div class="carousel-item-custom"><img src="{% static 'main/img/fotocarusel/photo_2_2025-03-18_19-28-04.jpg' %}" alt="Фото 4">
+            </div>
+            <div class="carousel-item-custom"><img src="{% static 'main/img/fotocarusel/photo_3_2025-03-18_19-28-04.jpg' %}" alt="Фото 3">
+            </div>
+            <div class="carousel-item-custom"><img src="{% static 'main/img/fotocarusel/photo_4_2025-03-18_19-28-04.jpg' %}" alt="Фото 2">
+            </div>
+            <div class="carousel-item-custom"><img src="{% static 'main/img/fotocarusel/20240217_174745.jpg' %}" alt="Фото 1">
+            </div>
+             <div class="carousel-item-custom"><img src="{% static 'main/img/fotocarusel/20240224_164125.jpg' %}" alt="Фото 1">
+            </div>
+             <div class="carousel-item-custom"><img src="{% static 'main/img/fotocarusel/20240224_164134.jpg' %}" alt="Фото 1">
+            </div>
+
+        </div>
+    </div>
+
+    <button class="carousel-control carousel-control-right" onclick="scrollCarousel(1)">›</button>
+</div>
+
+<script>
+    const container = document.getElementById('customCarousel');
+const track = document.getElementById('carouselTrack');
+const itemCount = track.children.length;
+
+// Клонируем элементы, чтобы создать бесконечный цикл
+for (let i = 0; i < itemCount; i++) {
+  const clone = track.children[i].cloneNode(true);
+  track.appendChild(clone);
+}
+
+const itemWidth = track.children[0].offsetWidth + 16; // ширина + gap
+const scrollStep = itemWidth; // сколько прокручиваем за раз
+const totalScrollWidth = itemWidth * itemCount; // длина одной "оригинальной" части
+
+// Устанавливаем начальный scroll слева
+container.scrollLeft = 0;
+
+function autoScroll() {
+  if (container.scrollLeft >= totalScrollWidth) {
+    // сбрасываем плавно в начало (без анимации)
+    container.scrollLeft = 0;
+  }
+  // плавный скролл на шаг
+  container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+}
+
+// Запускаем автопрокрутку каждые 3 секунды
+let autoScrollInterval = setInterval(autoScroll, 3000);
+
+// Если хочешь — добавь остановку автоскролла при наведении
+container.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+container.addEventListener('mouseleave', () => {
+  autoScrollInterval = setInterval(autoScroll, 3000);
+});
+
+// Управление кнопками
+function scrollCarousel(direction) {
+  container.scrollBy({ left: direction * scrollStep, behavior: 'smooth' });
+
+  // После прокрутки проверяем и сбрасываем позицию
+  setTimeout(() => {
+    if (container.scrollLeft >= totalScrollWidth) {
+      container.scrollLeft = 0;
+    } else if (container.scrollLeft <= 0 && direction < 0) {
+      container.scrollLeft = totalScrollWidth;
+    }
+  }, 400);
+}
+
+</script>
+
+
+<!-- Блок с отзывами -->
+<section class="reviews-section py-5 bg-light">
+    <div class="container">
+        <h1 class="mb-5 text-center fw-bold">Отзывы наших родителей</h1>
+        <div class="row g-4">
+
+            <!-- Отзыв 1 -->
+            <div class="col-md-4">
+                <div class="review-card p-4 text-center h-100">
+                    <img src="{% static 'main/img/index/course3.jpeg' %}" alt="Отзыв 1" class="review-img mb-3">
+                    <p class="review-text">Прежде всего, сложившаяся структура организации играет определяющее
+                        значение для глубокомысленных рассуждений. Также как высокое качество позиционных
+                        исследований выявляет срочную потребность новых предложений! В частности, семантический
+                        разбор внешних противодействий выявляет срочную потребность системы обучения кадров,
+                        соответствующей насущным потребностям.</p>
+                    <p class="review-name">— Анна, мама Артёма (7 лет)</p>
+                </div>
+            </div>
+
+            <!-- Отзыв 2 -->
+            <div class="col-md-4">
+                <div class="review-card p-4 text-center h-100">
+                    <img src="/static/images/review2.jpg" alt="Отзыв 2" class="review-img mb-3">
+                    <p class="review-text">Очень интересный подход и отличные педагоги. Уроки проходят на ура!</p>
+                    <p class="review-name">— Дмитрий, папа Вани (9 лет)</p>
+                </div>
+            </div>
+
+            <!-- Отзыв 3 -->
+            <div class="col-md-4">
+                <div class="review-card p-4 text-center h-100">
+                    <img src="/static/images/review3.jpg" alt="Отзыв 3" class="review-img mb-3">
+                    <p class="review-text">Сын теперь хочет стать инженером! Спасибо за вдохновение и знания.</p>
+                    <p class="review-name">— Елена, мама Никиты (11 лет)</p>
+                </div>
+            </div>
+
+            <!-- Отзыв 4 -->
+            <div class="col-md-4">
+                <div class="review-card p-4 text-center h-100">
+                    <img src="/static/images/review4.jpg" alt="Отзыв 4" class="review-img mb-3">
+                    <p class="review-text">Онлайн-курсы оказались отличным решением — качественно, интересно и по
+                        делу!</p>
+                    <p class="review-name">— Игорь, отец Алисы (10 лет)</p>
+                </div>
+            </div>
+
+            <!-- Отзыв 5 -->
+            <div class="col-md-4">
+                <div class="review-card p-4 text-center h-100">
+                    <img src="/static/images/review5.jpg" alt="Отзыв 5" class="review-img mb-3">
+                    <p class="review-text">Дочь впервые с интересом изучает программирование — спасибо за
+                        вдохновляющее обучение!</p>
+                    <p class="review-name">— Татьяна, мама Лизы (8 лет)</p>
+                </div>
+            </div>
+
+            <!-- Отзыв 6 -->
+            <div class="col-md-4">
+                <div class="review-card p-4 text-center h-100">
+                    <img src="/static/images/review6.jpg" alt="Отзыв 6" class="review-img mb-3">
+                    <p class="review-text">Круто, что есть клуб, который развивает мышление и навыки с детства.
+                        Спасибо!</p>
+                    <p class="review-name">— Светлана, мама Ивана (6 лет)</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Блок видеоотзывов -->
+<section class="video-reviews-section py-5 bg-white">
+    <div class="container">
+        <h2 class="mb-5 text-center fw-bold">Видеоотзывы наших учеников</h2>
+        <div class="row g-4">
+
+            <!-- Видеоотзыв 1 -->
+            <div class="col-md-4">
+                <div class="video-review-card p-4 text-center h-100">
+                    <div class="ratio ratio-16x9 mb-3 rounded shadow-sm overflow-hidden">
+                        <!-- Видео из static/ или YouTube -->
+                        <video controls>
+                            <source src="{% static 'main/video/review_nikita.mp4' %}" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                    </div>
+                    <p class="video-review-name">— Никита(9 лет), занимается робототехникой, программированием, 3D
+                        моделированием</p>
+                </div>
+            </div>
+
+            <!-- Видеоотзыв 2 -->
+            <div class="col-md-4">
+                <div class="video-review-card p-4 text-center h-100">
+                    <div class="ratio ratio-16x9 mb-3 rounded shadow-sm overflow-hidden">
+                        <video controls>
+                            <source src="{% static 'main/video/review_makar.MOV' %}" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                    </div>
+                    <p class="video-review-name">— Макар(9 лет), занимается робототехникой Mindstorms EV3</p>
+                </div>
+            </div>
+
+            <!-- Видеоотзыв 3 -->
+            <div class="col-md-4">
+                <div class="video-review-card p-4 text-center h-100">
+                    <div class="ratio ratio-16x9 mb-3 rounded shadow-sm overflow-hidden">
+                        <video controls>
+                            <source src="{% static 'main/video/review_genia.MOV' %}" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                    </div>
+                    <p class="video-review-name">Евгений(11 лет), занимается робототехникой Mindstorms EV3</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="mt-4 text-center">
+    <!-- Кнопка открытия модального окна формы отзывов -->
+    <button type="button"
+            class="btn text-white px-5 py-3 fw-bold shadow"
+            style="
+                background: linear-gradient(135deg, #f6a560, #f28c28);
+                border: none;
+                border-radius: 3px;
+                font-size: 1.25rem;
+                box-shadow: 0 6px 15px rgba(242, 140, 40, 0.4);
+                transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            "
+            data-bs-toggle="modal"
+            data-bs-target="#signupModal"
+            onmouseover="this.style.background='linear-gradient(135deg, #f28c28, #f6a560)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(242, 140, 40, 0.6)'"
+            onmouseout="this.style.background='linear-gradient(135deg, #f6a560, #f28c28)'; this.style.transform='scale(1)'; this.style.boxShadow='0 6px 15px rgba(242, 140, 40, 0.4)'">
+        ОСТАВЬТЕ ПОЖАЛУЙСТА ВАШ ОТЗЫВ
+    </button>
+</div>
+
+
+{% endblock %}

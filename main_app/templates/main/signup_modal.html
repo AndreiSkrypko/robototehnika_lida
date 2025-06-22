@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>модальное окно</title>
+</head>
+<body>
+
+
+<!-- Модальное окно -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 shadow-lg border-0">
+
+            <!-- Заголовок модального окна -->
+            <div class="modal-header bg-info text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="signupModalLabel">
+                    {% if success %} Вы записаны! {% else %} Запись на пробное занятие {% endif %}
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Закрыть"></button>
+            </div>
+
+            <!-- Тело модального окна -->
+            <div class="modal-body p-4">
+                {% if success %}
+                <div class="alert alert-success text-center fs-5 rounded-3 py-3 mb-0">
+                    Спасибо за обращение!<br>
+                    Мы с вами свяжемся в ближайшее время.
+                </div>
+                {% else %}
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+
+                    <div class="mb-3">
+                        {{ form.name }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.phone }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.course }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.comment }}
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-info text-white w-100 py-3 fw-semibold rounded-pill">
+                        ОСТАВИТЬ ЗАЯВКУ
+                    </button>
+
+                    <p class="text-muted text-center mt-3 mb-0" style="font-size: 0.9rem;">
+                        Нажимая на кнопку, вы соглашаетесь с
+                        <a href="#" target="_blank" class="text-decoration-underline text-info">
+                            условиями соглашения*
+                        </a>
+                    </p>
+                </form>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

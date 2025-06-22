@@ -1,0 +1,610 @@
+/* Ссылки , все кнопки в шапке сайта */
+.nav-link-custom {
+  position: relative; /* Устанавливаем ссылку как относительно позиционированный элемент, чтобы разместить псевдоэлемент ::after относительно неё */
+  color: #17a2b8; /* Цвет текста ссылки (синий оттенок) */
+  text-decoration: none; /* Убираем стандартное подчеркивание ссылок */
+  font-size: 1.2rem; /* Размер шрифта для ссылок */
+  font-weight: 700; /* Толщина шрифта, делаем текст жирным */
+  font-family: 'Nunito', sans-serif; /* Шрифт ссылки (подключен через Google Fonts) */
+  padding-bottom: 5px; /* Добавляем небольшое пространство снизу для псевдоэлемента ::after, который будет использоваться как полоска */
+  display: inline-block; /* Преобразуем ссылку в блочно-строчный элемент, чтобы она могла содержать псевдоэлементы и работать с ними */
+  transition: color 0.2s ease; /* Плавная анимация изменения цвета текста при наведении (или фокусе) */
+}
+
+/* Полоса под ссылкой (псевдоэлемент) */
+.nav-link-custom::after {
+  content: ''; /* Псевдоэлемент должен иметь хотя бы пустое содержимое для отображения */
+  position: absolute; /* Позиционируем псевдоэлемент относительно родительского элемента */
+  left: 0; /* Начинаем линию с левого края */
+  bottom: 0; /* Размещаем линию внизу ссылки */
+  width: 0%; /* Начальная ширина полоски — она будет увеличиваться при наведении */
+  height: 2px; /* Толщина полоски, можно настроить */
+  background-color: #CC5500; /* Цвет полоски (оранжевый) */
+  transition: width 0.3s ease; /* Плавная анимация изменения ширины полоски при наведении */
+}
+
+/* Изменение цвета и полоски при наведении и фокусе */
+.nav-link-custom:hover,
+.nav-link-custom:focus {
+  color: #CC5500; /* Меняем цвет текста на оранжевый при наведении или фокусе */
+}
+
+.nav-link-custom:hover::after,
+.nav-link-custom.active::after {
+  width: 100%; /* Растягиваем полоску на всю ширину ссылки при наведении или активной ссылке */
+}
+
+/* Выпадающее меню — новая обёртка */
+.dropdown-hover {
+  position: relative; /* Для правильного позиционирования выпадающего меню относительно ссылки */
+}
+
+/* Выпадающее меню */
+.dropdown-menu-custom {
+  display: none; /* Скрываем меню по умолчанию */
+  position: absolute; /* Позиционируем меню относительно родительского элемента */
+  top: 100%; /* Располагаем меню сразу под кнопкой */
+  left: 0; /* Располагаем меню по левому краю */
+  background-color: white; /* Цвет фона меню */
+  border: 5px solid #ddd; /* Тонкая граница вокруг меню */
+  border-radius: 0.5rem; /* Скругляем углы меню */
+  min-width: 220px; /* Минимальная ширина меню */
+  z-index: 1000; /* Устанавливаем высокий z-index, чтобы меню было сверху */
+  padding: 0.5rem 0; /* Отступы внутри меню */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень под меню для отделения от фона */
+}
+
+/* Показываем меню при наведении */
+.dropdown-hover:hover .dropdown-menu-custom {
+  display: block; /* Меню становится видимым при наведении на родительский элемент */
+}
+
+/* Элементы внутри меню */
+.dropdown-item {
+  padding: 0.5rem 1rem; /* Отступы внутри каждого пункта меню */
+  color: #333; /* Цвет текста в элементах меню */
+  text-decoration: none; /* Убираем подчеркивание */
+  white-space: nowrap; /* Запрещаем перенос текста на несколько строк */
+  transition: background 0.2s ease; /* Плавная анимация фона при наведении */
+}
+
+/* При наведении на пункт меню */
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Меняем фон на светло-серый при наведении */
+  color: #CC5500; /* Меняем цвет текста на оранжевый при наведении */
+}
+
+/*_________________________________________________________________________________________________________________*/
+/* Стиль для формы в начале главной страницы, бирюзовый  цвет*/
+form {
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон для формы */
+    border-radius: 5px;
+    padding: 40px;
+}
+
+/* Обертка для полей формы */
+.field-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Стили для полей формы */
+.field-wrapper input,
+.field-wrapper select,
+.field-wrapper textarea {
+    width: 100%;
+    padding: 12px 16px; /* Увеличение размера полей */
+    font-size: 1.1rem;  /* Увеличение шрифта */
+    border-radius: 3px; /* Уменьшенные углы для более плавного вида */
+    border: 2px solid #ccc; /* Цвет границы */
+    background-color: #fff !important; /* Убираем прозрачность */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для выделения */
+    transition: all 0.3s ease; /* Плавные переходы */
+    color: #333; /* Цвет текста */
+}
+
+/* Стили для полей при фокусе */
+.field-wrapper input:focus,
+.field-wrapper select:focus,
+.field-wrapper textarea:focus {
+    border-color: #17a2b8; /* Цвет границы при фокусе */
+    box-shadow: 0 0 10px rgba(23, 162, 184, 0.6); /* Тень при фокусе */
+    background-color: #f4f7f9; /* Легкий серый фон при фокусе */
+}
+
+/* Стиль для placeholder */
+.field-wrapper input::placeholder,
+.field-wrapper select::placeholder,
+.field-wrapper textarea::placeholder {
+    color: #aaa; /* Цвет placeholder */
+    opacity: 1; /* Сделать placeholder видимым */
+}
+
+
+/*_________________________________________________________________________________________________________________*/
+/* Стили для кнопки в начале главной страницы "Записаться" , бирюзовый цвет*/
+.custom-btn {
+    background-color: #17a2b8; /* Бирюзовый цвет по умолчанию, можно изменить */
+    color: white;
+    padding: 12px 24px; /* Увеличенные отступы для кнопки */
+    font-size: 1.1rem; /* Увеличенный размер шрифта */
+    border-radius: 3px; /* Закругленные углы */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.custom-btn:hover {
+    background-color: #CC5500; /* Более темный оттенок при наведении */
+    transform: translateY(-3px); /* Легкий эффект подъема */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+}
+
+.custom-btn:active {
+    background-color: #CC5500; /* Темнее при нажатии */
+    transform: translateY(1px); /* Слегка опускаем кнопку */
+}
+
+/*_________________________________________________________________________________________________________________*/
+
+/* Стили для разделительной полосы между блоками */
+.custom-divider {
+        border: 0;
+        height: 2px;
+        background: linear-gradient(to right, #17a2b8, #28a745, #17a2b8); /* Градиентный цвет */
+        margin: 40px 0; /* Отступы сверху и снизу */
+        width: 80%; /* Ширина линии */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+/*_________________________________________________________________________________________________________________*/
+/* Стили для картинок с курсами до перехода по курсам  "Наши курсы"*/
+
+.custom-card {
+    border-radius: 3px; /* Скругляет углы карточки */
+    overflow: hidden; /* Обрезает всё, что выходит за границы (например, изображение) */
+    border: 1px solid rgba(0, 0, 0, 0.06); /* Тонкая светлая рамка по краю */
+    box-shadow:
+        0 6px 40px rgba(0, 0, 0, 0.6),          /* Мягкая внешняя тень */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15); /* Едва заметная внутренняя "световая" тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 20px 25px rgba(0, 0, 0, 0.2),         /* Более выраженная внешняя тень */
+        inset 0 0 0 1px rgba(255, 255, 255, 0.25); /* Усиленная внутренняя рамка */
+    border-color: rgba(0, 0, 0, 0.1); /* Чуть более выраженная окантовка при наведении */
+}
+
+.custom-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+/* Цвет текста при наведении на карточку */
+.custom-card:hover .card-title,
+.custom-card:hover .card-text {
+    color: #CC5500; /* Оранжево-янтарный */
+}
+
+
+/*_________________________________________________________________________________________________________________*/
+/* Контейнер аккордеона в "Вы часто спрашиваете" для центрирования и регулирования ширины  */
+.accordion-wrapper {
+    max-width: 1000px;    /* Регулируемая ширина */
+    margin: 0 auto;       /* Центрируем */
+    padding: 0 0px;      /* Отступы слева и справа */
+}
+
+/* Весь элемент аккордеона (один вопрос) */
+.accordion-item {
+    border: none;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+/* При наведении — эффект всплывания */
+.accordion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопка-вопрос */
+.accordion-button {
+    font-weight: 600;
+    background-color: #fdfdfd;
+    color: #333;
+    padding: 16px 24px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* При наведении */
+.accordion-button:hover {
+    background-color: #e6f9f9;
+    color: #009999;
+}
+
+/* Когда открыта */
+.accordion-button:not(.collapsed) {
+    background-color: #f0fcfc;
+    color: #009999;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Скрытая иконка Bootstrap */
+.accordion-button::after {
+    filter: hue-rotate(15deg) brightness(0.6);
+}
+
+/* Тело ответа — плавно появляется справа */
+.accordion-body {
+    background-color: #fff;
+    padding: 20px 24px;
+    border-top: 1px solid #eee;
+    line-height: 1.6;
+    color: #555;
+    font-size: 1rem;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    transform: translateX(20%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* При открытии — возвращаем на место */
+.accordion-collapse.show .accordion-body {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Дефис перед ответом */
+.accordion-body::before {
+    content: "– ";
+    color: #999;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/*_________________________________________________________________________________________________________________*/
+
+/*  Форма с оранжевым фоном */
+.custom-orange-form {
+    background-color: #FF7F50; /* Ярко-оранжевый фон */
+    border-radius: 3px;
+    padding: 15px;
+    opacity: 0.95;
+}
+
+/*  Белый текст внутри формы */
+.custom-orange-form h3,
+.custom-orange-form h5,
+.custom-orange-form p,
+.custom-orange-form a {
+    color: white;
+}
+
+/*  Обертка для полей формы */
+.field-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+/* Поля формы */
+.field-wrapper input,
+.field-wrapper select,
+.field-wrapper textarea {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.1rem;
+    border-radius: 3px;
+    border: 2px solid #ccc;
+    background-color: #fff !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+/* Стили для фокуса */
+.field-wrapper input:focus,
+.field-wrapper select:focus,
+.field-wrapper textarea:focus {
+    border-color: #ff5722;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
+    background-color: #f4f7f9;
+}
+
+/* placeholder */
+.field-wrapper input::placeholder,
+.field-wrapper select::placeholder,
+.field-wrapper textarea::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+/*  КРАСНАЯ КНОПКА */
+.custom-red-btn {
+    background-color: #c0392b; /* Красная */
+    color: white;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-red-btn:hover {
+    background-color: #a93226; /* Темно-красный при наведении */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-red-btn:active {
+    background-color: #922b21;
+    transform: translateY(1px);
+}
+
+/*_________________________________________________________________________________________________________________*/
+/* стили для карты */
+.map-wrapper {
+    border-radius: 3px;
+    overflow: hidden;
+    height: 400px;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/*_________________________________________________________________________________________________________________*/
+/* стили для фотокарусели */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner-custom {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel-inner-custom::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.carousel-item-custom {
+  flex: 0 0 auto;
+  width: 320px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item-custom img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-control-left {
+  left: -20px;
+}
+
+.carousel-control-right {
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    width: 100%;
+  }
+
+  .carousel-item-custom {
+    width: 80vw;
+  }
+}
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease; /* плавность анимации */
+}
+
+/* Эффект увеличения при наведении */
+.carousel-control:hover {
+  transform: translateY(-50%) scale(1.8);
+}
+
+/*_________________________________________________________________________________________________________________*/
+/* Стили для карточки отзыва */
+.review-card {
+  background-color: #fff; /* Белый фон карточки */
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Мягкая тень для придания объёма */
+  transition: transform 0.5s ease; /* Плавная анимация при наведении */
+}
+
+/* Эффект "подъема" карточки при наведении */
+.review-card:hover {
+  transform: translateY(-5px); /* Поднимаем карточку вверх на 5px */
+}
+
+/* Стили для изображения пользователя (аватара) */
+.review-img {
+  width: 150px; /* Ширина изображения */
+  height: 100px; /* Высота изображения */
+  border-radius: 50%; /* Делаем изображение круглым */
+  object-fit: cover; /* Изображение заполняет контейнер без искажения */
+  border: 3px solid #17a2b8; /* Оранжевая рамка вокруг изображения */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для акцента */
+}
+
+/* Стили для основного текста отзыва */
+.review-text {
+  font-style: italic; /* Курсив для выделения текста отзыва */
+  color: #333; /* Тёмно-серый цвет текста для хорошей читаемости */
+  margin-bottom: 1rem; /* Отступ снизу от текста */
+}
+
+/* Стили для имени пользователя под отзывом */
+.review-name {
+  font-weight: 600; /* Умеренно жирный шрифт для выделения */
+  color: #CC5500; /* Оранжевый цвет, чтобы перекликалось с рамкой аватара */
+  margin-bottom: 0; /* Убираем лишний отступ снизу */
+}
+
+/*_________________________________________________________________________________________________________________*/
+
+/* Карточка видеоотзыва */
+.video-review-card {
+  background-color: #fdfdfd; /* Чуть отличающийся от белого фон */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Мягкая тень */
+  border: 2px solid #17a2b8; /* Бирюзовая рамка */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Бирюзовая полоска сверху карточки */
+.video-review-card::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #17a2b8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Поднятие карточки при наведении */
+.video-review-card:hover {
+  transform: scale(1.03); /* Увеличение всей карточки */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Более выразительная тень */
+}
+
+/* Стили для самого видео */
+.video-review-card video {
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+/* Имя родителя под видео */
+.video-review-name {
+  font-weight: 600;
+  color: #CC5500; /* Бирюзовый */
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+
+/* Обёртка с видео — делаем уголки закруглёнными, тень */
+.ratio iframe,
+.ratio video {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+/*_________________________________________________________________________________________________________________*/
+/* стили для courses верху про занятия */
+.info-card {
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+
+.info-icon {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #17a2b8; /* бирюзовая иконка */
+    transition: color 0.3s ease;
+}
+
+.info-card:hover .info-icon {
+    color: #0097a7; /* слегка изменённая бирюза при наведении */
+}
+
+.info-text {
+    margin: 0;
+    font-size: 18px;   /* увеличенный размер шрифта */
+    font-weight: 600;  /* жирный текст */
+    color: #333;
+}
+
+
+
+/*_________________________________________________________________________________________________________________*/
+/* стили для карточек , презентующих курсы, после перехода из "Наших курсов" по конкретному возрасту */
+.course-wrapper {
+  border: 1px solid rgba(0, 188, 212, 0.3); /* лёгкая бирюзовая рамка вокруг всего блока */
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.course-image {
+  border: 1px solid #ffa500;  /* оранжевая рамка у картинки */
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 2px;
+}
+/*_________________________________________________________________________________________________________________*/
+/* Стили для шрифта для заголовков */
+
+
+
+
+/*_________________________________________________________________________________________________________________*/
