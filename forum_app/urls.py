@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import forum_posts
+from .views import forum_list, create_post
 
 urlpatterns = [
-    path('api/posts/', forum_posts, name='forum_api'),
+    path('', forum_list, name='forum_list'),
+    path('create/', create_post, name='create_post'),
 ]

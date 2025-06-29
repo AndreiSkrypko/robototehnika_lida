@@ -1,17 +1,43 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-<h1>Форум</h1>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Форум</h1>
+        <a href="{% url 'create_post' %}" class="btn btn-primary">Создать пост</a>
+    </div>
 
-<ul>
-    {% for post in posts %}
-    <li>
-        <strong>{{ post.title }}</strong> - {{ post.author.username }} - {{ post.created_at }}
-        <p>{{ post.content }}</p>
-    </li>
-    {% empty %}
-    <li>Постов пока нет.</li>
-    {% endfor %}
-</ul>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
 
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-12 mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ post.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ post.content }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    Автор: {{ post.author.username }} | Дата: {{ post.created_at|date:"d.m.Y H:i" }}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                Постов пока нет. <a href="{% url 'create_post' %}">Создайте первый пост!</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

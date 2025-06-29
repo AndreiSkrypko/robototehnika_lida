@@ -21,8 +21,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'forum_app',
     'login_app',
-    'rest_framework',
-
 ]
 
 # Middleware
@@ -86,27 +84,3 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "main_app/static")]
 
 # Primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# --- CORS настройки ---
-CORS_ALLOW_CREDENTIALS = True
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # или другой адрес React-приложения
-]
-
-# Если ты позже работаешь с HTTPS:
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
-SESSION_COOKIE_SAMESITE = "Lax"
-CSRF_COOKIE_SAMESITE = "Lax"
-
-# Для REST Framework можно указать авторизацию по сессии:
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-}

@@ -1,20 +1,25 @@
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import ForumPost
-from .serializers import ForumPostSerializer
+from .forms import ForumPostForm
 
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def forum_posts(request):
-    if request.method == 'GET':
-        posts = ForumPost.objects.all().order_by('-created_at')
-        serializer = ForumPostSerializer(posts, many=True)
-        return Response(serializer.data)
+@login_required
+def forum_list(request):
+    posts = ForumPost.objects.all().order_by('-created_at')
+    return render(request, 'forum_app/forum_list.html', {'posts': posts})
 
+@login_required
+def create_post(request):
     if request.method == 'POST':
-        serializer = ForumPostSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(author=request.user)
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+        form = ForumPostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            messages.success(request, 'Пост успешно создан!')
+            return redirect('forum_list')
+    else:
+        form = ForumPostForm()
+    
+    return render(request, 'forum_app/create_post.html', {'form': form})
