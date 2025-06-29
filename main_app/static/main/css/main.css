@@ -74,6 +74,36 @@
   color: #CC5500; /* Меняем цвет текста на оранжевый при наведении */
 }
 
+
+
+
+
+
+/* Стили для кнопок "Войти"/"Выйти" */
+.auth-wrapper {
+    text-align: right;
+    margin-right: 60px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 18px;
+}
+
+.auth-link {
+    font-weight: 700; /* Жирный */
+    text-decoration: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    display: inline-block;
+}
+
+.auth-link:hover {
+    transform: scale(1.1);        /* Увеличение */
+    filter: brightness(1.2);      /* Чуть ярче */
+    text-decoration: none;        /* Без подчёркивания */
+}
+
+
+
+
+
 /*_________________________________________________________________________________________________________________*/
 /* Стиль для формы в начале главной страницы, бирюзовый  цвет*/
 form {
