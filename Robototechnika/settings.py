@@ -49,6 +49,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,  # Включаем отладку шаблонов
         },
     },
 ]
@@ -81,6 +82,15 @@ USE_TZ = True
 # Статика
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "main_app/static")]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Отключение кэширования в режиме разработки
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
+    
+    # Отключение кэширования статических файлов
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Primary key
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
