@@ -4,7 +4,7 @@ from . import views  # Импортируем views из текущего пак
 urlpatterns = [
     path('', views.index, name='index'),  # путь при переходе на главную страницу
     path('about/', views.about, name='about'),  # путь при переходе на главную страницу
-    path('courses_online/', views.courses_online, name='courses_oline'),  # путь при переходе на страницу онлайн курсов
+    path('courses_online/', views.courses_online, name='courses_online'),  # путь при переходе на страницу онлайн курсов
     path('courses_2_4/', views.courses_2_4, name='courses_2_4'),
     path('courses_4_6/', views.courses_4_6, name='courses_4_6'),
     path('courses_6_7/', views.courses_6_7, name='courses_6_7'),
