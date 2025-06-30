@@ -16,17 +16,14 @@
     }
 
     .container {
-        /* можно удалить, если body уже розовый */
         background-color: transparent;
     }
 </style>
 {% endblock %}
 
-
 {% block content %}
 
 <div class="container text-center my-5">
-
 
     <div class="row align-items-center justify-content-center" style="margin-top: 30px; margin-bottom: 20px;">
         <h2 class="text-center section-title"
@@ -47,42 +44,39 @@
         </p>
     </div>
 
-
-
     <div class="row justify-content-center g-4">
         <div class="col-md-2 col-sm-6">
             <div class="info-card">
                 <i class="bi bi-person-fill info-icon"></i>
-                <p class="info-text">Возраст:<br>от 4 до 6</p>
+                <p class="info-text">Возраст:<br><span style="color:#17a2b8; font-weight:600;">от 4 до 6</span></p>
             </div>
         </div>
         <div class="col-md-2 col-sm-6">
             <div class="info-card">
                 <i class="bi bi-clock-fill info-icon"></i>
-                <p class="info-text">Длительность:<br>60 минут</p>
+                <p class="info-text">Длительность:<br><span style="color:#17a2b8; font-weight:600;">60 минут</span></p>
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
             <div class="info-card">
                 <i class="bi bi-calendar2-check-fill info-icon"></i>
-                <p class="info-text">Абонемент на месяц:<br>48 рублей</p>
+                <p class="info-text">Абонемент на месяц:<br><span style="color:#17a2b8; font-weight:600;">48 рублей</span></p>
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
             <div class="info-card">
                 <i class="bi bi-cash-stack info-icon"></i>
-                <p class="info-text">Разовое занятие:<br>18 рублей</p>
+                <p class="info-text">Разовое занятие:<br><span style="color:#17a2b8; font-weight:600;">18 рублей</span></p>
             </div>
         </div>
     </div>
-
 
     <!-- Презентация и описание курсов для возраста 4–6 года -->
     <div class="row justify-content-center my-5">
 
         <!-- Курс 1 -->
-        <div class="col-6">
-            <div class="course-card shadow-sm rounded-4 overflow-hidden course-wrapper">
+        <div class="col-12 col-md-6 mb-4 mb-md-0">
+            <div class="course-card shadow-sm rounded-4 overflow-hidden course-wrapper h-100">
                 <img src="{% static 'main/img/courses/lego_logo.jpeg' %}" alt="Лего с логопедом"
                      class="img-fluid course-image">
                 <h4 class="fw-bold text-turquoise" style="text-align: center;">"Лего с логопедом"</h4>
@@ -97,8 +91,8 @@
         </div>
 
         <!-- Курс 2 -->
-        <div class="col-6">
-            <div class="course-card shadow-sm rounded-4 overflow-hidden course-wrapper">
+        <div class="col-12 col-md-6">
+            <div class="course-card shadow-sm rounded-4 overflow-hidden course-wrapper h-100">
                 <img src="{% static 'main/img/courses/lego_math.jpeg' %}" alt="Лего-математика"
                      class="img-fluid course-image">
                 <h4 class="fw-bold text-turquoise" style="text-align: center;">"Лего-математика"</h4>
@@ -114,7 +108,6 @@
 
     </div>
 
-
     <hr class="custom-divider">
     <!-- Заголовок секции -->
     <div class="row align-items-center justify-content-center my-5">
@@ -127,28 +120,28 @@
     <div class="row g-4">
 
         <div class="col-md-3 col-sm-6">
-            <div class="border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
+            <div class="abonement-card border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
                 <h4 class="fw-bold mb-2">1 месяц / 60 BYN</h4>
                 <p class="info-text mb-0">1 занятие в абонементе — 15 BYN</p>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
-            <div class="border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
+            <div class="abonement-card border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
                 <h4 class="fw-bold mb-2">3 месяца / 56 BYN</h4>
                 <p class="info-text mb-0">1 занятие в абонементе — 14 BYN</p>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
-            <div class="border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
+            <div class="abonement-card border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
                 <h4 class="fw-bold mb-2">6 месяцев / 52 BYN</h4>
                 <p class="info-text mb-0">1 занятие в абонементе — 13 BYN</p>
             </div>
         </div>
 
         <div class="col-md-3 col-sm-6">
-            <div class="border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
+            <div class="abonement-card border rounded-4 p-4 h-100 shadow-sm text-center" style="border: 2px solid #17a2b8;">
                 <h4 class="fw-bold mb-2">9 месяцев / 48 BYN</h4>
                 <p class="info-text mb-0">1 занятие в абонементе — 12 BYN</p>
             </div>
@@ -156,36 +149,24 @@
 
     </div>
 
-
     <!-- Кнопка записи -->
     <div class="mt-4">
-        <!-- Кнопка открытия модального окна -->
         <button type="button"
-                class="btn text-white px-5 py-3 fw-bold shadow"
-                style="
-                                background-color: #17a2b8;
-                                border: none;
-                                border-radius: 3px;
-                                font-size: 1.25rem;
-                                box-shadow: 0 4px 12px rgba(23, 162, 184, 0.4);
-                                transition: background-color 0.3s ease, transform 0.2s ease;"
+                class="btn-signup btn text-white px-5 py-3 fw-bold shadow"
                 data-bs-toggle="modal"
-                data-bs-target="#signupModal"
-                onmouseover="this.style.backgroundColor='#138496'; this.style.transform='scale(1.03)'"
-                onmouseout="this.style.backgroundColor='#17a2b8'; this.style.transform='scale(1)'">
+                data-bs-target="#signupModal">
             ЗАПИСАТЬСЯ НА БЕСПЛАТНОЕ ПРОБНОЕ ЗАНЯТИЕ
         </button>
     </div>
 
 </div>
 
-<!-- Скрипт JS для перезагрузки страницы при успешной записи с перезаписанным success -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-      {% if success %}
+        {% if success %}
         var signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
         signupModal.show();
-      {% endif %}
+        {% endif %}
     });
 </script>
 
