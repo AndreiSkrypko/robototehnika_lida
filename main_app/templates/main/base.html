@@ -2,271 +2,265 @@
 <html lang="en">
 
 <head>
-    <!-- Мета-теги для корректного отображения и кодировки -->
+    <!-- =======================
+         МЕТА-ТЕГИ И НАСТРОЙКИ
+    ======================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Детский центр робототехники и программирования в г. Лида">
-    
-    <!-- Динамический заголовок страницы -->
+
+    <!-- =======================
+         ДИНАМИЧЕСКИЙ ЗАГОЛОВОК
+    ======================== -->
     <title>{% block title %}{% endblock %}</title>
-    
-    <!-- Загрузка статических файлов и виджетов Django -->
+
+    <!-- =======================
+         DJANGO STATIC & WIDGETS
+    ======================== -->
     {% load static %}
     {% load widget_tweaks %}
-    
-    <!-- Подключение модального окна регистрации -->
+
+    <!-- =======================
+         МОДАЛЬНОЕ ОКНО РЕГИСТРАЦИИ
+    ======================== -->
     {% include "main/signup_modal.html" %}
-    
-    <!-- ===== ПОДКЛЮЧЕНИЕ ВНЕШНИХ БИБЛИОТЕК ===== -->
-    
-    <!-- Bootstrap 5.1.3 - основная CSS и JS библиотека -->
+
+    <!-- =======================
+         ВНЕШНИЕ БИБЛИОТЕКИ
+    ======================== -->
+    <!-- Bootstrap 5.1.3 CSS и JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Font Awesome 6.5.0 - иконки -->
+    <!-- Font Awesome 6.5.0 для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Google Fonts - шрифт Poppins для заголовков -->
+    <!-- Google Fonts: Poppins для заголовков -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap Icons 1.10.5 - дополнительные иконки -->
+    <!-- Bootstrap Icons 1.10.5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Google Fonts - шрифт Nunito для основного текста -->
+    <!-- Google Fonts: Nunito для основного текста -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700&display=swap" rel="stylesheet">
-
     <!-- Пользовательские стили -->
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 
+    <!-- =======================
+         ВСТРОЕННЫЕ СТИЛИ CSS
+    ======================== -->
+    <style>
+        /* =======================
+           ОСНОВНЫЕ ЦВЕТА САЙТА
+        ======================== */
+        :root {
+            --main-green: #0d9488;
+            --main-green-dark: #0f766e;
+            --main-green-darker: #134e4a;
+            --main-orange: #CC5500;
+            --main-orange-light: #e67e22;
+            --main-yellow: #ff9500;
+            --main-white: #ffffff;
+            --main-gray: #f8fafc;
+        }
+
+        /* =======================
+           ШАПКА (HEADER)
+        ======================== */
+        .custom-header {
+            background: linear-gradient(135deg, var(--main-green) 0%, var(--main-green-dark) 50%, var(--main-green-darker) 100%) !important;
+            border-bottom: 3px solid var(--main-orange);
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
+        }
+
+        /* =======================
+           ЛОГОТИП
+        ======================== */
+        .logo-link {
+            transition: all 0.3s ease;
+        }
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* =======================
+           НАВИГАЦИОННОЕ МЕНЮ
+        ======================== */
+        .nav-link-custom {
+            position: relative;
+            color: var(--main-white) !important;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Nunito', sans-serif;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+        .nav-link-custom:hover,
+        .nav-link-custom:focus {
+            color: var(--main-white) !important;
+            background: rgba(204, 85, 0, 0.85);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(204, 85, 0, 0.4);
+        }
+        .nav-link-custom.active {
+            background: rgba(204, 85, 0, 0.95);
+            color: var(--main-white) !important;
+            box-shadow: 0 4px 12px rgba(204, 85, 0, 0.5);
+        }
+
+        /* =======================
+           ВЫПАДАЮЩЕЕ МЕНЮ КУРСОВ
+        ======================== */
+        .dropdown-hover {
+            position: relative;
+        }
+        .dropdown-menu-custom {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(135deg, var(--main-white) 0%, var(--main-gray) 100%);
+            border: 2px solid var(--main-green);
+            border-radius: 12px;
+            min-width: 250px;
+            z-index: 1000;
+            padding: 8px 0;
+            box-shadow: 0 8px 25px rgba(13, 148, 136, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .dropdown-hover:hover .dropdown-menu-custom {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .dropdown-item {
+            padding: 12px 20px;
+            color: var(--main-green);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border-radius: 8px;
+            margin: 2px 8px;
+            background: transparent;
+        }
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, var(--main-green) 0%, var(--main-green-dark) 100%);
+            color: var(--main-white);
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+        }
+
+        /* =======================
+           КНОПКИ АВТОРИЗАЦИИ
+        ======================== */
+        .auth-wrapper {
+            text-align: right;
+            margin-right: 20px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 16px;
+        }
+        .auth-link {
+            font-weight: 600;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+        .auth-link.text-danger {
+            color: #ff4d4f !important;
+        }
+        .auth-link.text-success {
+            color: #22bb33 !important;
+        }
+        .auth-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            background: rgba(204, 85, 0, 0.15);
+        }
+
+        /* =======================
+           КНОПКА "ЗАПИСАТЬСЯ"
+        ======================== */
+        .custom-btn {
+            background: linear-gradient(135deg, var(--main-orange) 0%, var(--main-orange-light) 100%) !important;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(204, 85, 0, 0.3);
+        }
+        .custom-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(204, 85, 0, 0.4);
+            background: linear-gradient(135deg, var(--main-orange-light) 0%, var(--main-orange) 100%) !important;
+        }
+
+        /* =======================
+           ФУТЕР
+        ======================== */
+        .footer {
+            background: linear-gradient(135deg, var(--main-green) 0%, var(--main-green-dark) 50%, var(--main-green-darker) 100%);
+            border-top: 3px solid var(--main-orange);
+        }
+        .footer-link {
+            color: #e0e0e0 !important;
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            color: var(--main-yellow) !important;
+            transform: translateX(5px);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .footer a:hover {
+            color: var(--main-yellow) !important;
+        }
+        .social-link {
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        /* =======================
+           АДАПТИВНОСТЬ
+        ======================== */
+        @media (max-width: 768px) {
+            .nav-link-custom {
+                font-size: 1rem;
+                padding: 6px 12px;
+                margin: 0 2px;
+            }
+            .auth-wrapper {
+                margin-right: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    {% block css %}{% endblock %}
 </head>
 
-<!-- ===== ВСТРОЕННЫЕ СТИЛИ CSS ===== -->
-<style>
-    /* ===== ОСНОВНЫЕ СТИЛИ ДЛЯ НАВИГАЦИОННОЙ ПАНЕЛИ ===== */
-    
-    /* Создание градиентного фона для шапки сайта с эффектом глубины */
-    .custom-header {
-        background: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #134e4a 100%) !important;
-        border-bottom: 3px solid #CC5500; /* Оранжевая полоса для акцента */
-        box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3); /* Тень для объемности */
-    }
-
-    /* ===== СТИЛИ ДЛЯ ССЫЛОК В НАВИГАЦИИ ===== */
-    
-    /* Базовые стили для всех навигационных ссылок */
-    .nav-link-custom {
-        position: relative;
-        color: #ffffff !important; /* Белый текст для контраста */
-        text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: 600;
-        font-family: 'Nunito', sans-serif; /* Современный шрифт */
-        padding: 8px 16px;
-        margin: 0 5px;
-        border-radius: 8px; /* Скругленные углы */
-        display: inline-block;
-        transition: all 0.3s ease; /* Плавная анимация при изменениях */
-        background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
-        backdrop-filter: blur(10px); /* Эффект размытия фона */
-    }
-
-    /* ===== ЭФФЕКТЫ ПРИ НАВЕДЕНИИ НА ССЫЛКИ ===== */
-    
-    /* Анимация при наведении курсора на навигационные ссылки */
-    .nav-link-custom:hover,
-    .nav-link-custom:focus {
-        color: #ffffff !important;
-        background: rgba(204, 85, 0, 0.8); /* Оранжевый фон при наведении */
-        transform: translateY(-2px); /* Подъем элемента на 2px */
-        box-shadow: 0 4px 12px rgba(204, 85, 0, 0.4); /* Тень с оранжевым оттенком */
-    }
-
-    /* ===== СТИЛИ ДЛЯ АКТИВНОЙ ССЫЛКИ ===== */
-    
-    /* Визуальное выделение текущей страницы в навигации */
-    .nav-link-custom.active {
-        background: rgba(204, 85, 0, 0.9); /* Более насыщенный оранжевый фон */
-        color: #ffffff !important;
-        box-shadow: 0 4px 12px rgba(204, 85, 0, 0.5); /* Усиленная тень */
-    }
-
-    /* ===== СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ ===== */
-    
-    /* Контейнер для выпадающего меню с относительным позиционированием */
-    .dropdown-hover {
-        position: relative;
-    }
-
-    /* Стили для самого выпадающего меню */
-    .dropdown-menu-custom {
-        display: none; /* Скрыто по умолчанию */
-        position: absolute;
-        top: 100%; /* Позиционирование под родительским элементом */
-        left: 0;
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); /* Градиентный фон */
-        border: 2px solid #0d9488; /* Рамка в цвете темы */
-        border-radius: 12px; /* Скругленные углы */
-        min-width: 250px;
-        z-index: 1000; /* Высокий z-index для отображения поверх других элементов */
-        padding: 8px 0;
-        box-shadow: 0 8px 25px rgba(13, 148, 136, 0.2); /* Тень */
-        backdrop-filter: blur(10px); /* Эффект размытия */
-    }
-
-    /* Показ меню при наведении на родительский элемент */
-    .dropdown-hover:hover .dropdown-menu-custom {
-        display: block;
-        animation: fadeInDown 0.3s ease; /* Анимация появления */
-    }
-
-    /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ МЕНЮ ===== */
-    
-    /* Ключевые кадры для плавного появления выпадающего меню */
-    @keyframes fadeInDown {
-        from {
-            opacity: 0; /* Полностью прозрачно */
-            transform: translateY(-10px); /* Смещено вверх */
-        }
-        to {
-            opacity: 1; /* Полностью видимо */
-            transform: translateY(0); /* В нормальной позиции */
-        }
-    }
-
-    /* ===== СТИЛИ ДЛЯ ЭЛЕМЕНТОВ ВЫПАДАЮЩЕГО МЕНЮ ===== */
-    
-    /* Базовые стили для пунктов выпадающего меню */
-    .dropdown-item {
-        padding: 12px 20px;
-        color: #0d9488; /* Цвет текста в стиле темы */
-        text-decoration: none;
-        white-space: nowrap; /* Запрет переноса текста */
-        transition: all 0.3s ease; /* Плавная анимация */
-        font-weight: 500;
-        border-radius: 8px;
-        margin: 2px 8px;
-    }
-
-    /* Эффект при наведении на пункты меню */
-    .dropdown-item:hover {
-        background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); /* Градиентный фон */
-        color: #ffffff; /* Белый текст */
-        transform: translateX(5px); /* Смещение вправо */
-        box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3); /* Тень */
-    }
-
-    /* ===== СТИЛИ ДЛЯ КНОПОК АВТОРИЗАЦИИ ===== */
-    
-    /* Контейнер для кнопок входа/выхода */
-    .auth-wrapper {
-        text-align: right;
-        margin-right: 20px;
-        font-family: 'Nunito', sans-serif;
-        font-size: 16px;
-    }
-
-    /* Стили для ссылок авторизации */
-    .auth-link {
-        font-weight: 600;
-        text-decoration: none;
-        padding: 8px 16px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.1);
-        /* Полупрозрачный фон */
-        backdrop-filter: blur(10px);
-        /* Эффект размытия */
-    }
-
-    /* Эффект при наведении на ссылки авторизации */
-    .auth-link:hover {
-        transform: scale(1.05);
-        /* Увеличение размера */
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-        /* Тень */
-        text-decoration: none;
-    }
-
-    /* ===== СТИЛИ ДЛЯ КНОПКИ "ЗАПИСАТЬСЯ" ===== */
-    /* Основные стили для кнопки записи на курсы */
-    .custom-btn {
-        background: linear-gradient(135deg, #CC5500 0%, #e67e22 100%) !important;
-        /* Оранжевый градиент */
-        border: none;
-        padding: 10px 20px;
-        border-radius: 10px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(204, 85, 0, 0.3);
-        /* Тень */
-    }
-
-    /* Эффект при наведении на кнопку */
-    .custom-btn:hover {
-        transform: translateY(-2px);
-        /* Подъем кнопки */
-        box-shadow: 0 6px 20px rgba(204, 85, 0, 0.4);
-        /* Усиленная тень */
-        background: linear-gradient(135deg, #e67e22 0%, #CC5500 100%) !important;
-        /* Инвертированный градиент */
-    }
-
-    /* ===== СТИЛИ ДЛЯ ЛОГОТИПА ===== */
-    /* Базовые стили для ссылки логотипа */
-    .logo-link {
-        transition: all 0.3s ease;
-        /* Плавная анимация */
-    }
-
-    /* Эффект при наведении на логотип */
-    .logo-link:hover {
-        transform: scale(1.05);
-        /* Увеличение размера */
-    }
-
-    /* ===== АДАПТИВНЫЕ СТИЛИ ===== */
-    /* Стили для мобильных устройств и планшетов */
-    @media (max-width: 768px) {
-
-        /* Уменьшение размера шрифта и отступов для навигационных ссылок */
-        .nav-link-custom {
-            font-size: 1rem;
-            padding: 6px 12px;
-            margin: 0 2px;
-        }
-
-        /* Корректировка отступов для блока авторизации */
-        .auth-wrapper {
-            margin-right: 10px;
-            font-size: 14px;
-        }
-    }
-
-
-
-/* Стили для ссылок в футере */             
-    .footer-link:hover {
-        color: #ff9500 !important;
-        transform: translateX(5px);
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-            
-    .social-link:hover {
-        transform: scale(1.2);
-        filter: brightness(1.2);
-    }
-    
-    .footer a:hover {
-        color: #ff9500 !important;
-    }
-</style>
-
-{% block css %}{% endblock %}
-
 <body>
-
-<!-- Шапка сайта -->
+    <!-- =======================
+         ШАПКА САЙТА
+    ======================== -->
     <header class="fixed-top custom-header">
         <div class="container-fluid py-3">
             <div class="row align-items-center">
@@ -277,20 +271,15 @@
                             style="height: 60px; border-radius: 8px;">
                     </a>
                 </div>
-
-                <!-- Навигационное меню по центру -->
+                <!-- Навигационное меню -->
                 <div class="col d-flex justify-content-center">
                     <nav class="d-flex gap-4 mt-2 align-items-center position-relative">
-                        <!-- Ссылка на страницу "О клубе" - статическая страница с информацией о клубе -->
+                        <!-- О клубе -->
                         <a href="/about" class="nav-link-custom">О КЛУБЕ</a>
-
-                        <!-- Обёртка для выпадающего меню курсов -->
+                        <!-- Курсы с выпадающим меню -->
                         <div class="dropdown-hover">
-                            <!-- Основная ссылка на секцию курсов на главной странице -->
                             <a href="{% url 'index' %}#courses" class="nav-link-custom">НАШИ КУРСЫ</a>
-                            <!-- Выпадающее меню с возрастными группами курсов -->
                             <ul class="dropdown-menu-custom">
-                                <!-- Ссылки на страницы курсов по возрастным группам -->
                                 <li><a class="dropdown-item" href="/courses_2_4">Для детей 2,5-4 года</a></li>
                                 <li><a class="dropdown-item" href="/courses_4_6">Для детей 4-6 лет</a></li>
                                 <li><a class="dropdown-item" href="/courses_6_7">Для детей 6-7 лет</a></li>
@@ -300,9 +289,9 @@
                                 <li><a class="dropdown-item" href="/courses_13_16">Для детей 13-16 лет</a></li>
                             </ul>
                         </div>
-                        <!-- Ссылка на страницу контактов (пока заглушка) -->
+                        <!-- Контакты (заглушка) -->
                         <a href="#" class="nav-link-custom">КОНТАКТЫ</a>
-                        <!-- Условная ссылка на форум: для авторизованных пользователей - доступ к форуму, для неавторизованных - страница входа -->
+                        <!-- Форум: для авторизованных - ссылка на форум, иначе - на вход -->
                         {% if user.is_authenticated %}
                         <a href="/forum_list/" class="nav-link-custom">ФОРУМ</a>
                         {% else %}
@@ -310,8 +299,7 @@
                         {% endif %}
                     </nav>
                 </div>
-
-                <!-- Блок "Войти / Выйти" -->
+                <!-- Войти/Выйти -->
                 <div class="col-auto">
                     <div class="auth-wrapper">
                         {% if user.is_authenticated %}
@@ -325,7 +313,6 @@
                         {% endif %}
                     </div>
                 </div>
-
                 <!-- Кнопка "Записаться" -->
                 <div class="col-auto">
                     <button type="button" class="btn custom-btn text-white me-3" data-bs-toggle="modal"
@@ -337,11 +324,16 @@
         </div>
     </header>
 
-<!-- Пустое пространство для отступа от шапки -->
+    <!-- =======================
+         ОТСТУП ДЛЯ ФИКСИРОВАННОЙ ШАПКИ
+    ======================== -->
     <div style="height: 70px;"></div>
 
-<!-- Скрипт для фиксирования подчеркивания кнопки в шапке при переходе по ссылкам -->
+    <!-- =======================
+         СКРИПТ: АКТИВНАЯ ССЫЛКА В МЕНЮ
+    ======================== -->
     <script>
+        // Подсвечиваем активную ссылку в меню при загрузке страницы
         document.addEventListener('DOMContentLoaded', function () {
             const links = document.querySelectorAll('.nav-link-custom');
             links.forEach(link => {
@@ -351,125 +343,121 @@
             });
         });
     </script>
+
+    <!-- =======================
+         ОСНОВНОЙ КОНТЕНТ
+    ======================== -->
     {% block content %}{% endblock %}
 
-<!-- Футер сайта -->
-<footer class="footer mt-5 py-5 text-white" style="background: linear-gradient(135deg, #0d9488 0%, #0f766e 50%, #134e4a 100%); border-top: 3px solid #CC5500;">
-    <div class="container">
-        <div class="row justify-content-center text-center text-md-start">
-            <!-- ЛОГО И ОПИСАНИЕ -->
-            <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
-                <a href="/" class="text-decoration-none">
-                    <img src="{% static 'main/img/logo.jpg' %}" alt="Logo" style="height: 80px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" class="mb-3">
-                </a>
-                <p class="text-white-50 fw-light" style="font-size: 0.95rem;">Детский центр робототехники и программирования <br> г. Лида</p>
-            </div>
-
-            <!-- НАВИГАЦИЯ -->
-            <div class="col-12 col-md-4 mb-4 mb-md-0">
-                <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                    <i class="bi bi-compass me-2"></i>Навигация
-                </h6>
-                <ul class="list-unstyled d-flex flex-column align-items-center align-items-md-start">
-                    <li class="mb-2">
-                        <a href="/about" class="text-white-50 text-decoration-none fw-light footer-link" style="transition: all 0.3s ease;">
-                            <i class="bi bi-info-circle me-2" style="color: #ff6a00;"></i>Об IT клубе
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{% url 'index' %}#courses" class="text-white-50 text-decoration-none fw-light footer-link" style="transition: all 0.3s ease;">
-                            <i class="bi bi-journal-code me-2" style="color: #ff6a00;"></i>Наши курсы
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link" style="transition: all 0.3s ease;">
-                            <i class="bi bi-laptop me-2" style="color: #ff6a00;"></i>Курсы онлайн
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link" style="transition: all 0.3s ease;">
-                            <i class="bi bi-lightbulb me-2" style="color: #ff6a00;"></i>Мастер-классы
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link" style="transition: all 0.3s ease;">
-                            <i class="bi bi-file-earmark-text me-2" style="color: #ff6a00;"></i>Договор
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{% static 'main/pdf/pravila-bezopasnosti.pdf' %}" class="text-white-50 text-decoration-none fw-light footer-link" target="_blank" style="transition: all 0.3s ease;">
-                            <i class="bi bi-shield-lock me-2" style="color: #ff6a00;"></i>Правила безопасности
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link" style="transition: all 0.3s ease;">
-                            <i class="bi bi-lock me-2" style="color: #ff6a00;"></i>Политика конфиденциальности
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- КОНТАКТЫ И СОЦСЕТИ -->
-            <div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start">
-                <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                    <i class="bi bi-envelope me-2"></i>Контакты
-                </h6>
-                <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">&copy; 2025 Робототехника. Все права защищены.</p>
-                <div class="contact-info mb-4">
-                    <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
-                        <i class="bi bi-envelope me-2" style="color: #ff6a00;"></i>
-                        <a href="mailto:skrip8078@gmail.com" class="text-decoration-none text-white-50" style="transition: all 0.3s ease;">skrip8078@gmail.com</a>
-                    </p>
-                    <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
-                        <i class="bi bi-telephone me-2" style="color: #ff6a00;"></i>
-                        <a href="tel:+375291210908" class="text-decoration-none text-white-50" style="transition: all 0.3s ease;">+375 (29) 121-09-08</a>
-                    </p>
-                    <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">
-                        <i class="bi bi-geo-alt me-2" style="color: #ff6a00;"></i>Беларусь, г. Лида, ул. Замковая, д. 4
+    <!-- =======================
+         ФУТЕР САЙТА
+    ======================== -->
+    <footer class="footer mt-5 py-5 text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center text-md-start">
+                <!-- ЛОГО И ОПИСАНИЕ -->
+                <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
+                    <a href="/" class="text-decoration-none">
+                        <img src="{% static 'main/img/logo.jpg' %}" alt="Logo"
+                             style="height: 80px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" class="mb-3">
+                    </a>
+                    <p class="text-white-50 fw-light" style="font-size: 0.95rem;">
+                        Детский центр робототехники и программирования <br> г. Лида
                     </p>
                 </div>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/robototehnika_lida/" target="_blank" class="text-decoration-none me-3 social-link" title="Instagram" style="transition: all 0.3s ease;">
-                        <i class="bi bi-instagram" style="font-size: 32px; color: #ff6a00; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
-                    </a>
-                    <a href="tg://msg?to=%2B375291210908" class="text-decoration-none social-link" title="Telegram" style="transition: all 0.3s ease;">
-                        <i class="bi bi-telegram" style="font-size: 32px; color: #ff6a00; text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
-                    </a>
+                <!-- НАВИГАЦИЯ -->
+                <div class="col-12 col-md-4 mb-4 mb-md-0">
+                    <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        <i class="bi bi-compass me-2"></i>Навигация
+                    </h6>
+                    <ul class="list-unstyled d-flex flex-column align-items-center align-items-md-start">
+                        <li class="mb-2">
+                            <a href="/about" class="text-white-50 text-decoration-none fw-light footer-link">
+                                <i class="bi bi-info-circle me-2" style="color: var(--main-orange);"></i>Об IT клубе
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% url 'index' %}#courses" class="text-white-50 text-decoration-none fw-light footer-link">
+                                <i class="bi bi-journal-code me-2" style="color: var(--main-orange);"></i>Наши курсы
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                                <i class="bi bi-laptop me-2" style="color: var(--main-orange);"></i>Курсы онлайн
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                                <i class="bi bi-lightbulb me-2" style="color: var(--main-orange);"></i>Мастер-классы
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                                <i class="bi bi-file-earmark-text me-2" style="color: var(--main-orange);"></i>Договор
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{% static 'main/pdf/pravila-bezopasnosti.pdf' %}" class="text-white-50 text-decoration-none fw-light footer-link" target="_blank">
+                                <i class="bi bi-shield-lock me-2" style="color: var(--main-orange);"></i>Правила безопасности
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                                <i class="bi bi-lock me-2" style="color: var(--main-orange);"></i>Политика конфиденциальности
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- КОНТАКТЫ И СОЦСЕТИ -->
+                <div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start">
+                    <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        <i class="bi bi-envelope me-2"></i>Контакты
+                    </h6>
+                    <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">&copy; 2025 Робототехника. Все права защищены.</p>
+                    <div class="contact-info mb-4">
+                        <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
+                            <i class="bi bi-envelope me-2" style="color: var(--main-orange);"></i>
+                            <a href="mailto:skrip8078@gmail.com" class="text-decoration-none text-white-50">skrip8078@gmail.com</a>
+                        </p>
+                        <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
+                            <i class="bi bi-telephone me-2" style="color: var(--main-orange);"></i>
+                            <a href="tel:+375291210908" class="text-decoration-none text-white-50">+375 (29) 121-09-08</a>
+                        </p>
+                        <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">
+                            <i class="bi bi-geo-alt me-2" style="color: var(--main-orange);"></i>Беларусь, г. Лида, ул. Замковая, д. 4
+                        </p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/robototehnika_lida/" target="_blank" class="text-decoration-none me-3 social-link" title="Instagram">
+                            <i class="bi bi-instagram" style="font-size: 32px; color: var(--main-orange); text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </a>
+                        <a href="tg://msg?to=%2B375291210908" class="text-decoration-none social-link" title="Telegram">
+                            <i class="bi bi-telegram" style="font-size: 32px; color: var(--main-orange); text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<style>
-    
-</style>
-
-<!-- Скрипт для управления активным состоянием навигационных ссылок -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Получаем все навигационные ссылки и ссылку на главную страницу
-        const navLinks = document.querySelectorAll('.nav-link-custom');
-        const homeLink = document.getElementById('home-link');
-
-        // Добавляем обработчик клика для каждой навигационной ссылки
-        navLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                // Убираем класс 'active' со всех ссылок
+    <!-- =======================
+         СКРИПТ: АКТИВНОЕ СОСТОЯНИЕ МЕНЮ
+    ======================== -->
+    <script>
+        // Управление активным состоянием навигационных ссылок при клике
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link-custom');
+            const homeLink = document.getElementById('home-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            homeLink.addEventListener('click', function () {
                 navLinks.forEach(l => l.classList.remove('active'));
-                // Добавляем класс 'active' к кликнутой ссылке
-                this.classList.add('active');
             });
         });
-
-        // Обработчик для ссылки на главную страницу
-        homeLink.addEventListener('click', function () {
-            // Убираем активное состояние со всех навигационных ссылок
-            navLinks.forEach(l => l.classList.remove('active'));
-        });
-    });
-</script>
-
+    </script>
 </body>
-
 </html>
