@@ -6,7 +6,7 @@
          МЕТА-ТЕГИ И НАСТРОЙКИ
     ======================== -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Детский центр робототехники и программирования в г. Лида">
 
     <!-- =======================
@@ -46,9 +46,6 @@
          ВСТРОЕННЫЕ СТИЛИ CSS
     ======================== -->
     <style>
-        /* =======================
-           ОСНОВНЫЕ ЦВЕТА САЙТА
-        ======================== */
         :root {
             --main-green: #0d9488;
             --main-green-dark: #0f766e;
@@ -60,18 +57,12 @@
             --main-gray: #f8fafc;
         }
 
-        /* =======================
-           ШАПКА (HEADER)
-        ======================== */
         .custom-header {
             background: linear-gradient(135deg, var(--main-green) 0%, var(--main-green-dark) 50%, var(--main-green-darker) 100%) !important;
             border-bottom: 3px solid var(--main-orange);
             box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
         }
 
-        /* =======================
-           ЛОГОТИП
-        ======================== */
         .logo-link {
             transition: all 0.3s ease;
         }
@@ -79,9 +70,6 @@
             transform: scale(1.05);
         }
 
-        /* =======================
-           НАВИГАЦИОННОЕ МЕНЮ
-        ======================== */
         .nav-link-custom {
             position: relative;
             color: var(--main-white) !important;
@@ -130,7 +118,8 @@
             box-shadow: 0 8px 25px rgba(13, 148, 136, 0.2);
             backdrop-filter: blur(10px);
         }
-        .dropdown-hover:hover .dropdown-menu-custom {
+        .dropdown-hover:hover .dropdown-menu-custom,
+        .dropdown-hover:focus-within .dropdown-menu-custom {
             display: block;
             animation: fadeInDown 0.3s ease;
         }
@@ -162,9 +151,6 @@
             box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
         }
 
-        /* =======================
-           КНОПКИ АВТОРИЗАЦИИ
-        ======================== */
         .auth-wrapper {
             text-align: right;
             margin-right: 20px;
@@ -194,9 +180,6 @@
             background: rgba(204, 85, 0, 0.15);
         }
 
-        /* =======================
-           КНОПКА "ЗАПИСАТЬСЯ"
-        ======================== */
         .custom-btn {
             background: linear-gradient(135deg, var(--main-orange) 0%, var(--main-orange-light) 100%) !important;
             border: none;
@@ -212,9 +195,6 @@
             background: linear-gradient(135deg, var(--main-orange-light) 0%, var(--main-orange) 100%) !important;
         }
 
-        /* =======================
-           ФУТЕР
-        ======================== */
         .footer {
             background: linear-gradient(135deg, var(--main-green) 0%, var(--main-green-dark) 50%, var(--main-green-darker) 100%);
             border-top: 3px solid var(--main-orange);
@@ -242,15 +222,70 @@
         /* =======================
            АДАПТИВНОСТЬ
         ======================== */
+        @media (max-width: 991.98px) {
+            .custom-header .container-fluid {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .logo-link {
+                margin-left: 0 !important;
+            }
+            .custom-btn {
+                margin-right: 0 !important;
+            }
+        }
         @media (max-width: 768px) {
             .nav-link-custom {
                 font-size: 1rem;
                 padding: 6px 12px;
                 margin: 0 2px;
+                display: block;
+                width: 100%;
+                text-align: left;
             }
             .auth-wrapper {
-                margin-right: 10px;
+                margin-right: 0;
                 font-size: 14px;
+                text-align: left;
+            }
+            .custom-header .container-fluid {
+                flex-direction: column;
+            }
+            .dropdown-hover {
+                width: 100%;
+            }
+            .dropdown-menu-custom {
+                position: static;
+                min-width: 100%;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                padding: 0;
+                display: none;
+            }
+            .dropdown-hover.open .dropdown-menu-custom,
+            .dropdown-hover:focus-within .dropdown-menu-custom {
+                display: block;
+                animation: none;
+            }
+            .dropdown-item {
+                margin: 0;
+                padding: 10px 20px;
+                border-radius: 0;
+                background: transparent;
+            }
+        }
+        @media (max-width: 576px) {
+            .footer .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .footer .row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer .col-12 {
+                margin-bottom: 2rem;
             }
         }
     </style>
@@ -263,7 +298,7 @@
 ======================== -->
 <header class="fixed-top custom-header bg-white shadow-sm">
     <div class="container-fluid py-3">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between flex-wrap">
             <!-- Логотип -->
             <a href="/" class="logo-link ms-3" id="home-link">
                 <img src="{% static 'main/img/logo.jpg' %}" alt="Logo" style="height: 50px; border-radius: 8px;">
@@ -279,9 +314,9 @@
             <nav class="collapse d-md-flex flex-grow-1 justify-content-center" id="navMenu">
                 <a href="/about" class="nav-link-custom px-3">О КЛУБЕ</a>
 
-                <div class="dropdown-hover px-3">
-                    <a href="{% url 'index' %}#courses" class="nav-link-custom">НАШИ КУРСЫ</a>
-                    <ul class="dropdown-menu-custom">
+                <div class="dropdown-hover px-3" tabindex="0">
+                    <a href="{% url 'index' %}#courses" class="nav-link-custom dropdown-toggle" id="coursesDropdown" role="button" aria-expanded="false">НАШИ КУРСЫ</a>
+                    <ul class="dropdown-menu-custom" aria-labelledby="coursesDropdown">
                         <li><a class="dropdown-item" href="/courses_2_4">Для детей 2,5-4 года</a></li>
                         <li><a class="dropdown-item" href="/courses_4_6">Для детей 4-6 лет</a></li>
                         <!-- остальные пункты -->
@@ -295,11 +330,30 @@
                 {% else %}
                 <a href="/login/" class="nav-link-custom px-3">ФОРУМ</a>
                 {% endif %}
+
+                <!-- Кнопки входа/выхода и "Записаться" для мобильных -->
+                <div class="d-md-none mt-3 mb-2">
+                    <div class="auth-wrapper mb-2">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="auth-link text-danger">
+                            <i class="fas fa-sign-out-alt me-1"></i> Выйти
+                        </a>
+                        {% else %}
+                        <a href="{% url 'login' %}" class="auth-link text-success">
+                            <i class="fas fa-sign-in-alt me-1"></i> Войти
+                        </a>
+                        {% endif %}
+                    </div>
+                    <button type="button" class="btn custom-btn text-white" data-bs-toggle="modal"
+                            data-bs-target="#signupModal" style="width: 100%;">
+                        <i class="bi bi-pencil-square me-1"></i> Записаться
+                    </button>
+                </div>
             </nav>
 
-            <!-- Правый блок с входом и кнопкой -->
-            <div class="d-flex align-items-center">
-                <div class="auth-wrapper me-3 d-none d-md-block">
+            <!-- Правый блок с входом и кнопкой (только для десктопа) -->
+            <div class="d-flex align-items-center d-none d-md-flex">
+                <div class="auth-wrapper me-3">
                     {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="auth-link text-danger">
                         <i class="fas fa-sign-out-alt me-1"></i> Выйти
@@ -334,6 +388,38 @@
         links.forEach(link => {
             if (link.href === window.location.href || window.location.href.includes(link.getAttribute("href"))) {
                 link.classList.add('active');
+            }
+        });
+
+        // Мобильное раскрытие dropdown по клику
+        function isMobile() {
+            return window.innerWidth < 992;
+        }
+        const dropdowns = document.querySelectorAll('.dropdown-hover');
+        dropdowns.forEach(function(dropdown) {
+            const trigger = dropdown.querySelector('.nav-link-custom');
+            if (trigger) {
+                trigger.addEventListener('click', function(e) {
+                    if (isMobile()) {
+                        e.preventDefault();
+                        // Закрыть другие открытые
+                        dropdowns.forEach(function(dd) {
+                            if (dd !== dropdown) dd.classList.remove('open');
+                        });
+                        dropdown.classList.toggle('open');
+                    }
+                });
+            }
+        });
+
+        // Закрытие dropdown при клике вне
+        document.addEventListener('click', function(e) {
+            if (isMobile()) {
+                dropdowns.forEach(function(dropdown) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('open');
+                    }
+                });
             }
         });
     });
@@ -459,9 +545,11 @@
                 this.classList.add('active');
             });
         });
-        homeLink.addEventListener('click', function () {
-            navLinks.forEach(l => l.classList.remove('active'));
-        });
+        if (homeLink) {
+            homeLink.addEventListener('click', function () {
+                navLinks.forEach(l => l.classList.remove('active'));
+            });
+        }
     });
 </script>
 </body>
