@@ -1,13 +1,19 @@
 import os
 from pathlib import Path
+import dj_database_url
+from dotenv import load_dotenv
 
-# Базовая директория проекта
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(os.path.join(BASE_DIR, '.env'))
+
 # Безопасность
-SECRET_KEY = 'django-insecure-5t&d&=2*w-zc5*px-q%ierx@hu@(ufe!i_1*$@(at@4sjm$^^$'
-DEBUG = True
-ALLOWED_HOSTS = []
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'local-unsafe-secret-key')
+
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+
+ALLOWED_HOSTS = [host.strip() for host in os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')]
+
 
 # Установленные приложения
 INSTALLED_APPS = [
@@ -26,6 +32,7 @@ INSTALLED_APPS = [
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # для статики на Render
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -49,7 +56,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'debug': DEBUG,  # Включаем отладку шаблонов
+            'debug': DEBUG,
         },
     },
 ]
@@ -57,12 +64,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Robototechnika.wsgi.application'
 
 # База данных
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Валидация пароля
 AUTH_PASSWORD_VALIDATORS = [
@@ -80,16 +92,17 @@ USE_L10N = True
 USE_TZ = True
 
 # Статика
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "main_app/static")]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Настройки WhiteNoise для Render
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Отключение кэширования в режиме разработки
 if DEBUG:
     import mimetypes
     mimetypes.add_type("application/javascript", ".js", True)
-    
-    # Отключение кэширования статических файлов
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Primary key
