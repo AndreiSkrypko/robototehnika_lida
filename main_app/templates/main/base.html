@@ -258,206 +258,211 @@
 </head>
 
 <body>
-    <!-- =======================
-         ШАПКА САЙТА
-    ======================== -->
-    <header class="fixed-top custom-header">
-        <div class="container-fluid py-3">
-            <div class="row align-items-center">
-                <!-- Логотип -->
-                <div class="col-auto">
-                    <a href="/" class="logo-link ms-3" id="home-link">
-                        <img src="{% static 'main/img/logo.jpg' %}" alt="Logo"
-                            style="height: 60px; border-radius: 8px;">
-                    </a>
-                </div>
-                <!-- Навигационное меню -->
-                <div class="col d-flex justify-content-center">
-                    <nav class="d-flex gap-4 mt-2 align-items-center position-relative">
-                        <!-- О клубе -->
-                        <a href="/about" class="nav-link-custom">О КЛУБЕ</a>
-                        <!-- Курсы с выпадающим меню -->
-                        <div class="dropdown-hover">
-                            <a href="{% url 'index' %}#courses" class="nav-link-custom">НАШИ КУРСЫ</a>
-                            <ul class="dropdown-menu-custom">
-                                <li><a class="dropdown-item" href="/courses_2_4">Для детей 2,5-4 года</a></li>
-                                <li><a class="dropdown-item" href="/courses_4_6">Для детей 4-6 лет</a></li>
-                                <li><a class="dropdown-item" href="/courses_6_7">Для детей 6-7 лет</a></li>
-                                <li><a class="dropdown-item" href="/courses_7_9">Для детей 7-9 лет</a></li>
-                                <li><a class="dropdown-item" href="/courses_9_11">Для детей 9-11 лет</a></li>
-                                <li><a class="dropdown-item" href="/courses_11_13">Для детей 11-13 лет</a></li>
-                                <li><a class="dropdown-item" href="/courses_13_16">Для детей 13-16 лет</a></li>
-                            </ul>
-                        </div>
-                        <!-- Контакты (заглушка) -->
-                        <a href="#" class="nav-link-custom">КОНТАКТЫ</a>
-                        <!-- Форум: для авторизованных - ссылка на форум, иначе - на вход -->
-                        {% if user.is_authenticated %}
-                        <a href="/forum_list/" class="nav-link-custom">ФОРУМ</a>
-                        {% else %}
-                        <a href="/login/" class="nav-link-custom">ФОРУМ</a>
-                        {% endif %}
-                    </nav>
-                </div>
-                <!-- Войти/Выйти -->
-                <div class="col-auto">
-                    <div class="auth-wrapper">
-                        {% if user.is_authenticated %}
-                        <a href="{% url 'logout' %}" class="auth-link text-danger">
-                            <i class="fas fa-sign-out-alt me-1"></i> Выйти
-                        </a>
-                        {% else %}
-                        <a href="{% url 'login' %}" class="auth-link text-success">
-                            <i class="fas fa-sign-in-alt me-1"></i> Войти
-                        </a>
-                        {% endif %}
-                    </div>
-                </div>
-                <!-- Кнопка "Записаться" -->
-                <div class="col-auto">
-                    <button type="button" class="btn custom-btn text-white me-3" data-bs-toggle="modal"
-                        data-bs-target="#signupModal">
-                        <i class="bi bi-pencil-square me-1"></i> Записаться
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+<!-- =======================
+     ШАПКА САЙТА
+======================== -->
+<header class="fixed-top custom-header bg-white shadow-sm">
+    <div class="container-fluid py-3">
+        <div class="d-flex align-items-center justify-content-between">
+            <!-- Логотип -->
+            <a href="/" class="logo-link ms-3" id="home-link">
+                <img src="{% static 'main/img/logo.jpg' %}" alt="Logo" style="height: 50px; border-radius: 8px;">
+            </a>
 
-    <!-- =======================
-         ОТСТУП ДЛЯ ФИКСИРОВАННОЙ ШАПКИ
-    ======================== -->
-    <div style="height: 70px;"></div>
+            <!-- Кнопка гамбургер-меню для мобилы -->
+            <button class="btn d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                    aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list fs-2"></i>
+            </button>
 
-    <!-- =======================
-         СКРИПТ: АКТИВНАЯ ССЫЛКА В МЕНЮ
-    ======================== -->
-    <script>
-        // Подсвечиваем активную ссылку в меню при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function () {
-            const links = document.querySelectorAll('.nav-link-custom');
-            links.forEach(link => {
-                if (link.href === window.location.href || window.location.href.includes(link.getAttribute("href"))) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+            <!-- Навигация -->
+            <nav class="collapse d-md-flex flex-grow-1 justify-content-center" id="navMenu">
+                <a href="/about" class="nav-link-custom px-3">О КЛУБЕ</a>
 
-    <!-- =======================
-         ОСНОВНОЙ КОНТЕНТ
-    ======================== -->
-    {% block content %}{% endblock %}
-
-    <!-- =======================
-         ФУТЕР САЙТА
-    ======================== -->
-    <footer class="footer mt-5 py-5 text-white">
-        <div class="container">
-            <div class="row justify-content-center text-center text-md-start">
-                <!-- ЛОГО И ОПИСАНИЕ -->
-                <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
-                    <a href="/" class="text-decoration-none">
-                        <img src="{% static 'main/img/logo.jpg' %}" alt="Logo"
-                             style="height: 80px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" class="mb-3">
-                    </a>
-                    <p class="text-white-50 fw-light" style="font-size: 0.95rem;">
-                        Детский центр робототехники и программирования <br> г. Лида
-                    </p>
-                </div>
-                <!-- НАВИГАЦИЯ -->
-                <div class="col-12 col-md-4 mb-4 mb-md-0">
-                    <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                        <i class="bi bi-compass me-2"></i>Навигация
-                    </h6>
-                    <ul class="list-unstyled d-flex flex-column align-items-center align-items-md-start">
-                        <li class="mb-2">
-                            <a href="/about" class="text-white-50 text-decoration-none fw-light footer-link">
-                                <i class="bi bi-info-circle me-2" style="color: var(--main-orange);"></i>Об IT клубе
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="{% url 'index' %}#courses" class="text-white-50 text-decoration-none fw-light footer-link">
-                                <i class="bi bi-journal-code me-2" style="color: var(--main-orange);"></i>Наши курсы
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
-                                <i class="bi bi-laptop me-2" style="color: var(--main-orange);"></i>Курсы онлайн
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
-                                <i class="bi bi-lightbulb me-2" style="color: var(--main-orange);"></i>Мастер-классы
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
-                                <i class="bi bi-file-earmark-text me-2" style="color: var(--main-orange);"></i>Договор
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="{% static 'main/pdf/pravila-bezopasnosti.pdf' %}" class="text-white-50 text-decoration-none fw-light footer-link" target="_blank">
-                                <i class="bi bi-shield-lock me-2" style="color: var(--main-orange);"></i>Правила безопасности
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
-                                <i class="bi bi-lock me-2" style="color: var(--main-orange);"></i>Политика конфиденциальности
-                            </a>
-                        </li>
+                <div class="dropdown-hover px-3">
+                    <a href="{% url 'index' %}#courses" class="nav-link-custom">НАШИ КУРСЫ</a>
+                    <ul class="dropdown-menu-custom">
+                        <li><a class="dropdown-item" href="/courses_2_4">Для детей 2,5-4 года</a></li>
+                        <li><a class="dropdown-item" href="/courses_4_6">Для детей 4-6 лет</a></li>
+                        <!-- остальные пункты -->
                     </ul>
                 </div>
-                <!-- КОНТАКТЫ И СОЦСЕТИ -->
-                <div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start">
-                    <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
-                        <i class="bi bi-envelope me-2"></i>Контакты
-                    </h6>
-                    <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">&copy; 2025 Робототехника. Все права защищены.</p>
-                    <div class="contact-info mb-4">
-                        <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
-                            <i class="bi bi-envelope me-2" style="color: var(--main-orange);"></i>
-                            <a href="mailto:skrip8078@gmail.com" class="text-decoration-none text-white-50">skrip8078@gmail.com</a>
-                        </p>
-                        <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
-                            <i class="bi bi-telephone me-2" style="color: var(--main-orange);"></i>
-                            <a href="tel:+375291210908" class="text-decoration-none text-white-50">+375 (29) 121-09-08</a>
-                        </p>
-                        <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">
-                            <i class="bi bi-geo-alt me-2" style="color: var(--main-orange);"></i>Беларусь, г. Лида, ул. Замковая, д. 4
-                        </p>
-                    </div>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/robototehnika_lida/" target="_blank" class="text-decoration-none me-3 social-link" title="Instagram">
-                            <i class="bi bi-instagram" style="font-size: 32px; color: var(--main-orange); text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+
+                <a href="#" class="nav-link-custom px-3">КОНТАКТЫ</a>
+
+                {% if user.is_authenticated %}
+                <a href="/forum_list/" class="nav-link-custom px-3">ФОРУМ</a>
+                {% else %}
+                <a href="/login/" class="nav-link-custom px-3">ФОРУМ</a>
+                {% endif %}
+            </nav>
+
+            <!-- Правый блок с входом и кнопкой -->
+            <div class="d-flex align-items-center">
+                <div class="auth-wrapper me-3 d-none d-md-block">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="auth-link text-danger">
+                        <i class="fas fa-sign-out-alt me-1"></i> Выйти
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="auth-link text-success">
+                        <i class="fas fa-sign-in-alt me-1"></i> Войти
+                    </a>
+                    {% endif %}
+                </div>
+                <button type="button" class="btn custom-btn text-white me-3" data-bs-toggle="modal"
+                        data-bs-target="#signupModal">
+                    <i class="bi bi-pencil-square me-1"></i> Записаться
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- =======================
+     ОТСТУП ДЛЯ ФИКСИРОВАННОЙ ШАПКИ
+======================== -->
+<div style="height: 70px;"></div>
+
+<!-- =======================
+     СКРИПТ: АКТИВНАЯ ССЫЛКА В МЕНЮ
+======================== -->
+<script>
+    // Подсвечиваем активную ссылку в меню при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('.nav-link-custom');
+        links.forEach(link => {
+            if (link.href === window.location.href || window.location.href.includes(link.getAttribute("href"))) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+<!-- =======================
+     ОСНОВНОЙ КОНТЕНТ
+======================== -->
+{% block content %}{% endblock %}
+
+<!-- =======================
+     ФУТЕР САЙТА
+======================== -->
+<footer class="footer mt-5 py-5 text-white">
+    <div class="container">
+        <div class="row justify-content-center text-center text-md-start">
+            <!-- ЛОГО И ОПИСАНИЕ -->
+            <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
+                <a href="/" class="text-decoration-none">
+                    <img src="{% static 'main/img/logo.jpg' %}" alt="Logo"
+                         style="height: 80px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+                         class="mb-3">
+                </a>
+                <p class="text-white-50 fw-light" style="font-size: 0.95rem;">
+                    Детский центр робототехники и программирования <br> г. Лида
+                </p>
+            </div>
+            <!-- НАВИГАЦИЯ -->
+            <div class="col-12 col-md-4 mb-4 mb-md-0">
+                <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    <i class="bi bi-compass me-2"></i>Навигация
+                </h6>
+                <ul class="list-unstyled d-flex flex-column align-items-center align-items-md-start">
+                    <li class="mb-2">
+                        <a href="/about" class="text-white-50 text-decoration-none fw-light footer-link">
+                            <i class="bi bi-info-circle me-2" style="color: var(--main-orange);"></i>Об IT клубе
                         </a>
-                        <a href="tg://msg?to=%2B375291210908" class="text-decoration-none social-link" title="Telegram">
-                            <i class="bi bi-telegram" style="font-size: 32px; color: var(--main-orange); text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% url 'index' %}#courses"
+                           class="text-white-50 text-decoration-none fw-light footer-link">
+                            <i class="bi bi-journal-code me-2" style="color: var(--main-orange);"></i>Наши курсы
                         </a>
-                    </div>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                            <i class="bi bi-laptop me-2" style="color: var(--main-orange);"></i>Курсы онлайн
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                            <i class="bi bi-lightbulb me-2" style="color: var(--main-orange);"></i>Мастер-классы
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                            <i class="bi bi-file-earmark-text me-2" style="color: var(--main-orange);"></i>Договор
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{% static 'main/pdf/pravila-bezopasnosti.pdf' %}"
+                           class="text-white-50 text-decoration-none fw-light footer-link" target="_blank">
+                            <i class="bi bi-shield-lock me-2" style="color: var(--main-orange);"></i>Правила
+                            безопасности
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/" class="text-white-50 text-decoration-none fw-light footer-link">
+                            <i class="bi bi-lock me-2" style="color: var(--main-orange);"></i>Политика
+                            конфиденциальности
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- КОНТАКТЫ И СОЦСЕТИ -->
+            <div class="col-12 col-md-4 d-flex flex-column align-items-center align-items-md-start">
+                <h6 class="text-white fw-bold mb-4" style="font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                    <i class="bi bi-envelope me-2"></i>Контакты
+                </h6>
+                <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">&copy; 2025 Робототехника. Все права
+                    защищены.</p>
+                <div class="contact-info mb-4">
+                    <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
+                        <i class="bi bi-envelope me-2" style="color: var(--main-orange);"></i>
+                        <a href="mailto:skrip8078@gmail.com" class="text-decoration-none text-white-50">skrip8078@gmail.com</a>
+                    </p>
+                    <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
+                        <i class="bi bi-telephone me-2" style="color: var(--main-orange);"></i>
+                        <a href="tel:+375291210908" class="text-decoration-none text-white-50">+375 (29) 121-09-08</a>
+                    </p>
+                    <p class="text-white-50 fw-light mb-3" style="font-size: 0.9rem;">
+                        <i class="bi bi-geo-alt me-2" style="color: var(--main-orange);"></i>Беларусь, г. Лида, ул.
+                        Замковая, д. 4
+                    </p>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/robototehnika_lida/" target="_blank"
+                       class="text-decoration-none me-3 social-link" title="Instagram">
+                        <i class="bi bi-instagram"
+                           style="font-size: 32px; color: var(--main-orange); text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                    </a>
+                    <a href="tg://msg?to=%2B375291210908" class="text-decoration-none social-link" title="Telegram">
+                        <i class="bi bi-telegram"
+                           style="font-size: 32px; color: var(--main-orange); text-shadow: 0 2px 4px rgba(0,0,0,0.3);"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <!-- =======================
-         СКРИПТ: АКТИВНОЕ СОСТОЯНИЕ МЕНЮ
-    ======================== -->
-    <script>
-        // Управление активным состоянием навигационных ссылок при клике
-        document.addEventListener('DOMContentLoaded', function () {
-            const navLinks = document.querySelectorAll('.nav-link-custom');
-            const homeLink = document.getElementById('home-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-            homeLink.addEventListener('click', function () {
+<!-- =======================
+     СКРИПТ: АКТИВНОЕ СОСТОЯНИЕ МЕНЮ
+======================== -->
+<script>
+    // Управление активным состоянием навигационных ссылок при клике
+    document.addEventListener('DOMContentLoaded', function () {
+        const navLinks = document.querySelectorAll('.nav-link-custom');
+        const homeLink = document.getElementById('home-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
                 navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
             });
         });
-    </script>
+        homeLink.addEventListener('click', function () {
+            navLinks.forEach(l => l.classList.remove('active'));
+        });
+    });
+</script>
 </body>
 </html>
