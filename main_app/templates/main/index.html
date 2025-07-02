@@ -5,158 +5,185 @@
 
 <style>
 
-    /* Base styles */
+    /* -------------------------------
+       Основные стили (Base styles)
+    --------------------------------*/
+
+    /* Секция героя (Hero section) - основной блок с фоном и контентом */
     .hero-section {
-        position: relative;
-        overflow: hidden;
+        position: relative;      /* Позволяет позиционировать дочерние элементы абсолютно */
+        overflow: hidden;        /* Обрезает все, что выходит за пределы блока */
     }
 
+    /* Заголовок секции героя */
     .hero-title {
-        animation: fadeInUp 1s ease-out;
-        color: #333;
-        font-weight: bold;
+        animation: fadeInUp 1s ease-out; /* Анимация появления снизу */
+        color: #333;                     /* Цвет текста */
+        font-weight: bold;               /* Жирный шрифт */
     }
 
+    /* Описание секции героя */
     .hero-description {
-        animation: fadeInUp 1s ease-out 0.3s both;
+        animation: fadeInUp 1s ease-out 0.3s both; /* Анимация появления с задержкой */
     }
 
+    /* Кнопка-призыв к действию в секции героя */
     .hero-cta {
-        animation: fadeInUp 1s ease-out 0.6s both;
+        animation: fadeInUp 1s ease-out 0.6s both; /* Анимация появления с большей задержкой */
     }
 
+    /* Форма записи (Signup form) */
     .signup-form {
-        animation: slideInRight 1s ease-out 0.3s both;
-        backdrop-filter: blur(10px);
+        animation: slideInRight 1s ease-out 0.3s both; /* Анимация появления справа */
+        backdrop-filter: blur(10px);                   /* Размытие фона под формой */
     }
 
+    /* Заголовок формы */
     .form-title {
-        position: relative;
+        position: relative; /* Для позиционирования декоративной линии под заголовком */
     }
 
+    /* Декоративная линия под заголовком формы */
     .form-title::after {
-        content: '';
+        content: ''; /* Пустое содержимое для псевдоэлемента */
         position: absolute;
-        bottom: -10px;
+        bottom: -10px; /* Располагается чуть ниже заголовка */
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); /* Центрирование по горизонтали */
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, #17a2b8, #CC5500);
+        background: linear-gradient(90deg, #17a2b8, #CC5500); /* Градиентная линия */
         border-radius: 2px;
     }
 
+    /* Стили для полей ввода, select и textarea внутри .field-wrapper */
     .field-wrapper input,
     .field-wrapper select,
     .field-wrapper textarea {
-        border: 2px solid #e9ecef;
-        border-radius: 12px;
-        padding: 12px 15px;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid #e9ecef;                /* Светлая рамка */
+        border-radius: 12px;                      /* Скругление углов */
+        padding: 12px 15px;                       /* Внутренние отступы */
+        font-size: 1rem;                          /* Размер шрифта */
+        transition: all 0.3s ease;                /* Плавные переходы при изменении */
+        background: rgba(255, 255, 255, 0.9);     /* Полупрозрачный белый фон */
     }
 
+    /* Стили для полей при фокусе */
     .field-wrapper input:focus,
     .field-wrapper select:focus,
     .field-wrapper textarea:focus {
-        border-color: #17a2b8;
-        box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
-        outline: none;
-        transform: translateY(-2px);
+        border-color: #17a2b8;                                    /* Бирюзовая рамка */
+        box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);        /* Тень вокруг поля */
+        outline: none;                                            /* Убирает стандартный outline */
+        transform: translateY(-2px);                              /* Легкое смещение вверх */
     }
 
-    /* Стили для ошибок формы */
+    /* -------------------------------
+       Стили для ошибок формы
+    --------------------------------*/
+
+    /* Список ошибок под полем */
     .field-wrapper .errorlist {
-        margin: 0 0 8px 0;
-        padding: 0;
-        list-style: none;
+        margin: 0 0 8px 0;   /* Отступ снизу */
+        padding: 0;          /* Убирает внутренние отступы */
+        list-style: none;    /* Убирает маркеры списка */
     }
 
+    /* Элемент ошибки */
     .field-wrapper .errorlist li {
-        color: #dc3545;
-        font-size: 0.95rem;
-        font-weight: 500;
-        margin-bottom: 4px;
-        background: none;
-        border: none;
-        padding-left: 0;
+        color: #dc3545;      /* Красный цвет текста */
+        font-size: 0.95rem;  /* Чуть меньше стандартного размера */
+        font-weight: 500;    /* Полужирный */
+        margin-bottom: 4px;  /* Отступ снизу */
+        background: none;    /* Без фона */
+        border: none;        /* Без рамки */
+        padding-left: 0;     /* Без отступа слева */
     }
 
+    /* Стили для невалидных полей (HTML5 валидация) */
     .field-wrapper input:invalid,
     .field-wrapper select:invalid,
     .field-wrapper textarea:invalid {
-        border-color: #dc3545;
+        border-color: #dc3545; /* Красная рамка */
     }
 
+    /* Стили для полей с классом is-invalid (серверная валидация) */
     .field-wrapper input.is-invalid,
     .field-wrapper select.is-invalid,
     .field-wrapper textarea.is-invalid {
-        border-color: #dc3545;
-        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);
+        border-color: #dc3545;                                 /* Красная рамка */
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.15);      /* Красная тень */
     }
+
+    /* -------------------------------
+       Стили для кнопки отправки формы
+    --------------------------------*/
 
     .submit-btn:hover {
-        background: linear-gradient(135deg, #CC5500 0%, #b84a00 100%) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(204, 85, 0, 0.4) !important;
+        background: linear-gradient(135deg, #CC5500 0%, #b84a00 100%) !important; /* Градиент при наведении */
+        transform: translateY(-2px);                                              /* Легкое смещение вверх */
+        box-shadow: 0 6px 20px rgba(204, 85, 0, 0.4) !important;                  /* Оранжевая тень */
     }
 
+    /* Ссылка на пользовательское соглашение при наведении */
     .agreement-link:hover {
-        color: #CC5500 !important;
+        color: #CC5500 !important; /* Оранжевый цвет */
     }
 
-    /* --- MOBILE STYLES --- */
+    /* -------------------------------
+       Адаптивные стили для мобильных устройств
+    --------------------------------*/
     @media (max-width: 768px) {
         body {
-            font-size: 14px;
+            font-size: 14px; /* Меньший базовый размер шрифта */
         }
 
         .hero-title {
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Меньший размер заголовка */
             line-height: 1.3;
         }
 
         .hero-description {
-            font-size: 1rem;
+            font-size: 1rem; /* Меньший размер описания */
         }
 
         .section-title {
-            font-size: 2rem !important;
+            font-size: 2rem !important; /* Меньший размер заголовка секции */
         }
 
         .course-image-wrapper {
-            height: 150px;
+            height: 150px; /* Меньшая высота изображения курса */
         }
 
         .course-title {
-            font-size: 1rem;
+            font-size: 1rem; /* Меньший размер заголовка курса */
         }
 
         .form-title {
-            font-size: 1rem;
+            font-size: 1rem; /* Меньший размер заголовка формы */
         }
 
         .signup-form {
-            padding: 1.5rem;
+            padding: 1.5rem; /* Меньше отступы у формы */
         }
 
         .map-wrapper iframe {
-            height: 300px !important;
+            height: 300px !important; /* Меньшая высота карты */
         }
 
         .custom-divider {
-            margin: 30px auto;
+            margin: 30px auto; /* Меньше отступы у разделителя */
         }
 
         .course-card .course-content {
-            padding: 1rem;
+            padding: 1rem; /* Меньше отступы у контента карточки */
         }
 
         .course-card img {
-            object-fit: cover;
+            object-fit: cover; /* Картинка заполняет контейнер */
         }
 
+        /* Унификация размера текста для разных блоков */
         .text-content,
         .feature-highlight p,
         .accordion-body,
@@ -165,33 +192,41 @@
         }
 
         .btn.submit-btn {
-            font-size: 1rem;
-            padding: 10px 20px;
+            font-size: 1rem;      /* Меньший размер кнопки */
+            padding: 10px 20px;   /* Меньше отступы */
         }
 
         .form-title {
-            font-size: 1.2rem;
+            font-size: 1.2rem;    /* Чуть больше для заголовка формы */
         }
 
         .offer-badge,
         .success-badge {
-            font-size: 0.8rem;
+            font-size: 0.8rem;    /* Меньше бейджи */
         }
 
         .accordion-button {
-            font-size: 1rem;
+            font-size: 1rem;      /* Меньше кнопки аккордеона */
         }
 
         .accordion-body {
-            font-size: 0.95rem;
+            font-size: 0.95rem;   /* Меньше тело аккордеона */
         }
 
         .course-card {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.5rem; /* Меньше отступ между карточками */
         }
 
         .map-wrapper iframe {
-            height: 300px !important;
+            height: 300px !important; /* Повтор для надежности */
+        }
+
+        /* Исправление выхода текстового блока за границы */
+        .hero-text-block {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            width: 100%;
+            box-sizing: border-box;
         }
     }
 </style>
@@ -209,7 +244,7 @@
     <div class="container position-relative" style="z-index: 2;">
         <div class="row align-items-center">
             <!-- Текстовый блок -->
-            <div class="col-lg-7 col-md-12 text-center text-white mb-5 mb-lg-0">
+            <div class="col-lg-7 col-md-12 text-center text-white mb-5 mb-lg-0 hero-text-block" style="margin-left:auto; margin-right:auto;">
                 <h1 class="section-title hero-title"
                     style="font-weight: 800; font-size: 3.5rem; line-height: 1.2; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
                     <span
