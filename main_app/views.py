@@ -142,3 +142,20 @@ def courses_11_13(request):
         'form': form,
         'success': False
     })
+
+def courses_13_16(request):
+    if request.method == 'POST':
+        form = SignForm(request.POST)
+        if form.is_valid():
+            form.save()  # или любая ваша логика
+            return render(request, 'main/courses_13_16.html', {
+                'form': SignForm(),  # очистка формы
+                'success': True  # флаг успешной отправки
+            })
+    else:
+        form = SignForm()
+
+    return render(request, 'main/courses_13_16.html', {
+        'form': form,
+        'success': False
+    })
