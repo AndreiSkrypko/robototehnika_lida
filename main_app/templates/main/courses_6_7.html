@@ -5,240 +5,264 @@
 
 {% block css %}
 <style>
-    body {
-        background-color: #f9fef9 !important;
-        margin: 0;
-    }
+   /* Общие стили для страницы */
+body {
+    background-color: #f9fef9 !important; /* Светлый фон всей страницы */
+    margin: 0; /* Убираем отступы браузера по умолчанию */
+}
 
-    .navbar {
-        background-color: #fff5f7 !important;
-        border-bottom: none;
-    }
+.navbar {
+    background-color: #fff5f7 !important; /* Светло-розовый фон навбара */
+    border-bottom: none; /* Убираем нижнюю границу у навигации */
+}
 
-    .container {
-        background-color: transparent;
-    }
+.container {
+    background-color: transparent; /* Прозрачный фон контейнера */
+}
 
-    /* СТИЛЬНЫЕ 3D ЗАГОЛОВКИ */
-    .section-title {
-        font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-        font-weight: 800;
-        font-size: 2.7rem;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        color: #fff;
-        letter-spacing: 0.04em;
-        text-shadow:
-            0 2px 8px rgba(23,162,184,0.18),
-            0 4px 24px #17a2b8,
-            0 1px 0 #b2e6ea,
-            2px 2px 0 #b2e6ea;
-        background: linear-gradient(90deg, #17a2b8 0%, #6be6e6 100%);
-        border-radius: 24px;
-        padding: 1.2rem 2rem;
-        box-shadow: 0 8px 32px 0 rgba(23,162,184,0.18), 0 2px 8px #b2e6ea;
-        border: 3px solid #fff;
-        position: relative;
-        z-index: 2;
-        margin-bottom: 1.5rem;
-    }
+/* === СТИЛИ ДЛЯ 3D-ЗАГОЛОВКОВ === */
+.section-title {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; /* Современный геометрический шрифт */
+    font-weight: 600; /* Очень жирный текст для выразительности */
+    font-size: 2.7rem; /* Крупный заголовок */
+    width: 100%;
+    max-width: 900px; /* Ограничиваем ширину заголовка */
+    margin: 0 auto; /* Центрируем по горизонтали */
+    color: #ffffff; /* Белый текст */
+    letter-spacing: 0.04em; /* Немного увеличенное расстояние между буквами */
 
-    .section-title span {
-        font-size: 1.1rem;
-        font-weight: 500;
-        color: #fff;
-        opacity: 0.8;
-        letter-spacing: 0.02em;
-    }
+    /* Эффект мягкой глубины с помощью текстовой тени */
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.15),
+        0 2px 6px rgba(0, 0, 0, 0.1);
 
-    /* 3D БЛОКИ КУРСОВ */
-    .course-card {
-        background: linear-gradient(135deg, #f9fef9 60%, #e3f6f7 100%);
-        border: none;
-        border-radius: 28px;
-        padding: 2rem 1.5rem 1.5rem 1.5rem;
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        box-shadow:
-            0 8px 32px 0 rgba(23,162,184,0.18),
-            0 2px 8px #b2e6ea;
-        transition: box-shadow 0.25s, transform 0.18s;
-        position: relative;
-        overflow: visible;
-    }
-    .course-card:hover {
-        box-shadow: 0 16px 48px 0 rgba(23,162,184,0.28), 0 4px 16px #b2e6ea;
-        transform: translateY(-6px) scale(1.025);
-    }
-    .course-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 28px;
-        z-index: -1;
-        background: linear-gradient(120deg, #17a2b8 0%, #6be6e6 100%);
-        opacity: 0.13;
-        filter: blur(8px);
+    background: linear-gradient(90deg, #117a8b 0%, #159ca5 100%); /* Темно-бирюзовый градиент */
+    border-radius: 20px; /* Мягкие скругленные углы */
+    padding: 1.2rem 2rem; /* Внутренние отступы */
+    box-shadow:
+        0 6px 20px rgba(17, 122, 139, 0.25); /* Мягкая внешняя тень */
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1.5rem; /* Отступ снизу */
+    /* Удалена рамка: border */
+}
+
+.section-title span {
+    font-size: 1.1rem; /* Чуть меньший шрифт для подзаголовков */
+    font-weight: 500; /* Средняя жирность */
+    color: #e0f7f9; /* Светло-бирюзовый для подзаголовка */
+    opacity: 0.85; /* Чуть прозрачнее основного текста */
+    letter-spacing: 0.02em; /* Легкое расширение */
+}
+
+
+/* === КАРТОЧКИ КУРСОВ (3D) === */
+.course-card {
+    background: linear-gradient(135deg, #f9fef9 60%, #e3f6f7 100%); /* Светлый градиент */
+    border: none;
+    border-radius: 28px;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow:
+        0 8px 32px 0 rgba(23,162,184,0.18),
+        0 2px 8px #b2e6ea;
+    transition: box-shadow 0.25s, transform 0.18s;
+    position: relative;
+    overflow: visible;
+}
+
+.course-card:hover {
+    /* Эффект подъема и усиленной тени при наведении */
+    box-shadow: 0 16px 48px 0 rgba(23,162,184,0.28), 0 4px 16px #b2e6ea;
+    transform: translateY(-6px) scale(1.025);
+}
+
+.course-card::before {
+    /* Блуровое сияние под карточкой */
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    z-index: -1;
+    background: linear-gradient(120deg, #17a2b8 0%, #6be6e6 100%);
+    opacity: 0.13;
+    filter: blur(8px);
+}
+
+.course-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Обеспечивает обрезку, не деформируя изображение */
+    border-radius: 18px;
+    margin-bottom: 1.2rem;
+    background: #f9fef9;
+    box-shadow: 0 4px 24px 0 rgba(23,162,184,0.13);
+    border: 2.5px solid #b2e6ea;
+}
+
+.course-card h4 {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.45rem;
+    color: #17a2b8;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px #b2e6ea33;
+}
+
+.course-card h4 span {
+    color: #fff;
+    background: linear-gradient(90deg, #CD5B45 0%, #ffb199 100%);
+    border-radius: 8px;
+    padding: 0.2em 0.7em;
+    font-size: 0.95em;
+    font-weight: 600;
+    margin-top: 0.3em;
+    display: inline-block;
+    box-shadow: 0 2px 8px #CD5B4533;
+    letter-spacing: 0.01em;
+}
+
+.course-card p {
+    font-size: 1.08rem;
+    font-weight: 400;
+    color: #444;
+    margin: 0;
+    text-align: justify; /* Выравнивание текста по ширине */
+}
+
+/* === ИНФО-КАРТОЧКИ === */
+.info-card {
+    background: linear-gradient(120deg, #fff 70%, #e3f6f7 100%);
+    border-radius: 18px;
+    box-shadow: 0 4px 18px 0 rgba(23,162,184,0.13), 0 1.5px 6px #b2e6ea;
+    padding: 1.2rem 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: box-shadow 0.2s, transform 0.18s;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2.5px solid #b2e6ea;
+    position: relative;
+    overflow: visible;
+}
+
+.info-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(23,162,184,0.18), 0 2px 8px #b2e6ea;
+    transform: translateY(-3px) scale(1.03);
+}
+
+.info-icon {
+    font-size: 2.4rem;
+    color: #17a2b8;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px #b2e6ea33;
+}
+
+.info-text {
+    font-size: 1.13rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    letter-spacing: 0.01em;
+}
+
+/* === ГОРИЗОНТАЛЬНЫЙ 3D-ДЕЛИТЕЛЬ === */
+.custom-divider {
+    border: none;
+    border-top: 4px solid #17a2b8;
+    margin: 3.5rem 0 2.5rem 0;
+    width: 100%;
+    box-shadow: 0 2px 12px #b2e6ea55;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #17a2b8 0%, #6be6e6 100%);
+    opacity: 0.8;
+}
+
+/* === КАРТОЧКИ АБОНЕМЕНТОВ === */
+.abonement-card {
+    background: linear-gradient(120deg, #fff 70%, #e3f6f7 100%);
+    border-radius: 20px;
+    box-shadow: 0 6px 24px 0 rgba(23,162,184,0.13), 0 2px 8px #b2e6ea;
+    border: 2.5px solid #17a2b8;
+    padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.22s, transform 0.18s;
+    position: relative;
+    overflow: visible;
+}
+
+.abonement-card:hover {
+    box-shadow: 0 12px 36px 0 rgba(23,162,184,0.22), 0 4px 16px #b2e6ea;
+    transform: translateY(-5px) scale(1.04);
+}
+
+.abonement-card h4 {
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #17a2b8;
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 8px #b2e6ea33;
+}
+
+.abonement-card .info-text {
+    font-size: 1.08rem;
+    color: #444;
+    font-weight: 500;
+}
+
+/* === ВСПОМОГАТЕЛЬНЫЙ КЛАСС === */
+.text-turquoise {
+    color: #17a2b8; /* Ярко-бирюзовый текст */
+}
+
+/* === АДАПТИВНЫЕ СТИЛИ === */
+@media (max-width: 991.98px) {
+    .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 
     .course-image {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        border-radius: 18px;
-        margin-bottom: 1.2rem;
-        background: #f9fef9;
-        box-shadow: 0 4px 24px 0 rgba(23,162,184,0.13);
-        border: 2.5px solid #b2e6ea;
+        height: 180px; /* Уменьшаем высоту изображения на планшетах */
     }
 
-    .course-card h4 {
-        font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-        font-weight: 800;
-        font-size: 1.45rem;
-        color: #17a2b8;
-        letter-spacing: 0.01em;
-        margin-bottom: 0.5rem;
-        text-shadow: 0 2px 8px #b2e6ea33;
+    .section-title {
+        font-size: 1.7rem;
+        padding: 0.8rem 1rem;
     }
-    .course-card h4 span {
-        color: #fff;
-        background: linear-gradient(90deg, #CD5B45 0%, #ffb199 100%);
-        border-radius: 8px;
-        padding: 0.2em 0.7em;
-        font-size: 0.95em;
-        font-weight: 600;
-        margin-top: 0.3em;
-        display: inline-block;
-        box-shadow: 0 2px 8px #CD5B4533;
-        letter-spacing: 0.01em;
+}
+
+@media (max-width: 575.98px) {
+    .section-title {
+        font-size: 1.1rem;
+        padding: 0.6rem 0.5rem;
     }
 
-    .course-card p {
-        font-size: 1.08rem;
-        font-weight: 400;
-        color: #444;
-        margin: 0;
-        text-align: justify;
+    .course-image {
+        height: 120px;
     }
 
-    /* 3D ИНФО-КАРТОЧКИ */
-    .info-card {
-        background: linear-gradient(120deg, #fff 70%, #e3f6f7 100%);
-        border-radius: 18px;
-        box-shadow: 0 4px 18px 0 rgba(23,162,184,0.13), 0 1.5px 6px #b2e6ea;
-        padding: 1.2rem 0.5rem;
-        margin-bottom: 0.5rem;
-        transition: box-shadow 0.2s, transform 0.18s;
-        min-height: 120px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border: 2.5px solid #b2e6ea;
-        position: relative;
-        overflow: visible;
-    }
-    .info-card:hover {
-        box-shadow: 0 8px 32px 0 rgba(23,162,184,0.18), 0 2px 8px #b2e6ea;
-        transform: translateY(-3px) scale(1.03);
-    }
-    .info-icon {
-        font-size: 2.4rem;
-        color: #17a2b8;
-        margin-bottom: 0.5rem;
-        text-shadow: 0 2px 8px #b2e6ea33;
-    }
-    .info-text {
-        font-size: 1.13rem;
-        font-weight: 500;
-        color: #333;
-        margin: 0;
-        letter-spacing: 0.01em;
+    .course-card {
+        padding: 1rem 0.5rem 0.8rem 0.5rem;
     }
 
-    /* 3D ДЕЛИТЕЛЬ */
-    .custom-divider {
-        border: none;
-        border-top: 4px solid #17a2b8;
-        margin: 3.5rem 0 2.5rem 0;
-        width: 100%;
-        box-shadow: 0 2px 12px #b2e6ea55;
-        border-radius: 2px;
-        background: linear-gradient(90deg, #17a2b8 0%, #6be6e6 100%);
-        opacity: 0.8;
-    }
-
-    /* 3D КАРТОЧКИ АБОНЕМЕНТОВ */
     .abonement-card {
-        background: linear-gradient(120deg, #fff 70%, #e3f6f7 100%);
-        border-radius: 20px;
-        box-shadow: 0 6px 24px 0 rgba(23,162,184,0.13), 0 2px 8px #b2e6ea;
-        border: 2.5px solid #17a2b8;
-        padding: 2.2rem 1.2rem 1.5rem 1.2rem;
-        min-height: 180px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: box-shadow 0.22s, transform 0.18s;
-        position: relative;
-        overflow: visible;
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
     }
-    .abonement-card:hover {
-        box-shadow: 0 12px 36px 0 rgba(23,162,184,0.22), 0 4px 16px #b2e6ea;
-        transform: translateY(-5px) scale(1.04);
-    }
-    .abonement-card h4 {
-        font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-        font-weight: 800;
-        font-size: 1.25rem;
-        color: #17a2b8;
-        margin-bottom: 0.7rem;
-        letter-spacing: 0.01em;
-        text-shadow: 0 2px 8px #b2e6ea33;
-    }
-    .abonement-card .info-text {
-        font-size: 1.08rem;
-        color: #444;
-        font-weight: 500;
-    }
+}
 
-    .text-turquoise {
-        color: #17a2b8;
-    }
-
-    @media (max-width: 991.98px) {
-        .col-6 {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-        .course-image {
-            height: 180px;
-        }
-        .section-title {
-            font-size: 1.7rem;
-            padding: 0.8rem 1rem;
-        }
-    }
-    @media (max-width: 575.98px) {
-        .section-title {
-            font-size: 1.1rem;
-            padding: 0.6rem 0.5rem;
-        }
-        .course-image {
-            height: 120px;
-        }
-        .course-card {
-            padding: 1rem 0.5rem 0.8rem 0.5rem;
-        }
-        .abonement-card {
-            padding: 1.2rem 0.5rem 1rem 0.5rem;
-        }
-    }
 </style>
 {% endblock %}
 
