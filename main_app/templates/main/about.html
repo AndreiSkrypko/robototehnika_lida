@@ -9,35 +9,36 @@
     =========================
     ГЛАВНЫЕ СТИЛИ СТРАНИЦЫ О КЛУБЕ
     =========================
-    Все стили вынесены в начало для единого стиля оформления.
-    Каждый блок снабжен подробными комментариями.
 -->
 
 <style>
-    /* --- HERO-БЛОК --- */
+    /* === HERO-БЛОК (верхний баннер с изображением) === */
+
     .about-hero-bg {
-        background-image: url("{% static 'main/img/about/1.jpeg' %}");
-        background-size: cover;
-        background-position: center;
+        background-image: url("{% static 'main/img/about/1.jpeg' %}"); /* Фоновое изображение */
+        background-size: cover; /* Растягиваем фон по блоку */
+        background-position: center; /* Центрируем изображение */
         position: relative;
-        padding: 120px 0 180px 0;
-        min-height: 520px;
-        overflow: hidden;
+        padding: 120px 0 180px 0; /* Внутренние отступы сверху и снизу */
+        min-height: 520px; /* Минимальная высота блока */
+        overflow: hidden; /* Скрытие выходящих за границы элементов */
     }
+
     .about-hero-bg::before {
-        /* Затемнение и градиент поверх hero-блока */
         content: '';
         position: absolute;
-        inset: 0;
+        inset: 0; /* Занимает весь родительский блок */
         background: linear-gradient(120deg, rgba(23,162,184,0.25) 0%, rgba(0,0,0,0.55) 100%);
-        z-index: 1;
+        z-index: 1; /* Помещается под основным контентом */
     }
+
     .about-hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 2; /* Выше затемняющего слоя */
         margin-top: 120px;
         margin-bottom: 120px;
     }
+
     .about-hero-title {
         font-family: 'Poppins', 'Nunito', sans-serif;
         font-weight: 700;
@@ -46,12 +47,14 @@
         text-shadow: 0 4px 24px rgba(23,162,184,0.10), 0 2px 8px rgba(0,0,0,0.18);
         line-height: 1.2;
         letter-spacing: 0.5px;
-        animation: fadeInUp 1s;
+        animation: fadeInUp 1s; /* Анимация появления */
     }
+
     .about-hero-title span {
-        color: #17a2b8;
+        color: #17a2b8; /* Акцентный цвет */
         text-shadow: 0 2px 8px rgba(23,162,184,0.18);
     }
+
     .about-hero-btn {
         background: linear-gradient(90deg, #17a2b8 0%, #CC5500 100%);
         color: #fff !important;
@@ -63,13 +66,16 @@
         box-shadow: 0 4px 16px rgba(23,162,184,0.18), 0 1.5px 0 #CC5500 inset;
         transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
     }
-    .about-hero-btn:hover, .about-hero-btn:focus {
+
+    .about-hero-btn:hover,
+    .about-hero-btn:focus {
         background: linear-gradient(90deg, #CC5500 0%, #17a2b8 100%);
-        color: #fff !important;
         box-shadow: 0 8px 32px rgba(204,85,0,0.13);
         transform: scale(1.04);
     }
+
     @media (max-width: 767px) {
+        /* Мобильные стили hero-блока */
         .about-hero-title {
             font-size: 1.35rem;
         }
@@ -83,7 +89,7 @@
         }
     }
 
-    /* --- РАЗДЕЛИТЕЛЬ --- */
+    /* === ДЕКОРАТИВНЫЙ РАЗДЕЛИТЕЛЬ === */
     .custom-divider {
         border: none;
         height: 3px;
@@ -94,12 +100,13 @@
         box-shadow: 0 2px 8px rgba(204, 85, 0, 0.3);
     }
 
-    /* --- ПОДЗАГОЛОВОК С ПОДЧЕРКИВАНИЕМ --- */
+    /* === СЕКЦИЯ С ПОДЗАГОЛОВКОМ === */
     .section-title {
         color: #0d9488;
         font-size: 2.2rem;
         text-shadow: 0 2px 4px rgba(13, 148, 136, 0.1);
     }
+
     .title-underline {
         width: 120px;
         height: 4px;
@@ -108,6 +115,7 @@
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(255, 106, 0, 0.2);
     }
+
     @media (max-width: 600px) {
         .section-title {
             font-size: 1.2rem;
@@ -119,7 +127,7 @@
         }
     }
 
-    /* --- КАРТОЧКИ ПРЕИМУЩЕСТВ --- */
+    /* === КАРТОЧКИ С ПРЕИМУЩЕСТВАМИ === */
     .about-feature-card {
         background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
         border: none;
@@ -133,21 +141,25 @@
         align-items: center;
         justify-content: flex-start;
     }
+
     .about-feature-card:hover {
         transform: translateY(-6px) scale(1.03);
         box-shadow: 0 12px 40px rgba(23,162,184,0.13), 0 2px 12px rgba(204,85,0,0.10);
     }
+
     .about-feature-icon {
         font-size: 3rem;
         color: #17a2b8;
         text-shadow: 0 2px 8px rgba(23,162,184,0.10);
         margin-bottom: 1rem;
     }
+
     .about-feature-title {
         color: #0d9488;
         font-weight: 700;
         font-size: 1.2rem;
     }
+
     .about-feature-hr {
         border: none;
         height: 3px;
@@ -156,10 +168,12 @@
         width: 50%;
         margin: 1rem auto;
     }
+
     .about-feature-text {
         font-size: 1.05rem;
         color: #495057;
     }
+
     @media (max-width: 991px) {
         .about-feature-card {
             min-height: 220px;
@@ -167,7 +181,7 @@
         }
     }
 
-    /* --- КАРУСЕЛЬ ФОТО --- */
+    /* === КАРУСЕЛЬ ИЗОБРАЖЕНИЙ === */
     .carousel-wrapper {
         max-width: 900px;
         position: relative;
@@ -177,6 +191,7 @@
         border-radius: 2rem;
         box-shadow: 0 8px 32px rgba(23,162,184,0.08);
     }
+
     .carousel-wrapper h1 {
         color: #0d9488;
         font-family: 'Poppins', 'Nunito', sans-serif;
@@ -184,6 +199,7 @@
         letter-spacing: 0.5px;
         text-shadow: 0 2px 8px rgba(23,162,184,0.10);
     }
+
     .carousel-inner-custom {
         overflow-x: hidden;
         width: 100%;
@@ -192,6 +208,7 @@
         box-shadow: 0 2px 16px rgba(23,162,184,0.10);
         background: #fff;
     }
+
     .carousel-track {
         display: flex;
         gap: 16px;
@@ -199,6 +216,7 @@
         padding: 12px 0;
         align-items: center;
     }
+
     .carousel-item-custom {
         min-width: 260px;
         max-width: 260px;
@@ -211,6 +229,7 @@
         align-items: center;
         justify-content: center;
     }
+
     .carousel-item-custom img {
         width: 100%;
         height: 180px;
@@ -218,10 +237,12 @@
         border-radius: 1.2rem;
         transition: transform 0.3s;
     }
+
     .carousel-item-custom img:hover {
         transform: scale(1.04) rotate(-1deg);
         box-shadow: 0 4px 16px rgba(204,85,0,0.10);
     }
+
     .carousel-control {
         position: absolute;
         top: 50%;
@@ -243,23 +264,24 @@
         justify-content: center;
         opacity: 0.92;
     }
-    .carousel-control:hover, .carousel-control:focus {
+
+    .carousel-control:hover,
+    .carousel-control:focus {
         background: linear-gradient(90deg, #CC5500 0%, #17a2b8 100%);
         box-shadow: 0 4px 16px rgba(204,85,0,0.12);
         opacity: 1;
     }
-    .carousel-control-left {
-        left: 8px;
-    }
-    .carousel-control-right {
-        right: 8px;
-    }
+
+    .carousel-control-left { left: 8px; }
+    .carousel-control-right { right: 8px; }
+
     @media (max-width: 991px) {
         .carousel-wrapper {
             max-width: 98vw;
             padding: 18px 0 12px 0;
         }
-        .carousel-item-custom, .carousel-item-custom img {
+        .carousel-item-custom,
+        .carousel-item-custom img {
             min-width: 180px;
             max-width: 180px;
             height: 120px;
@@ -270,11 +292,13 @@
             font-size: 1.5rem;
         }
     }
+
     @media (max-width: 600px) {
         .carousel-wrapper {
             padding: 10px 0 6px 0;
         }
-        .carousel-item-custom, .carousel-item-custom img {
+        .carousel-item-custom,
+        .carousel-item-custom img {
             min-width: 120px;
             max-width: 120px;
             height: 80px;
@@ -290,12 +314,13 @@
         }
     }
 
-    /* --- ОТЗЫВЫ (ТЕКСТ) --- */
+    /* === ОТЗЫВЫ В ТЕКСТОВОМ ФОРМАТЕ === */
     .reviews-section {
         background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
         position: relative;
         z-index: 1;
     }
+
     .review-card {
         background: #fff;
         border-radius: 1.5rem;
@@ -309,11 +334,13 @@
         justify-content: flex-start;
         position: relative;
     }
+
     .review-card:hover {
         transform: translateY(-8px) scale(1.03);
         box-shadow: 0 12px 40px rgba(23, 162, 184, 0.13), 0 2px 12px rgba(204, 85, 0, 0.10);
         border-color: #17a2b8;
     }
+
     .review-img {
         width: 80px;
         height: 80px;
@@ -324,13 +351,15 @@
         margin-top: -50px;
         background: #fff;
     }
+
     .review-text {
         font-size: 1.08rem;
         color: #495057;
-        margin: 1.2rem 0 1.2rem 0;
+        margin: 1.2rem 0;
         font-style: italic;
         min-height: 90px;
     }
+
     .review-name {
         color: #0d9488;
         font-weight: 600;
@@ -338,27 +367,26 @@
         margin-top: auto;
         letter-spacing: 0.01em;
     }
+
     @media (max-width: 991px) {
-        .review-card {
-            min-height: 380px;
-        }
+        .review-card { min-height: 380px; }
     }
+
     @media (max-width: 767px) {
         .review-card {
             min-height: 0;
             margin-bottom: 2rem;
         }
-        .review-img {
-            margin-top: 0;
-        }
+        .review-img { margin-top: 0; }
     }
 
-    /* --- ОТЗЫВЫ (ВИДЕО) --- */
+    /* === ОТЗЫВЫ С ВИДЕО === */
     .video-reviews-section {
         background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
         position: relative;
         z-index: 1;
     }
+
     .video-reviews-section h2 {
         color: #0d9488;
         font-family: 'Poppins', 'Nunito', sans-serif;
@@ -367,6 +395,7 @@
         text-shadow: 0 2px 8px rgba(23,162,184,0.10);
         font-size: 2rem;
     }
+
     .video-review-card {
         background: #fff;
         border-radius: 1.5rem;
@@ -380,17 +409,20 @@
         min-height: 420px;
         position: relative;
     }
+
     .video-review-card:hover {
         transform: translateY(-8px) scale(1.03);
         box-shadow: 0 12px 40px rgba(23, 162, 184, 0.13), 0 2px 12px rgba(204, 85, 0, 0.10);
         border-color: #17a2b8;
     }
+
     .video-review-card .ratio {
         border-radius: 1.2rem;
         box-shadow: 0 2px 12px rgba(23,162,184,0.10);
         background: #f8fafc;
         overflow: hidden;
     }
+
     .video-review-card video {
         width: 100%;
         height: 100%;
@@ -400,10 +432,12 @@
         box-shadow: 0 2px 8px rgba(23,162,184,0.10);
         transition: box-shadow 0.2s;
     }
+
     .video-review-card video:focus {
         outline: 2px solid #17a2b8;
         box-shadow: 0 0 0 4px rgba(23,162,184,0.15);
     }
+
     .video-review-name {
         color: #0d9488;
         font-weight: 600;
@@ -412,14 +446,12 @@
         letter-spacing: 0.01em;
         text-shadow: 0 1px 4px rgba(23,162,184,0.08);
     }
+
     @media (max-width: 991px) {
-        .video-review-card {
-            min-height: 340px;
-        }
-        .video-reviews-section h2 {
-            font-size: 1.3rem;
-        }
+        .video-review-card { min-height: 340px; }
+        .video-reviews-section h2 { font-size: 1.3rem; }
     }
+
     @media (max-width: 600px) {
         .video-review-card {
             min-height: 220px;
@@ -429,11 +461,10 @@
             font-size: 1.1rem;
             margin-bottom: 1.2rem;
         }
-        .video-review-name {
-            font-size: 0.98rem;
-        }
+        .video-review-name { font-size: 0.98rem; }
     }
 </style>
+
 
 <!--
     =========================
