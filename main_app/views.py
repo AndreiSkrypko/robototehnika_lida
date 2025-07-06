@@ -3,17 +3,60 @@ from .forms import SignForm, ReviewForm
 
 
 def index(request):
-    success = False  # Это флаг для отображения успешного сообщения
+    success = False
     if request.method == 'POST':
         form = SignForm(request.POST)
         if form.is_valid():
-            form.save()  # Сохраняем форму в базе данных
-            success = True  # Устанавливаем флаг, чтобы отобразить сообщение об успехе
-            form = SignForm()  # Очищаем форму после успешной отправки
+            form.save()
+            success = True
+            form = SignForm()
     else:
-        form = SignForm()  # Создаём форму с дефолтными значениями
+        form = SignForm()
 
-    return render(request, 'main/index.html', {'form': form, 'success': success})
+    courses = [
+        {
+            'title': 'детям 2,5-4 года',
+            'url': '/courses_2_4',
+            'image': 'main/img/index/course1.png',
+        },
+        {
+            'title': 'детям 4-6 лет',
+            'url': '/courses_4_6',
+            'image': 'main/img/index/course2.png',
+        },
+        {
+            'title': 'детям 6-7 лет',
+            'url': '/courses_6_7',
+            'image': 'main/img/index/course3.jpg',
+        },
+        {
+            'title': 'детям 7-9 лет',
+            'url': '/courses_7_9',
+            'image': 'main/img/index/course4.jpg',
+        },
+        {
+            'title': 'детям 9-11 лет',
+            'url': '/courses_9_11',
+            'image': 'main/img/index/course5.jpeg',
+        },
+        {
+            'title': 'детям 11-13 лет',
+            'url': '/courses_11_13',
+            'image': 'main/img/index/course6.jpeg',
+        },
+        {
+            'title': 'детям 13-16 лет',
+            'url': '/courses_13_16',
+            'image': 'main/img/index/course7.jpg',
+        },
+    ]
+
+    return render(request, 'main/index.html', {
+        'form': form,
+        'success': success,
+        'courses': courses,
+    })
+
 
 
 def about(request):
