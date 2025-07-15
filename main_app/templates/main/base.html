@@ -12,7 +12,7 @@
     <!-- =======================
          Подключаю фавикон, это иконка в title
     ======================== -->
-    <link rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon"/>
 
     <!-- =======================
          МЕТА-ТЕГИ И НАСТРОЙКИ
@@ -26,6 +26,26 @@
     ======================== -->
     <title>{% block title %}{% endblock %}</title>
 
+
+    <!-- =======================
+         Для улучшенного отображения в соцсетях
+    ======================== -->
+    <meta property="og:title" content="Робототехника Лида"/>
+    <meta property="og:description" content="Занятия для детей и подростков в Лиде"/>
+    <meta property="og:image" content="{% static 'main/img/og-image.jpg' %}"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}"/>
+    <meta property="og:type" content="website"/>
+
+
+    <!-- =======================
+         базовые SEO-теги
+    ======================== -->
+    <meta name="description"
+          content="{% block description %}Кружок робототехники в Лиде для детей и подростков.{% endblock %}">
+    <meta name="keywords" content="робототехника, Лида, кружок, занятия, дети, образование">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
 
 
     <!-- =======================
@@ -359,37 +379,47 @@ html, body {
     <div class="container-fluid">
         <div class="row align-items-center">
             <!-- Логотип без паддингов -->
-<div class="col-6 col-md-auto">
-  <a href="/" class="logo-link" id="home-link">
-    <svg width="90%" height="80" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- Определение градиента -->
-      <defs>
-        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#0d9488"/>
-          <stop offset="100%" stop-color="#CC5500"/>
-        </linearGradient>
-      </defs>
+            <div class="col-6 col-md-auto">
+                <a href="/" class="logo-link" id="home-link">
+                    <svg width="90%" height="80" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Определение градиента -->
+                        <defs>
+                            <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#0d9488"/>
+                                <stop offset="100%" stop-color="#CC5500"/>
+                            </linearGradient>
+                        </defs>
 
-      <!-- Лампочка -->
-      <g transform="translate(20, 20)">
-        <path d="M35 5C25 5 17 13 17 23c0 10 8 18 18 18s18-8 18-18C53 13 45 5 35 5z"
-              fill="none" stroke="url(#logo-gradient)" stroke-width="2"/>
-        <circle cx="35" cy="23" r="8" fill="url(#logo-gradient)"/>
-        <polyline points="35 5 35 12" fill="none" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
-        <line x1="30" y1="7" x2="40" y2="12" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
-        <line x1="40" y1="7" x2="30" y2="12" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
-      </g>
+                        <!-- Лампочка -->
+                        <g transform="translate(20, 20)">
+                            <path d="M35 5C25 5 17 13 17 23c0 10 8 18 18 18s18-8 18-18C53 13 45 5 35 5z"
+                                  fill="none" stroke="url(#logo-gradient)" stroke-width="2"/>
+                            <circle cx="35" cy="23" r="8" fill="url(#logo-gradient)"/>
+                            <polyline points="35 5 35 12" fill="none" stroke="url(#logo-gradient)" stroke-width="2"
+                                      stroke-linecap="round"/>
+                            <line x1="30" y1="7" x2="40" y2="12" stroke="url(#logo-gradient)" stroke-width="2"
+                                  stroke-linecap="round"/>
+                            <line x1="40" y1="7" x2="30" y2="12" stroke="url(#logo-gradient)" stroke-width="2"
+                                  stroke-linecap="round"/>
+                        </g>
 
-      <!-- Текст -->
-      <text x="70" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="700" fill="#ffffff">IT</text>
-      <text x="120" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="600" fill="#CC5500">Клуб</text>
-      <text x="70" y="85" font-family="'Poppins', sans-serif" font-size="30" font-weight="600" fill="#ffffff">Юные Инженеры</text>
+                        <!-- Текст -->
+                        <text x="70" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="700"
+                              fill="#ffffff">IT
+                        </text>
+                        <text x="120" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="600"
+                              fill="#CC5500">Клуб
+                        </text>
+                        <text x="70" y="85" font-family="'Poppins', sans-serif" font-size="30" font-weight="600"
+                              fill="#ffffff">Юные Инженеры
+                        </text>
 
-      <!-- Декоративная полоска -->
-      <line x1="70" y1="88" x2="290" y2="88" stroke="url(#logo-gradient)" stroke-width="2" stroke-dasharray="5 2"/>
-    </svg>
-  </a>
-</div>
+                        <!-- Декоративная полоска -->
+                        <line x1="70" y1="88" x2="290" y2="88" stroke="url(#logo-gradient)" stroke-width="2"
+                              stroke-dasharray="5 2"/>
+                    </svg>
+                </a>
+            </div>
 
 
             <!-- Гамбургер-меню (только на мобильных) с паддингами -->
@@ -536,32 +566,42 @@ html, body {
             <div class="col-12 col-md-4 mb-4 mb-md-0 d-flex flex-column align-items-center align-items-md-start">
                 <a href="/" class="text-decoration-none">
                     <svg width="90%" height="80" viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
-      <!-- Определение градиента -->
-      <defs>
-        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#0d9488"/>
-          <stop offset="100%" stop-color="#CC5500"/>
-        </linearGradient>
-      </defs>
+                        <!-- Определение градиента -->
+                        <defs>
+                            <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#0d9488"/>
+                                <stop offset="100%" stop-color="#CC5500"/>
+                            </linearGradient>
+                        </defs>
 
-      <!-- Лампочка -->
-      <g transform="translate(20, 20)">
-        <path d="M35 5C25 5 17 13 17 23c0 10 8 18 18 18s18-8 18-18C53 13 45 5 35 5z"
-              fill="none" stroke="url(#logo-gradient)" stroke-width="2"/>
-        <circle cx="35" cy="23" r="8" fill="url(#logo-gradient)"/>
-        <polyline points="35 5 35 12" fill="none" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
-        <line x1="30" y1="7" x2="40" y2="12" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
-        <line x1="40" y1="7" x2="30" y2="12" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
-      </g>
+                        <!-- Лампочка -->
+                        <g transform="translate(20, 20)">
+                            <path d="M35 5C25 5 17 13 17 23c0 10 8 18 18 18s18-8 18-18C53 13 45 5 35 5z"
+                                  fill="none" stroke="url(#logo-gradient)" stroke-width="2"/>
+                            <circle cx="35" cy="23" r="8" fill="url(#logo-gradient)"/>
+                            <polyline points="35 5 35 12" fill="none" stroke="url(#logo-gradient)" stroke-width="2"
+                                      stroke-linecap="round"/>
+                            <line x1="30" y1="7" x2="40" y2="12" stroke="url(#logo-gradient)" stroke-width="2"
+                                  stroke-linecap="round"/>
+                            <line x1="40" y1="7" x2="30" y2="12" stroke="url(#logo-gradient)" stroke-width="2"
+                                  stroke-linecap="round"/>
+                        </g>
 
-      <!-- Текст -->
-      <text x="70" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="700" fill="#ffffff">IT</text>
-      <text x="120" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="600" fill="#CC5500">Клуб</text>
-      <text x="70" y="85" font-family="'Poppins', sans-serif" font-size="30" font-weight="600" fill="#ffffff">Юные Инженеры</text>
+                        <!-- Текст -->
+                        <text x="70" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="700"
+                              fill="#ffffff">IT
+                        </text>
+                        <text x="120" y="50" font-family="'Poppins', sans-serif" font-size="40" font-weight="600"
+                              fill="#CC5500">Клуб
+                        </text>
+                        <text x="70" y="85" font-family="'Poppins', sans-serif" font-size="30" font-weight="600"
+                              fill="#ffffff">Юные Инженеры
+                        </text>
 
-      <!-- Декоративная полоска -->
-      <line x1="70" y1="88" x2="290" y2="88" stroke="url(#logo-gradient)" stroke-width="2" stroke-dasharray="5 2"/>
-    </svg>
+                        <!-- Декоративная полоска -->
+                        <line x1="70" y1="88" x2="290" y2="88" stroke="url(#logo-gradient)" stroke-width="2"
+                              stroke-dasharray="5 2"/>
+                    </svg>
                 </a>
                 <p class="text-white-50 fw-light" style="font-size: 0.95rem;">
                     Детский центр робототехники и программирования <br> г. Лида
@@ -624,7 +664,7 @@ html, body {
                 <div class="contact-info mb-4">
                     <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
                         <i class="bi bi-envelope me-2" style="color: var(--main-orange);"></i>
-                        <a href="mailto:skrip8078@gmail.com" class="text-decoration-none text-white-50">skrip8078@gmail.com</a>
+                        <a href="mailto:skrip8078@gmail.com" class="text-decoration-none text-white-50">robotlidasite@gmail.com</a>
                     </p>
                     <p class="text-white-50 fw-light mb-2" style="font-size: 0.9rem;">
                         <i class="bi bi-telephone me-2" style="color: var(--main-orange);"></i>

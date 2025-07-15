@@ -14,9 +14,9 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [host.strip() for host in os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')]
 
-
 # Установленные приложения
 INSTALLED_APPS = [
+    'django.contrib.sitemaps',
     'widget_tweaks',
     'main_app',
     'django.contrib.admin',
@@ -102,6 +102,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Отключение кэширования в режиме разработки
 if DEBUG:
     import mimetypes
+
     mimetypes.add_type("application/javascript", ".js", True)
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
