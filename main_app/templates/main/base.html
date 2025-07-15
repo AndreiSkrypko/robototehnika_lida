@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+
+    <!-- =======================
+         DJANGO STATIC & WIDGETS
+    ======================== -->
+    {% load static %}
+    {% load widget_tweaks %}
+
+    <!-- =======================
+         Подключаю фавикон, это иконка в title
+    ======================== -->
+    <link rel="shortcut icon" href="{% static 'main/img/favicon.ico' %}" type="image/x-icon" />
+
     <!-- =======================
          МЕТА-ТЕГИ И НАСТРОЙКИ
     ======================== -->
@@ -14,11 +26,7 @@
     ======================== -->
     <title>{% block title %}{% endblock %}</title>
 
-    <!-- =======================
-         DJANGO STATIC & WIDGETS
-    ======================== -->
-    {% load static %}
-    {% load widget_tweaks %}
+
 
     <!-- =======================
          МОДАЛЬНОЕ ОКНО РЕГИСТРАЦИИ
