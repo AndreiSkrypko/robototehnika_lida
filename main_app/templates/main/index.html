@@ -5,265 +5,13 @@
 
 {% block content %}
 
-<style>
-    /* --- Общие стили для мобильных устройств --- */
-    @media (max-width: 991px) {
-        .hero-title, .section-title {
-            font-size: 1.5rem !important;
-        }
-        .hero-description {
-            font-size: 1.05rem !important;
-        }
-        .hero-section {
-            padding: 30px 0 !important;
-            min-height: 60vh !important;
-        }
-        .hero-text-block h2 {
-            font-size: 1.5rem !important;
-            margin-left: 0 !important;
-            margin-bottom: 2rem !important;
-        }
-        .signup-form {
-            padding: 1rem !important;
-            max-width: 100% !important;
-        }
-        .course-card {
-            min-width: 220px;
-            max-width: 90vw;
-            margin: 0 auto 1rem auto;
-        }
-        .course-image-wrapper {
-            height: 120px !important;
-        }
-        .course-title {
-            font-size: 1rem !important;
-        }
-        .accordion-button {
-            font-size: 1rem !important;
-            padding: 1rem !important;
-        }
-        .accordion-body {
-            padding: 1rem !important;
-            font-size: 0.98rem !important;
-        }
-    }
-    @media (max-width: 576px) {
-        .hero-title, .section-title {
-            font-size: 1.1rem !important;
-        }
-        .hero-section {
-            padding: 15px 0 !important;
-            min-height: 40vh !important;
-        }
-        .hero-text-block h2 {
-            font-size: 1.1rem !important;
-            margin-bottom: 1rem !important;
-        }
-        .signup-form {
-            padding: 0.5rem !important;
-        }
-        .course-card {
-            min-width: 180px;
-            max-width: 95vw;
-        }
-        .course-image-wrapper {
-            height: 90px !important;
-        }
-        .course-title {
-            font-size: 0.95rem !important;
-        }
-    }
-    /* --- Горизонтальный скролл для карточек курсов на мобильных устройствах --- */
-    @media (max-width: 767px) {
-        .container > .row.g-4 {
-            flex-wrap: nowrap !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            display: flex !important;
-        }
-        .container > .row.g-4 > div {
-            flex: 0 0 auto !important;
-        }
-    }
-    /* --- Исправление layout hero-блока и форм --- */
-    @media (max-width: 767px) {
-        .hero-section .row {
-            flex-direction: column !important;
-        }
-        .hero-section .col-lg-8, .hero-section .col-lg-4 {
-            max-width: 100% !important;
-            flex: 0 0 100% !important;
-        }
-        .hero-section .hero-text-block {
-            margin-bottom: 1.5rem !important;
-        }
-    }
-    /* --- Уменьшение внутренних отступов и размеров для секций --- */
-    @media (max-width: 767px) {
-        .container-fluid.py-5, .content-card, .cta-section {
-            padding: 1rem !important;
-        }
-    }
-
-    /* Стили для карточек "Наши курсы" нужно перенести, после переноса они не работают */
-    .course-card {
-        background: white;
-        border-radius: 18px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 2px solid transparent;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .course-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 30px rgba(255, 106, 0, 0.3);
-        border-color: #ff6a00;
-    }
-
-    .course-image-wrapper {
-        position: relative;
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-        border-bottom: 3px solid #0d9488;
-    }
-
-    .course-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-
-    .course-card:hover .course-image {
-        transform: scale(1.07);
-    }
-
-    .course-content {
-        padding: 1.25rem;
-        text-align: center;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .course-title {
-        color: #0d9488;
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin: 0;
-        transition: color 0.3s ease;
-    }
-
-    .course-card:hover .course-title {
-        color: #ff6a00;
-    }
-
-    .course-card-link:hover {
-        text-decoration: none;
-    }
-
-    /* Адаптация под мобильные устройства */
-    @media (max-width: 768px) {
-        .course-image-wrapper {
-            height: 160px;
-        }
-
-        .course-title {
-            font-size: 1rem;
-        }
-
-        .course-content {
-            padding: 1rem;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .course-card {
-            border-radius: 15px;
-        }
-
-        .course-image-wrapper {
-            height: 140px;
-        }
-
-        .course-title {
-            font-size: 0.95rem;
-        }
-    }
-
-
-
-    /* Общие стили для аккордеона */
-  .accordion-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .accordion {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  }
-
-  .accordion-item {
-    border: none;
-    border-bottom: 1px solid rgba(13, 148, 136, 0.1); /* бирюзовая светлая рамка */
-  }
-
-  .accordion-button {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border: none;
-    color: #495057;
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    box-shadow: none !important;
-    outline: none !important;
-  }
-
-  .accordion-button .bi {
-    color: #ff6a00; /* оранжевая иконка */
-    font-size: 1.2rem;
-  }
-
-  /* Убираем голубую рамку при фокусе и раскрытии */
-  .accordion-button:focus,
-  .accordion-button:not(.collapsed) {
-    box-shadow: none !important;
-    outline: none !important;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    color: #495057;
-  }
-
-  .accordion-body {
-    background: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(255, 106, 0, 0.05) 100%);
-    padding: 1.5rem;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #495057;
-  }
-
-  .accordion-body .bi-check-circle {
-    color: #0d9488; /* бирюзовый цвет */
-    margin-right: 0.5rem;
-  }
-</style>
-
-
 <!-- Контейнер с фоном со слоганом и формой записи при открытии сайта -->
 <div class="position-relative hero-section"
-     style="background-image: url('{% static 'main/img/index/1.png' %}'); background-size: cover; background-position: center; padding: 60px 0; min-height: 100vh; display: flex; align-items: center;">
+    style="background-image: url('{% static 'main/img/index/1.png' %}'); background-size: cover; background-position: center; padding: 60px 0; min-height: 100vh; display: flex; align-items: center;">
 
     <!-- Затемняющий слой -->
     <div class="overlay"
-         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%); z-index: 1;">
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%); z-index: 1;">
     </div>
 
     <!-- Контент -->
@@ -272,7 +20,8 @@
         <div class="text-center text-white mb-4">
             <h1 class="section-title hero-title"
                 style="font-weight: 800; font-size: 3rem; line-height: 1.2; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                <span style="color: #CC5500; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">IT</span>-клуб
+                <span
+                    style="color: #CC5500; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">IT</span>-клуб
                 программирования и робототехники
             </h1>
         </div>
@@ -281,12 +30,13 @@
         <div class="row align-items-start">
             <!-- Текст -->
             <div class="col-lg-8 col-md-12 text-white mb-4 hero-text-block">
-                <h2 style="font-size: 3rem; font-weight: 700; margin-bottom: 5rem; margin-left: 100px; text-shadow: 1px 1px 2px rgba(0,0,0,0.6);">
+                <h2
+                    style="font-size: 3rem; font-weight: 700; margin-bottom: 5rem; margin-left: 100px; text-shadow: 1px 1px 2px rgba(0,0,0,0.6);">
                     для детей из г.Лида
                 </h2>
 
                 <p class="hero-description"
-                   style="font-size: 1.5rem; font-weight: 500; line-height: 1.5; margin-bottom: 2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+                    style="font-size: 1.5rem; font-weight: 500; line-height: 1.5; margin-bottom: 2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
                     В клубе «<span style="color: #17a2b8; font-weight: bold;">Юные Инженеры</span>» дети превращают свои
                     идеи в реальные проекты — с помощью программирования, робототехники, 3D-дизайна и цифрового
                     искусства.
@@ -297,7 +47,7 @@
 
                 <div class="hero-cta">
                     <a href="/about" class="btn custom-btn text-white me-3"
-                       style="font-size: 1.05rem; padding: 10px 28px; border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">
+                        style="font-size: 1.05rem; padding: 10px 28px; border-radius: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease;">
                         <i class="bi bi-arrow-right me-2"></i>УЗНАТЬ БОЛЬШЕ
                     </a>
                 </div>
@@ -306,18 +56,18 @@
             <!-- Форма -->
             <div class="col-lg-4 col-md-12 d-flex justify-content-lg-end justify-content-center">
                 <form method="post" class="signup-form"
-                      style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 2px solid #17a2b8; position: relative; overflow: hidden; max-width: 400px; width: 100%;">
+                    style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 2px solid #17a2b8; position: relative; overflow: hidden; max-width: 400px; width: 100%;">
 
                     <!-- Декоративная линия -->
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #17a2b8 0%, #CC5500 50%, #17a2b8 100%);">
+                    <div
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #17a2b8 0%, #CC5500 50%, #17a2b8 100%);">
                     </div>
 
                     {% csrf_token %}
                     {{ form.non_field_errors }}
 
                     {% if not success %}
-                    <h5 class="text-center mb-3 fw-bold form-title"
-                        style="color: #0d9488; font-size: 1.15rem;">
+                    <h5 class="text-center mb-3 fw-bold form-title" style="color: #0d9488; font-size: 1.15rem;">
                         <i class="bi bi-pencil-square me-2" style="color: #CC5500;"></i>ЗАПИШИТЕСЬ НА ПРОБНОЕ ЗАНЯТИЕ
                     </h5>
                     {% else %}
@@ -342,15 +92,14 @@
 
                     <!-- Кнопка -->
                     <button type="submit" class="btn submit-btn w-100 mb-3"
-                            style="background: linear-gradient(135deg, #0d9488 0%, #0d9488 100%); color: white; border: none; border-radius: 15px; padding: 12px; font-weight: 600; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(23, 162, 184, 0.4);">
+                        style="background: linear-gradient(135deg, #0d9488 0%, #0d9488 100%); color: white; border: none; border-radius: 15px; padding: 12px; font-weight: 600; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(23, 162, 184, 0.4);">
                         <i class="bi bi-send me-2"></i>ОСТАВИТЬ ЗАЯВКУ
                     </button>
 
                     <p class="text-center text-muted agreement-text" style="font-size: 0.85rem; line-height: 1.4;">
                         <i class="bi bi-shield-check me-1" style="color: #17a2b8;"></i>Нажимая на кнопку, я принимаю
                         <a href="{% url 'about_cookies' %}" target="_blank"
-                           class="text-decoration-underline agreement-link"
-                           style="color: #0d9488; font-weight: 500;">
+                            class="text-decoration-underline agreement-link" style="color: #0d9488; font-weight: 500;">
                             условия соглашения*
                         </a>
                     </p>
@@ -377,16 +126,16 @@
                     IT-клуб современных технологий для детей от 5 до 15 лет
                 </h1>
                 <div class="title-underline"
-                     style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
+                    style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
                 </div>
             </div>
             <!-- Описание курсов общее -->
             <div class="content-card"
-                 style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(13, 148, 136, 0.1);">
+                style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(13, 148, 136, 0.1);">
                 <p class="text-content"
-                   style="font-size: 1.1rem; line-height: 1.8; color: #495057; margin-bottom: 2rem; text-align: justify;">
+                    style="font-size: 1.1rem; line-height: 1.8; color: #495057; margin-bottom: 2rem; text-align: justify;">
                     IT-клуб «<span class="highlight-text"
-                                   style="color: #ff6a00; font-weight: 700; text-shadow: 0 1px 2px rgba(23, 162, 184, 0.1);">Юные
+                        style="color: #ff6a00; font-weight: 700; text-shadow: 0 1px 2px rgba(23, 162, 184, 0.1);">Юные
                         Инженеры</span>» — это инновационное
                     образовательное пространство, где дети превращают свои идеи в реальные технологические проекты. Мы
                     специализируемся на обучении детей современным IT-навыкам, предлагая программы, охватывающие
@@ -397,7 +146,7 @@
                 </p>
 
                 <div class="feature-highlight"
-                     style="background: linear-gradient(135deg, rgba(23, 162, 184, 0.05) 0%, rgba(255, 106, 0, 0.05) 100%); border-left: 4px solid #0d9488; padding: 1.5rem; border-radius: 0 15px 15px 0; margin: 2rem 0;">
+                    style="background: linear-gradient(135deg, rgba(23, 162, 184, 0.05) 0%, rgba(255, 106, 0, 0.05) 100%); border-left: 4px solid #0d9488; padding: 1.5rem; border-radius: 0 15px 15px 0; margin: 2rem 0;">
                     <p class="mb-0" style="font-size: 1.1rem; line-height: 1.7; color: #495057;">
                         Наши курсы построены так, чтобы даже сложные темы воспринимались легко и интересно. Благодаря
                         практике,
@@ -409,9 +158,9 @@
                 </div>
 
                 <p class="text-content"
-                   style="font-size: 1.1rem; line-height: 1.8; color: #495057; margin-bottom: 2rem; text-align: justify;">
+                    style="font-size: 1.1rem; line-height: 1.8; color: #495057; margin-bottom: 2rem; text-align: justify;">
                     В клубе «<span class="highlight-text"
-                                   style="color: #ff6a00; font-weight: 700; text-shadow: 0 1px 2px rgba(23, 162, 184, 0.1);">Юные
+                        style="color: #ff6a00; font-weight: 700; text-shadow: 0 1px 2px rgba(23, 162, 184, 0.1);">Юные
                         Инженеры</span>» мы уделяем внимание каждому
                     ребенку. Мы стремимся раскрыть потенциал каждого ученика и подготовить его к успешному будущему.
                     Наши
@@ -421,9 +170,9 @@
                 </p>
 
                 <div class="cta-section text-center"
-                     style="background: linear-gradient(135deg, #0d9488 0%, #138496 100%); border-radius: 15px; padding: 2rem; margin-top: 2rem; box-shadow: 0 8px 25px rgba(23, 162, 184, 0.3);">
+                    style="background: linear-gradient(135deg, #0d9488 0%, #138496 100%); border-radius: 15px; padding: 2rem; margin-top: 2rem; box-shadow: 0 8px 25px rgba(23, 162, 184, 0.3);">
                     <p class="mb-0"
-                       style="font-size: 1.2rem; font-weight: 600; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                        style="font-size: 1.2rem; font-weight: 600; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
                         <i class="bi bi-rocket-takeoff me-2"></i>
                         Станьте частью нашего сообщества и вместе с детьми начните увлекательное путешествие в мир
                         передовых технологий!
@@ -450,7 +199,7 @@
                 Курсы программирования, робототехники и 3D моделирования в Лиде
             </h1>
             <div class="title-underline"
-                 style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
+                style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
             </div>
         </div>
     </div>
@@ -458,22 +207,27 @@
 
 
 <!-- Секция с карточками курсов для разных возрастных групп -->
-<div class="container">
+<div class="course-carousel-outer">
     <!-- Подсказка для свайпа на мобильных -->
-    <div class="d-block d-md-none text-center mb-2" style="font-size: 0.98rem; color: #0d9488; font-weight: 500;">
-        <span style="vertical-align: middle; margin-right: 0.3em;">
-            <svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align: middle;"><path d="M7 11h8m0 0l-3-3m3 3l-3 3" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <div class="d-block d-md-none text-center mb-2 swipe-hint"
+        style="font-size: 1.05rem; color: #0d9488; font-weight: 600; position: relative;">
+        <span class="swipe-icon"
+            style="display: inline-block; animation: swipe-move 1.2s infinite alternate; margin-right: 0.4em;">
+            <svg width="28" height="28" viewBox="0 0 28 28">
+                <path d="M8 14h12m0 0l-4-4m4 4l-4 4" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" fill="none" />
+            </svg>
         </span>
         Листайте вбок
     </div>
-    <div class="row justify-content-center g-4 course-carousel-row">
+    <div class="course-carousel-row">
         {% for course in courses %}
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 course-carousel-item{% if forloop.last %} last-item{% endif %}">
+        <div class="course-carousel-item{% if forloop.last %} last-item{% endif %}">
             <a href="{{ course.url }}" class="course-card-link text-decoration-none">
                 <div class="course-card h-100 d-flex flex-column">
                     <div class="course-image-wrapper flex-grow-1">
                         <img src="{% static course.image %}" class="course-image w-100 h-100 object-fit-cover"
-                             alt="Курс {{ course.title }}">
+                            alt="Курс {{ course.title }}">
                     </div>
                     <div class="course-content mt-3">
                         <h5 class="course-title text-center mb-0">{{ course.title }}</h5>
@@ -483,28 +237,135 @@
         </div>
         {% endfor %}
     </div>
+    <!-- Fade-эффекты по краям -->
+    <div class="carousel-fade-left"></div>
+    <div class="carousel-fade-right"></div>
+    <!-- Стрелки -->
+    <button class="carousel-arrow left-arrow d-block d-md-none" onclick="scrollCourseCarousel(-1)">&#8592;</button>
+    <button class="carousel-arrow right-arrow d-block d-md-none" onclick="scrollCourseCarousel(1)">&#8594;</button>
 </div>
 
+<!-- Стили и скрипты для карусели курсов -->
 <style>
-@media (max-width: 767px) {
-    /* Подсказка свайпа */
+    .course-carousel-outer {
+        position: relative;
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        background: transparent;
+        overflow-x: hidden;
+        padding-bottom: 10px;
+    }
+
     .course-carousel-row {
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        display: flex !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        padding-left: 16px;
+        padding-right: 16px;
+        scroll-behavior: smooth;
     }
-    .course-carousel-row > .course-carousel-item {
-        flex: 0 0 auto !important;
-        margin-right: 12px !important;
+
+    .course-carousel-item {
+        flex: 0 0 auto;
+        min-width: 220px;
+        max-width: 80vw;
+        margin-right: 16px;
     }
-    .course-carousel-row > .course-carousel-item.last-item {
-        margin-right: 32px !important; /* чтобы последняя карточка не прилипала к краю */
+
+    .course-carousel-item.last-item {
+        margin-right: 32px;
     }
-}
+
+    @media (max-width: 576px) {
+        .course-carousel-item {
+            min-width: 170px;
+            max-width: 85vw;
+        }
+    }
+
+    .carousel-fade-left,
+    .carousel-fade-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 32px;
+        pointer-events: none;
+        z-index: 2;
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+
+        .carousel-fade-left,
+        .carousel-fade-right {
+            display: block;
+        }
+
+        .carousel-fade-left {
+            left: 0;
+            background: linear-gradient(to right, #fff 80%, transparent 100%);
+        }
+
+        .carousel-fade-right {
+            right: 0;
+            background: linear-gradient(to left, #fff 80%, transparent 100%);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            background: #0d9488;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 1.3rem;
+            opacity: 0.85;
+            box-shadow: 0 2px 8px rgba(13, 148, 136, 0.12);
+            transition: background 0.2s, opacity 0.2s;
+        }
+
+        .carousel-arrow.left-arrow {
+            left: 8px;
+        }
+
+        .carousel-arrow.right-arrow {
+            right: 8px;
+        }
+
+        .carousel-arrow:active {
+            opacity: 1;
+            background: #ff6a00;
+        }
+    }
+
+    @keyframes swipe-move {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(18px);
+        }
+    }
 </style>
+<script>
+    function scrollCourseCarousel(dir) {
+        const row = document.querySelector('.course-carousel-row');
+        if (!row) return;
+        const item = row.querySelector('.course-carousel-item');
+        if (!item) return;
+        const scrollAmount = item.offsetWidth + 16;
+        row.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+    }
+</script>
 
 
 <!-- Разделитель -->
@@ -522,7 +383,7 @@
                 Что вы обычно спрашиваете
             </h1>
             <div class="title-underline"
-                 style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
+                style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
             </div>
         </div>
     </div>
@@ -531,160 +392,169 @@
 
 <!-- FAQ -->
 <div class="accordion-wrapper">
-  <div class="accordion" id="faqAccordion">
-    <!-- Вопрос 1 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          <i class="bi bi-question-circle me-3"></i>
-          Как записаться на курс?
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Вы можете записаться через форму на сайте или позвонить нам напрямую.
+    <div class="accordion" id="faqAccordion">
+        <!-- Вопрос 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Как записаться на курс?
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Вы можете записаться через форму на сайте или позвонить нам напрямую.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 2 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <i class="bi bi-question-circle me-3"></i>
-          Есть ли пробные занятия?
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Да, мы предлагаем бесплатное пробное занятие для новых учеников.
+        <!-- Вопрос 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Есть ли пробные занятия?
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Да, мы предлагаем бесплатное пробное занятие для новых учеников.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 3 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <i class="bi bi-question-circle me-3"></i>
-          Какие курсы самые популярные?
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Самыми популярными являются курсы по веб-разработке, дизайну и Python.
+        <!-- Вопрос 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Какие курсы самые популярные?
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Самыми популярными являются курсы по веб-разработке, дизайну и Python.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 4 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          <i class="bi bi-question-circle me-3"></i>
-          Подходит ли курс для девочек?
-        </button>
-      </h2>
-      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Конечно! Технологии — это для всех. Девочки активно участвуют и добиваются отличных результатов.
+        <!-- Вопрос 4 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Подходит ли курс для девочек?
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Конечно! Технологии — это для всех. Девочки активно участвуют и добиваются отличных результатов.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 5 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          <i class="bi bi-question-circle me-3"></i>
-          Что изучают на курсе по робототехнике?
-        </button>
-      </h2>
-      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Дети учатся собирать и программировать роботов, осваивают сенсоры, моторы и основы логики.
+        <!-- Вопрос 5 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Что изучают на курсе по робототехнике?
+                </button>
+            </h2>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Дети учатся собирать и программировать роботов, осваивают сенсоры, моторы и основы логики.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 6 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          <i class="bi bi-question-circle me-3"></i>
-          Чем полезно программирование для ребёнка?
-        </button>
-      </h2>
-      <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Программирование развивает мышление, внимание к деталям, учит решать задачи и работать в команде.
+        <!-- Вопрос 6 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Чем полезно программирование для ребёнка?
+                </button>
+            </h2>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Программирование развивает мышление, внимание к деталям, учит решать задачи и работать в команде.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 7 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-          <i class="bi bi-question-circle me-3"></i>
-          С какого возраста можно заниматься 3D-моделированием?
-        </button>
-      </h2>
-      <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Обычно с 9–10 лет. Курсы адаптированы под возраст и начинаются с простых, увлекательных проектов.
+        <!-- Вопрос 7 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    <i class="bi bi-question-circle me-3"></i>
+                    С какого возраста можно заниматься 3D-моделированием?
+                </button>
+            </h2>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Обычно с 9–10 лет. Курсы адаптированы под возраст и начинаются с простых, увлекательных проектов.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 8 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-          <i class="bi bi-question-circle me-3"></i>
-          Где применяются знания, полученные на курсах?
-        </button>
-      </h2>
-      <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Они полезны в школе, олимпиадах, IT-проектах и при поступлении в технические вузы.
+        <!-- Вопрос 8 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingEight">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Где применяются знания, полученные на курсах?
+                </button>
+            </h2>
+            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Они полезны в школе, олимпиадах, IT-проектах и при поступлении в технические вузы.
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Вопрос 9 -->
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingNine">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-          <i class="bi bi-question-circle me-3"></i>
-          Нужно ли покупать оборудование для занятий?
-        </button>
-      </h2>
-      <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
-        <div class="accordion-body">
-          <i class="bi bi-check-circle"></i>
-          Нет, всё необходимое оборудование и материалы предоставляются в классе.
+        <!-- Вопрос 9 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingNine">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                    <i class="bi bi-question-circle me-3"></i>
+                    Нужно ли покупать оборудование для занятий?
+                </button>
+            </h2>
+            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    <i class="bi bi-check-circle"></i>
+                    Нет, всё необходимое оборудование и материалы предоставляются в классе.
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
     <!-- Разделитель -->
     <hr class="custom-divider"
         style="border: none; height: 3px; background: linear-gradient(90deg, transparent 0%, #CC5500 50%, transparent 100%); margin: 40px auto; width: 80%; border-radius: 2px; box-shadow: 0 2px 8px rgba(204, 85, 0, 0.3);">
@@ -693,7 +563,7 @@
 
 <!-- Контейнер с фоном и призывом к действию -->
 <div class="position-relative d-flex justify-content-center align-items-center"
-     style="background-image: url('{% static 'main/img/index/2.jpeg' %}'); background-size: cover; background-position: center; padding: 80px 0; min-height: 100vh;">
+    style="background-image: url('{% static 'main/img/index/2.jpeg' %}'); background-size: cover; background-position: center; padding: 80px 0; min-height: 100vh;">
 
     <!-- Затемняющий слой -->
     <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -711,7 +581,7 @@
                         Готовы к будущему?
                     </h1>
                     <p class="hero-description text-white mb-4"
-                       style="font-size: 1.3rem; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
+                        style="font-size: 1.3rem; line-height: 1.6; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">
                         Присоединяйтесь к IT-клубу «Юные Инженеры» и откройте для ребенка мир современных технологий!
                     </p>
                     <div class="hero-features mb-4">
@@ -736,9 +606,9 @@
                 <div class="signup-form-wrapper" style="animation: slideInRight 1s ease-out 0.3s both;">
                     <!-- Пульсирующая рамка для привлечения внимания -->
                     <div class="pulse-border"
-                         style="position: relative; padding: 3px; border-radius: 20px; background: linear-gradient(45deg, #ff6a00, #17a2b8, #ff6a00); background-size: 400% 400%; animation: pulse 2s ease-in-out infinite;">
+                        style="position: relative; padding: 3px; border-radius: 20px; background: linear-gradient(45deg, #ff6a00, #17a2b8, #ff6a00); background-size: 400% 400%; animation: pulse 2s ease-in-out infinite;">
                         <form method="post" class="signup-form shadow-lg"
-                              style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 17px; padding: 2.5rem; border: none;">
+                            style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 17px; padding: 2.5rem; border: none;">
                             {% csrf_token %}
                             {{ form.non_field_errors }}
 
@@ -746,7 +616,7 @@
                             {% if not success %}
                             <div class="text-center mb-4">
                                 <div class="offer-badge mb-3"
-                                     style="background: linear-gradient(135deg, #ff6a00, #ff8533); color: white; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: 600; font-size: 0.9rem; display: inline-block; box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);">
+                                    style="background: linear-gradient(135deg, #ff6a00, #ff8533); color: white; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: 600; font-size: 0.9rem; display: inline-block; box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);">
                                     <i class="bi bi-gift me-2"></i>СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ
                                 </div>
                                 <h3 class="form-title fw-bold mb-2" style="color: #0d9488; font-size: 1.8rem;">
@@ -759,7 +629,7 @@
                             {% else %}
                             <div class="text-center mb-4">
                                 <div class="success-badge mb-3"
-                                     style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: 600; font-size: 0.9rem; display: inline-block; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
+                                    style="background: linear-gradient(135deg, #28a745, #20c997); color: white; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: 600; font-size: 0.9rem; display: inline-block; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);">
                                     <i class="bi bi-check-circle me-2"></i>УСПЕШНО ОТПРАВЛЕНО
                                 </div>
                                 <h5 class="fw-bold" style="color: #28a745; font-size: 1.3rem;">
@@ -812,12 +682,12 @@
 
                             <!-- Кнопка с анимацией -->
                             <button type="submit" class="btn submit-btn w-100 mb-3"
-                                    style="background: linear-gradient(135deg, #ff6a00 0%, #ff8533 100%); color: white; border: none; border-radius: 15px; padding: 15px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                                style="background: linear-gradient(135deg, #ff6a00 0%, #ff8533 100%); color: white; border: none; border-radius: 15px; padding: 15px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4); transition: all 0.3s ease; position: relative; overflow: hidden;">
                                 <span style="position: relative; z-index: 2;">
                                     <i class="bi bi-rocket-takeoff me-2"></i>ЗАПИСАТЬСЯ СЕЙЧАС
                                 </span>
                                 <div class="btn-shine"
-                                     style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shine 2s infinite;">
+                                    style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shine 2s infinite;">
                                 </div>
                             </button>
 
@@ -826,8 +696,8 @@
                                 <i class="bi bi-shield-check me-1" style="color: #0d9488;"></i>Нажимая на кнопку, я
                                 принимаю
                                 <a href="{% url 'about_cookies' %}" target="_blank"
-                                   class="text-decoration-underline agreement-link"
-                                   style="color: #17a2b8; font-weight: 500; transition: all 0.3s ease;">
+                                    class="text-decoration-underline agreement-link"
+                                    style="color: #17a2b8; font-weight: 500; transition: all 0.3s ease;">
                                     условия соглашения*
                                 </a>
                             </p>
@@ -856,15 +726,15 @@
                     Как нас найти
                 </h1>
                 <div class="title-underline"
-                     style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
+                    style="width: 150px; height: 4px; background: linear-gradient(90deg, #ff6a00, #17a2b8); margin: 0 auto; border-radius: 2px; box-shadow: 0 2px 8px rgba(255, 106, 0, 0.3);">
                 </div>
             </div>
 
             <div class="content-card"
-                 style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(13, 148, 136, 0.1);">
+                style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(13, 148, 136, 0.1);">
                 <!-- Адрес -->
                 <div class="address-info text-center mb-4"
-                     style="background: linear-gradient(135deg, rgba(23, 162, 184, 0.05) 0%, rgba(255, 106, 0, 0.05) 100%); border-radius: 15px; padding: 2rem; border-left: 4px solid #17a2b8;">
+                    style="background: linear-gradient(135deg, rgba(23, 162, 184, 0.05) 0%, rgba(255, 106, 0, 0.05) 100%); border-radius: 15px; padding: 2rem; border-left: 4px solid #17a2b8;">
                     <h4 class="fw-bold mb-3" style="color: #0d9488; text-shadow: 0 1px 2px rgba(23, 162, 184, 0.1);">
                         <i class="bi bi-building me-2" style="color: #ff6a00;"></i>
                         Наш адрес
@@ -876,10 +746,10 @@
 
                 <!-- Контейнер карты -->
                 <div class="map-wrapper"
-                     style="border-radius: 15px; overflow: hidden; height: 400px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 2px solid rgba(23, 162, 184, 0.1);">
+                    style="border-radius: 15px; overflow: hidden; height: 400px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 2px solid rgba(23, 162, 184, 0.1);">
                     <iframe
-                            src="https://yandex.ru/map-widget/v1/?ll=25.295021%2C53.885529&z=17&l=map&pt=25.295021,53.885529,pm2rdm&text=Республика%20Беларусь%2C%20г.%20Лида%2C%20ул.%20Замковая%2C%204"
-                            width="100%" height="100%" frameborder="0" allowfullscreen="true" style="border:0;">
+                        src="https://yandex.ru/map-widget/v1/?ll=25.295021%2C53.885529&z=17&l=map&pt=25.295021,53.885529,pm2rdm&text=Республика%20Беларусь%2C%20г.%20Лида%2C%20ул.%20Замковая%2C%204"
+                        width="100%" height="100%" frameborder="0" allowfullscreen="true" style="border:0;">
                     </iframe>
                 </div>
             </div>
