@@ -12,6 +12,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('courses_online/', views.courses_online, name='courses_online'),
     path('courses_2_4/', views.courses_2_4, name='courses_2_4'),
+    path('courses_4_6/', views.courses_4_6, name='courses_4_6'),
     path('courses_6_7/', views.courses_6_7, name='courses_6_7'),
     path('courses_7_9/', views.courses_7_9, name='courses_7_9'),
     path('courses_9_11/', views.courses_9_11, name='courses_9_11'),
