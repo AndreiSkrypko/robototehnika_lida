@@ -497,12 +497,12 @@
     Модальное окно открывается автоматически при успешной отправке формы
 -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    {% if success %}
-      var signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
-      signupModal.show();
-    {% endif %}
-  });
+    document.addEventListener('DOMContentLoaded', function () {
+      {% if success %}
+        var signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
+        signupModal.show();
+      {% endif %}
+    });
 </script>
 
 <!--
@@ -609,7 +609,9 @@
 -->
 <div class="carousel-wrapper mx-auto">
     <h1 class="mb-5 text-center fw-bold">Фото наших занятий</h1>
-    <button class="carousel-control carousel-control-left" type="button" aria-label="Назад" onclick="scrollCarousel(-1)">‹</button>
+    <button class="carousel-control carousel-control-left" type="button" aria-label="Назад"
+            onclick="scrollCarousel(-1)">‹
+    </button>
     <div class="carousel-inner-custom" id="customCarousel">
         <div class="carousel-track" id="carouselTrack">
             <!-- Фотографии занятий -->
@@ -636,7 +638,9 @@
             </div>
         </div>
     </div>
-    <button class="carousel-control carousel-control-right" type="button" aria-label="Вперёд" onclick="scrollCarousel(1)">›</button>
+    <button class="carousel-control carousel-control-right" type="button" aria-label="Вперёд"
+            onclick="scrollCarousel(1)">›
+    </button>
 </div>
 <script>
     // --- Карусель: автоскролл, бесконечный цикл, адаптивность ---
@@ -708,7 +712,8 @@
 -->
 <section class="reviews-section py-5">
     <div class="container">
-        <h1 class="mb-5 text-center fw-bold" style="color: #0d9488; text-shadow: 0 2px 8px rgba(23,162,184,0.08); letter-spacing: 0.01em;">
+        <h1 class="mb-5 text-center fw-bold"
+            style="color: #0d9488; text-shadow: 0 2px 8px rgba(23,162,184,0.08); letter-spacing: 0.01em;">
             <i class="bi bi-chat-quote-fill me-2" style="color: #ff6a00;"></i>
             Отзывы наших родителей
         </h1>
@@ -717,68 +722,97 @@
             <div class="col-md-6 col-lg-4 d-flex">
                 <div class="review-card p-4 text-center w-100">
                     <p class="review-text">
-                        Прежде всего, сложившаяся структура организации играет определяющее значение для глубокомысленных рассуждений. Также как высокое качество позиционных исследований выявляет срочную потребность новых предложений! В частности, семантический разбор внешних противодействий выявляет срочную потребность системы обучения кадров, соответствующей насущным потребностям.
+                        Очень довольны уроками и вообще подходом! Особенно хочу сказать спасибо Андрею Станиславовичу —
+                        он отличный педагог, всегда находит подход к детям и объясняет всё понятно. После первого
+                        занятия ребёнок так загорелся, что вместо одного курса сразу на три записались! Уроки проходят
+                        весело и интересно, всем советую!
                     </p>
                     <p class="review-name">— Анна, мама Артёма (7 лет)</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 d-flex">
-                <div class="review-card p-4 text-center w-100">
-                    <p class="review-text">
-                        Очень интересный подход и отличные педагоги. Уроки проходят на ура!
-                    </p>
-                    <p class="review-name">— Дмитрий, папа Вани (9 лет)</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="review-card p-4 text-center w-100">
-                    <p class="review-text">
-                        Сын теперь хочет стать инженером! Спасибо за вдохновение и знания.
-                    </p>
-                    <p class="review-name">— Елена, мама Никиты (11 лет)</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="review-card p-4 text-center w-100">
-                    <p class="review-text">
-                        Онлайн-курсы оказались отличным решением — качественно, интересно и по делу!
-                    </p>
-                    <p class="review-name">— Игорь, отец Алисы (10 лет)</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="review-card p-4 text-center w-100">
-                    <p class="review-text">
-                        Дочь впервые с интересом изучает программирование — спасибо за вдохновляющее обучение!
-                    </p>
-                    <p class="review-name">— Татьяна, мама Лизы (8 лет)</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="review-card p-4 text-center w-100">
-                    <p class="review-text">
-                        Круто, что есть клуб, который развивает мышление и навыки с детства. Спасибо!
-                    </p>
-                    <p class="review-name">— Светлана, мама Ивана (6 лет)</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="review-card p-4 text-center w-100">
-                    <p class="review-text">
-                        София с нетерпением ждет каждого занятия! Очень нравится творческая атмосфера и индивидуальный подход.
-                    </p>
-                    <p class="review-name">— Мария, мама Софии (8 лет)</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 d-flex">
-                <div class="review-card p-4 text-center w-100">
-                    <p class="review-text">
-                        Максим стал увереннее, научился работать в команде и теперь сам собирает сложные модели. Спасибо педагогам!
-                    </p>
-                    <p class="review-name">— Алексей, папа Максима (10 лет)</p>
-                </div>
+                <div class="review-card p-4 text-center w-100"
+                <p class="review-text">
+                    Очень интересный подход к обучению — детям не просто рассказывают теорию, а вовлекают в процесс
+                    через практические задания, эксперименты и проектную деятельность. Педагоги — настоящие
+                    профессионалы, которые умеют найти подход к каждому ребёнку и создать на занятиях дружелюбную,
+                    увлекательную атмосферу. Уроки проходят на ура — ребёнок с радостью бежит на занятия и с ещё большим
+                    воодушевлением рассказывает, что нового узнал!
+                </p>
+                <p class="review-name">— Дмитрий, папа Вани (9 лет)</p>
             </div>
         </div>
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="review-card p-4 text-center w-100">
+
+                <p class="review-text">
+                    После занятий в вашей школе у сына появилось настоящее увлечение техникой и наукой. Теперь он
+                    всерьёз мечтает стать инженером! Огромное спасибо всей команде за вдохновение, поддержку и ценные
+                    знания, которые вы даёте детям. Вы помогаете раскрыть потенциал и увлечься важными и интересными
+                    вещами — это бесценно!
+                </p>
+                <p class="review-name">— Елена, мама Никиты (11 лет)</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="review-card p-4 text-center w-100">
+
+                <p class="review-text">
+                    Мы переехали жить в Норвегию, и из-за расстояния было сложно продолжать занятия очно. К счастью,
+                    онлайн-курсы стали отличным решением — занятия проходят качественно, интересно и по делу! Ребёнок не
+                    потерял мотивацию, а знания и навыки продолжают расти, несмотря на перемену страны и обстановки.
+                    Очень рады, что обучение стало доступным и удобным, спасибо!
+                </p>
+                <p class="review-name">— Игорь, отец Алисы (16 лет)</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="review-card p-4 text-center w-100">
+
+                <p class="review-text">
+                    Дочь раньше совсем не интересовалась программированием, но благодаря вашему вдохновляющему и
+                    доступному подходу к обучению она впервые по-настоящему увлеклась этой темой. Занятия идут легко и
+                    интересно, и я вижу, как она с каждым уроком становится всё увереннее. Спасибо вам за такую
+                    поддержку и мотивацию!
+                </p>
+                <p class="review-name">— Татьяна, мама Лизы (8 лет)</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="review-card p-4 text-center w-100">
+
+                <p class="review-text">
+                    Очень здорово, что есть такой клуб, который с самого детства помогает развивать мышление и полезные
+                    навыки у детей. Это не просто занятия, а настоящее воспитание интереса к новым знаниям и умению
+                    думать критически. Спасибо всем педагогам за ваш труд и внимание к детям!
+                </p>
+                <p class="review-name">— Светлана, мама Ивана (6 лет)</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="review-card p-4 text-center w-100">
+
+                <p class="review-text">
+                    София с большим нетерпением ждет каждого нового занятия! Ей очень нравится творческая и дружелюбная
+                    атмосфера, которая царит в группе. Особенно ценно, что к каждому ребенку здесь находят
+                    индивидуальный подход — это помогает ей раскрывать свои способности и чувствовать уверенность в
+                    своих силах. Спасибо педагогам за такую поддержку и вдохновение!
+                </p>
+                <p class="review-name">— Мария, мама Софии (8 лет)</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="review-card p-4 text-center w-100">
+
+                <p class="review-text">
+                    Максим стал намного увереннее в себе, научился работать в команде и теперь самостоятельно собирает
+                    сложные модели. Плюс, дома начал проявлять инициативу — стал помогать нам с уборкой и даже мыть
+                    посуду без напоминаний. Спасибо педагогам за такой вдохновляющий и полезный подход!
+                </p>
+                <p class="review-name">— Алексей, папа Максима (10 лет)</p>
+            </div>
+        </div>
+    </div>
     </div>
 </section>
 
@@ -801,7 +835,8 @@
                             Ваш браузер не поддерживает видео.
                         </video>
                     </div>
-                    <p class="video-review-name">— Никита (9 лет), занимается робототехникой, программированием, 3D моделированием</p>
+                    <p class="video-review-name">— Никита (9 лет), занимается робототехникой, программированием, 3D
+                        моделированием</p>
                 </div>
             </div>
             <!-- Видеоотзыв 2 -->
