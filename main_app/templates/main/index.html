@@ -314,14 +314,18 @@
         .courses-carousel-row {
             display: flex !important;
             flex-wrap: wrap !important;
-            overflow-x: unset !important;
-            gap: 0;
+            justify-content: center;
+            gap: 32px 24px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1200px;
         }
-
-        .courses-carousel-row>div {
-            flex: unset !important;
-            max-width: unset !important;
-            min-width: unset !important;
+        .courses-carousel-row > div {
+            flex: 1 1 260px !important;
+            max-width: 300px !important;
+            min-width: 220px !important;
+            margin: 0;
+            display: flex;
         }
     }
 
