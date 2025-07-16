@@ -458,7 +458,15 @@
 
 
 <!-- Секция с карточками курсов для разных возрастных групп -->
-<div class="container">
+<div class="container position-relative">
+    <!-- Визуальный намёк на скролл только на мобильных -->
+    <div class="scroll-hint d-block d-md-none" style="position: absolute; left: 0; right: 0; top: -30px; z-index: 10; text-align: center; pointer-events: none;">
+        <span style="background: rgba(255,255,255,0.9); padding: 2px 14px; border-radius: 12px; font-size: 0.98rem; color: #0d9488; font-weight: 600; box-shadow: 0 2px 8px rgba(13,148,136,0.08);">
+            <i class="bi bi-arrow-left-right me-1"></i>Листайте вбок
+        </span>
+    </div>
+    <!-- Градиент справа для намёка на скролл -->
+    <div class="scroll-gradient-right d-block d-md-none" style="position: absolute; top: 0; right: 0; width: 40px; height: 100%; pointer-events: none; z-index: 9; background: linear-gradient(to left, rgba(255,255,255,0.95) 60%, rgba(255,255,255,0));"></div>
     <div class="row justify-content-center g-4">
         {% for course in courses %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
