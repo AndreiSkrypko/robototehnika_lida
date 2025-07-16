@@ -459,9 +459,16 @@
 
 <!-- Секция с карточками курсов для разных возрастных групп -->
 <div class="container">
-    <div class="row justify-content-center g-4">
+    <!-- Подсказка для свайпа на мобильных -->
+    <div class="d-block d-md-none text-center mb-2" style="font-size: 0.98rem; color: #0d9488; font-weight: 500;">
+        <span style="vertical-align: middle; margin-right: 0.3em;">
+            <svg width="22" height="22" viewBox="0 0 22 22" style="vertical-align: middle;"><path d="M7 11h8m0 0l-3-3m3 3l-3 3" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </span>
+        Листайте вбок
+    </div>
+    <div class="row justify-content-center g-4 course-carousel-row">
         {% for course in courses %}
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 course-carousel-item{% if forloop.last %} last-item{% endif %}">
             <a href="{{ course.url }}" class="course-card-link text-decoration-none">
                 <div class="course-card h-100 d-flex flex-column">
                     <div class="course-image-wrapper flex-grow-1">
@@ -478,6 +485,26 @@
     </div>
 </div>
 
+<style>
+@media (max-width: 767px) {
+    /* Подсказка свайпа */
+    .course-carousel-row {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        display: flex !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .course-carousel-row > .course-carousel-item {
+        flex: 0 0 auto !important;
+        margin-right: 12px !important;
+    }
+    .course-carousel-row > .course-carousel-item.last-item {
+        margin-right: 32px !important; /* чтобы последняя карточка не прилипала к краю */
+    }
+}
+</style>
 
 
 <!-- Разделитель -->
