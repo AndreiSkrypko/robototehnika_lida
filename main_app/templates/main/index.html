@@ -5,8 +5,107 @@
 
 {% block content %}
 
-<!-- Стили для карточек "Наши курсы" нужно перенести, после переноса они не работают -->
 <style>
+    /* --- Общие стили для мобильных устройств --- */
+    @media (max-width: 991px) {
+        .hero-title, .section-title {
+            font-size: 1.5rem !important;
+        }
+        .hero-description {
+            font-size: 1.05rem !important;
+        }
+        .hero-section {
+            padding: 30px 0 !important;
+            min-height: 60vh !important;
+        }
+        .hero-text-block h2 {
+            font-size: 1.5rem !important;
+            margin-left: 0 !important;
+            margin-bottom: 2rem !important;
+        }
+        .signup-form {
+            padding: 1rem !important;
+            max-width: 100% !important;
+        }
+        .course-card {
+            min-width: 220px;
+            max-width: 90vw;
+            margin: 0 auto 1rem auto;
+        }
+        .course-image-wrapper {
+            height: 120px !important;
+        }
+        .course-title {
+            font-size: 1rem !important;
+        }
+        .accordion-button {
+            font-size: 1rem !important;
+            padding: 1rem !important;
+        }
+        .accordion-body {
+            padding: 1rem !important;
+            font-size: 0.98rem !important;
+        }
+    }
+    @media (max-width: 576px) {
+        .hero-title, .section-title {
+            font-size: 1.1rem !important;
+        }
+        .hero-section {
+            padding: 15px 0 !important;
+            min-height: 40vh !important;
+        }
+        .hero-text-block h2 {
+            font-size: 1.1rem !important;
+            margin-bottom: 1rem !important;
+        }
+        .signup-form {
+            padding: 0.5rem !important;
+        }
+        .course-card {
+            min-width: 180px;
+            max-width: 95vw;
+        }
+        .course-image-wrapper {
+            height: 90px !important;
+        }
+        .course-title {
+            font-size: 0.95rem !important;
+        }
+    }
+    /* --- Горизонтальный скролл для карточек курсов на мобильных устройствах --- */
+    @media (max-width: 767px) {
+        .container > .row.g-4 {
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            display: flex !important;
+        }
+        .container > .row.g-4 > div {
+            flex: 0 0 auto !important;
+        }
+    }
+    /* --- Исправление layout hero-блока и форм --- */
+    @media (max-width: 767px) {
+        .hero-section .row {
+            flex-direction: column !important;
+        }
+        .hero-section .col-lg-8, .hero-section .col-lg-4 {
+            max-width: 100% !important;
+            flex: 0 0 100% !important;
+        }
+        .hero-section .hero-text-block {
+            margin-bottom: 1.5rem !important;
+        }
+    }
+    /* --- Уменьшение внутренних отступов и размеров для секций --- */
+    @media (max-width: 767px) {
+        .container-fluid.py-5, .content-card, .cta-section {
+            padding: 1rem !important;
+        }
+    }
+
+    /* Стили для карточек "Наши курсы" нужно перенести, после переноса они не работают */
     .course-card {
         background: white;
         border-radius: 18px;
