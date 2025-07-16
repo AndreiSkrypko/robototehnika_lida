@@ -4,342 +4,9 @@
 {% block title %}Курсы для 13-16 лет{% endblock %}
 
 {% block css %}
-<style>
-/* ==========================================================================
-🧱 ОСНОВНАЯ СТРУКТУРА СТРАНИЦЫ
-========================================================================== */
 
-/* Фон страницы */
-body {
-background-color: var(--main-gray) !important; /* Светло-серый из палитры переменных */
-margin: 0; /* Убираем отступы по умолчанию */
-}
+<link rel="stylesheet" href="{% static 'main/css/courses.css' %}">
 
-/* Верхняя навигационная панель */
-.navbar {
-background-color: var(--main-white) !important; /* Белый фон */
-border-bottom: none; /* Убираем нижнюю границу */
-}
-
-/* Общий контейнер без фона */
-.container {
-background-color: transparent;
-}
-
-/* Заголовки секций */
-.section-title {
-font-family: 'Poppins', sans-serif;
-color: var(--main-green);
-font-weight: 700;
-letter-spacing: 1px;
-margin-bottom: 0.5em;
-}
-
-
-/* ==========================================================================
-🎓 КАРТОЧКИ КУРСОВ (3D стили, КАРУСЕЛЬ НА МОБИЛЬНЫХ)
-========================================================================== */
-
-.course-carousel {
-display: flex;
-flex-wrap: wrap;
-gap: 2rem 0;
-}
-@media (max-width: 767px) {
-.course-carousel {
-flex-wrap: nowrap;
-overflow-x: auto;
-scroll-snap-type: x mandatory;
--webkit-overflow-scrolling: touch;
-gap: 0.5rem;
-margin-left: -12px;
-margin-right: -12px;
-padding-bottom: 18px;
-}
-.course-card {
-min-width: 85vw;
-max-width: 85vw;
-margin-right: 12px;
-margin-left: 12px;
-scroll-snap-align: start;
-box-shadow: 0 6px 24px 0 rgba(19, 78, 74, 0.18), 0 2px 8px #b2e6ea;
-transition: box-shadow 0.25s, transform 0.18s;
-}
-.carousel-indicators {
-display: flex;
-justify-content: center;
-margin-top: 0.5rem;
-gap: 0.5rem;
-}
-.carousel-indicator {
-width: 10px;
-height: 10px;
-border-radius: 50%;
-background: #b2e6ea;
-opacity: 0.5;
-transition: opacity 0.2s;
-}
-.carousel-indicator.active {
-background: #17a2b8;
-opacity: 1;
-}
-.swipe-hint {
-text-align: center;
-font-size: 0.98rem;
-color: #17a2b8;
-margin-bottom: 0.5rem;
-font-weight: 500;
-letter-spacing: 0.02em;
-user-select: none;
-}
-}
-/* Улучшенные стили карточек */
-.course-card {
-background: linear-gradient(135deg, #f9fef9 60%, #e3f6f7 100%);
-border: none;
-border-radius: 28px;
-padding: 2rem 1.5rem 1.5rem 1.5rem;
-min-height: 100%;
-display: flex;
-flex-direction: column;
-align-items: stretch;
-box-shadow:
-0 8px 32px 0 rgba(19, 78, 74, 0.18),
-0 2px 8px #b2e6ea;
-transition: box-shadow 0.25s, transform 0.18s;
-position: relative;
-overflow: visible;
-margin-bottom: 1.5rem;
-cursor: grab;
-}
-.course-card:hover {
-box-shadow: 0 16px 48px 0 rgba(19, 78, 74, 0.28), 0 4px 16px #b2e6ea;
-transform: translateY(-6px) scale(1.025);
-}
-.course-card::before {
-content: "";
-position: absolute;
-inset: 0;
-border-radius: 28px;
-z-index: -1;
-background: linear-gradient(120deg, #134e4a 0%, #134e4a 100%);
-opacity: 0.13;
-filter: blur(8px);
-}
-.course-image {
-width: 100%;
-height: 220px;
-object-fit: cover;
-border-radius: 18px;
-margin-bottom: 1.2rem;
-background: #f9fef9;
-box-shadow: 0 4px 24px 0 rgba(19, 78, 74, 0.13);
-border: 2.5px solid #b2e6ea;
-transition: box-shadow 0.2s;
-}
-.course-card h4 {
-font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-font-weight: 800;
-font-size: 1.45rem;
-color: #134e4a;
-letter-spacing: 0.01em;
-margin-bottom: 0.5rem;
-text-shadow: 0 2px 8px #b2e6a33;
-}
-.course-card h4 span {
-color: #fff;
-background: linear-gradient(90deg, #CD5B45 0%, #ffb199 100%);
-border-radius: 8px;
-padding: 0.2em 0.7em;
-font-size: 0.95em;
-font-weight: 600;
-margin-top: 0.3em;
-display: inline-block;
-box-shadow: 0 2px 8px #CD5B4533;
-letter-spacing: 0.01em;
-}
-.course-card p {
-font-size: 1.08rem;
-font-weight: 400;
-color: #444;
-margin: 0;
-text-align: justify;
-}
-
-
-/* ==========================================================================
-📌 ИНФОРМАЦИОННЫЕ КАРТОЧКИ
-========================================================================== */
-
-/* === ИНФОРМАЦИОННЫЕ КАРТОЧКИ (info-card) === */
-.info-card {
-/* Фон: мягкий градиент в цветовой гамме course-card */
-background: linear-gradient(135deg, #f9fef9 60%, #e3f6f7 100%);
-
-/* Скруглённые края и мягкие тени */
-border-radius: 28px;
-box-shadow:
-0 8px 32px 0 rgba(19, 78, 74, 0.18),
-0 2px 8px #b2e6ea;
-
-/* Внутренние отступы и расположение */
-padding: 2rem 1.2rem;
-margin-bottom: 1.2rem;
-min-height: 120px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-
-/* Дополнительные декоративные элементы */
-border: none;
-position: relative;
-overflow: visible;
-transition: box-shadow 0.25s, transform 0.18s;
-}
-
-.info-card:hover {
-/* Эффект "подъема" при наведении */
-box-shadow: 0 16px 48px 0 rgba(19, 78, 74, 0.28), 0 4px 16px #b2e6ea;
-transform: translateY(-6px) scale(1.025);
-}
-
-.info-card::before {
-/* Мягкое внутреннее сияние как у .course-card */
-content: "";
-position: absolute;
-inset: 0;
-border-radius: 28px;
-z-index: -1;
-background: linear-gradient(120deg, #134e4a 0%, #134e4a 100%);
-opacity: 0.13;
-filter: blur(8px);
-}
-
-/* === ИКОНКА ВНУТРИ info-card === */
-.info-icon {
-font-size: 2.4rem;
-color: #134e4a;
-margin-bottom: 0.5rem;
-text-shadow: 0 2px 8px #b2e6ea33;
-}
-
-/* === ТЕКСТ ВНУТРИ info-card === */
-.info-text {
-font-size: 1.13rem;
-font-weight: 500;
-color: #333;
-margin: 0;
-letter-spacing: 0.01em;
-text-align: center;
-}
-
-/* ==========================================================================
-🪄 ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ
-========================================================================== */
-
-/* Разделительная линия */
-.custom-divider {
-border: none;
-border-top: 2px solid var(--main-green);
-width: 80px;
-margin: 2.5rem auto;
-opacity: 0.25;
-}
-
-
-/* ==========================================================================
-💳 АБОНЕМЕНТНЫЕ КАРТОЧКИ
-========================================================================== */
-
-.abonement-card {
-border: 2px solid var(--main-green);
-border-radius: 18px;
-background: var(--main-white);
-box-shadow: 0 4px 16px rgba(13, 148, 136, 0.08);
-padding: 2rem 1.2rem;
-min-height: 170px;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-transition: box-shadow 0.2s;
-}
-
-.abonement-card:hover {
-box-shadow: 0 8px 24px rgba(13, 148, 136, 0.18);
-}
-
-/* Заголовок */
-.abonement-card h4 {
-color: var(--main-green);
-font-weight: 700;
-font-size: 1.25rem;
-margin-bottom: 0.5rem;
-}
-
-/* Текст */
-.abonement-card .info-text {
-color: #444;
-font-size: 1.05rem;
-font-weight: 500;
-}
-
-
-/* ==========================================================================
-🟩 КНОПКА "ЗАПИСАТЬСЯ"
-========================================================================== */
-
-.btn-signup {
-background-color: var(--main-green);
-border: none;
-border-radius: 6px;
-font-size: 1.25rem;
-font-weight: 700;
-padding: 1.1rem 3.5rem;
-color: var(--main-white);
-box-shadow: 0 4px 16px rgba(13, 148, 136, 0.18);
-transition: background-color 0.3s, transform 0.2s;
-letter-spacing: 0.5px;
-}
-
-.btn-signup:hover,
-.btn-signup:focus {
-background-color: var(--main-green-dark);
-transform: scale(1.04);
-color: var(--main-white);
-}
-
-
-/* ==========================================================================
-📱 АДАПТИВНОСТЬ (МЕДИА-ЗАПРОСЫ)
-========================================================================== */
-
-/* Планшеты (до 991px) */
-@media (max-width: 991px) {
-.course-card {
-max-width: 100%;
-padding: 1.2rem 0.5rem 1rem 0.5rem;
-}
-
-.course-image {
-max-width: 100%;
-}
-}
-
-/* Смартфоны (до 767px) */
-@media (max-width: 767px) {
-.info-card,
-.abonement-card {
-min-height: 120px;
-padding: 1.2rem 0.7rem;
-}
-
-.course-card {
-min-height: unset;
-}
-}
-</style>
 {% endblock %}
 
 
@@ -351,12 +18,11 @@ min-height: unset;
     <div class="row align-items-center justify-content-center" style="margin-top: 30px; margin-bottom: 20px;">
         <h2 class="text-center section-title"
             style="font-weight: 600; font-size: 2.2rem; width: 100%; max-width: 900px; margin: 0 auto;">
-            КУРСЫ ДЛЯ ДЕТЕЙ 1333-16 ЛЕТ
+            КУРСЫ ДЛЯ ДЕТЕЙ 13-16 ЛЕТ
         </h2>
     </div>
     <div class="row align-items-center justify-content-center" style="margin-top: 20px; margin-bottom: 40px;">
-        <p
-            style="text-align: justify; font-size: 1.2rem; font-weight: 350; max-width: 1200px; width: 100%; margin: 0 auto; line-height: 1.5;">
+        <p style="text-align: justify; font-size: 1.2rem; font-weight: 350; max-width: 1200px; width: 100%; margin: 0 auto; line-height: 1.5;">
             Курсы для подростков 13–16 лет — это старт для серьёзного погружения в мир технологий.
             На занятиях ребята осваивают робототехнику, программирование и 3D-моделирование, учатся самостоятельно
             ставить цели, планировать работу и находить нестандартные решения.
@@ -403,12 +69,14 @@ min-height: unset;
 
 
     <!-- Блок для 13-16 лет (продвинутый уровень) -->
-    <div class="swipe-hint d-md-none">Листайте курсы вбок ⟶</div>
-    <div class="row justify-content-center my-5 course-carousel">
+    <div class="row justify-content-center my-5">
+
+
         <!-- Карточка для продвинутого курса EV3 -->
-        <div class="col-12 col-md-6">
+        <div class="col-6">
             <div class="course-card course-wrapper">
-                <img src="{% static 'main/img/courses/EV.jpg' %}" alt="EV3-pro Pro" class="img-fluid course-image">
+                <img src="{% static 'main/img/courses/EV.jpg' %}" alt="EV3-pro Pro"
+                     class="img-fluid course-image">
                 <h4>
                     "Робототехника EV3 Mindstorms"
                     <span>продвинутый уровень</span>
@@ -426,10 +94,12 @@ min-height: unset;
                 </p>
             </div>
         </div>
+
         <!-- Карточка для базового Python -->
-        <div class="col-12 col-md-6">
+        <div class="col-6">
             <div class="course-card course-wrapper">
-                <img src="{% static 'main/img/courses/ardui.jpeg' %}" alt="Python база" class="img-fluid course-image">
+                <img src="{% static 'main/img/courses/ardui.jpeg' %}" alt="Python база"
+                     class="img-fluid course-image">
                 <h4>
                     "Программирование в Python"
                     <span>начальный уровень</span>
@@ -445,14 +115,16 @@ min-height: unset;
                     работе.
                     Занятия проходят в дружелюбной и поддерживающей среде, где каждый ребёнок чувствует прогресс и
                     интерес к обучению.
+
                 </p>
             </div>
         </div>
+
         <!-- Карточка для для продвинутого курса по веб разработке -->
-        <div class="col-12 col-md-6 mt-4">
+        <div class="col-6 mt-4">
             <div class="course-card course-wrapper">
                 <img src="{% static 'main/img/courses/roblo.jpg' %}" alt="Разработка веб приложений"
-                    class="img-fluid course-image">
+                     class="img-fluid course-image">
                 <h4>
                     "Разработка веб приложений"
                     <span>продвинутый уровень</span>
@@ -472,11 +144,12 @@ min-height: unset;
                 </p>
             </div>
         </div>
+
         <!-- Карточка для для продвинутого курса по blender -->
-        <div class="col-12 col-md-6 mt-4">
+        <div class="col-6 mt-4">
             <div class="course-card course-wrapper">
                 <img src="{% static 'main/img/courses/blenr.jpg' %}" alt="3д моделирование blender"
-                    class="img-fluid course-image">
+                     class="img-fluid course-image">
                 <h4>
                     "3D моделирование в Blender"
                     <span>продвинутый уровень</span>
@@ -497,9 +170,9 @@ min-height: unset;
                 </p>
             </div>
         </div>
+
+
     </div>
-    <!-- Индикаторы карусели -->
-    <div class="carousel-indicators d-md-none"></div>
 
 
     <hr class="custom-divider">
@@ -546,7 +219,10 @@ min-height: unset;
 
     <!-- Кнопка записи -->
     <div class="mt-5 text-center">
-        <button type="button" class="btn-signup" data-bs-toggle="modal" data-bs-target="#signupModal">
+        <button type="button"
+                class="btn-signup"
+                data-bs-toggle="modal"
+                data-bs-target="#signupModal">
             ЗАПИСАТЬСЯ НА БЕСПЛАТНОЕ ПРОБНОЕ ЗАНЯТИЕ
         </button>
     </div>
@@ -555,46 +231,12 @@ min-height: unset;
 
 <!-- Скрипт JS для перезагрузки страницы при успешной записи с перезаписанным success -->
 <script>
-    // Карусель индикаторы для мобильных
     document.addEventListener('DOMContentLoaded', function () {
-        // Индикаторы для мобильной карусели
-        if (window.innerWidth <= 767) {
-            const carousel = document.querySelector('.course-carousel');
-            const indicators = document.querySelector('.carousel-indicators');
-            if (carousel && indicators) {
-                const cards = carousel.querySelectorAll('.course-card');
-                indicators.innerHTML = '';
-                cards.forEach((_, idx) => {
-                    const dot = document.createElement('div');
-                    dot.className = 'carousel-indicator' + (idx === 0 ? ' active' : '');
-                    indicators.appendChild(dot);
-                });
-                // Обновление активного индикатора при прокрутке
-                carousel.addEventListener('scroll', function () {
-                    let minDiff = Infinity, activeIdx = 0;
-                    cards.forEach((card, idx) => {
-                        const rect = card.getBoundingClientRect();
-                        const diff = Math.abs(rect.left - carousel.getBoundingClientRect().left);
-                        if (diff < minDiff) {
-                            minDiff = diff;
-                            activeIdx = idx;
-                        }
-                    });
-                    indicators.querySelectorAll('.carousel-indicator').forEach((dot, idx) => {
-                        dot.classList.toggle('active', idx === activeIdx);
-                    });
-                });
-            }
-        }
-    });
-</script>
-{% if success %}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
+      {% if success %}
         var signupModal = new bootstrap.Modal(document.getElementById('signupModal'));
         signupModal.show();
+      {% endif %}
     });
 </script>
-{% endif %}
 
 {% endblock %}
