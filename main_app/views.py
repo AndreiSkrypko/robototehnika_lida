@@ -206,3 +206,4 @@ def courses_13_16(request):
 
 def about_cookies(request):
     return render(request, 'main/about_cookies.html')
+
