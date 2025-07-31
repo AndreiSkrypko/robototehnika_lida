@@ -182,137 +182,145 @@
     }
 
     /* === КАРУСЕЛЬ ИЗОБРАЖЕНИЙ === */
+.carousel-wrapper {
+    max-width: 1400px;
+    position: relative;
+    margin: 0 auto 60px auto;
+    padding: 32px 0 24px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
+    border-radius: 2rem;
+    box-shadow: 0 8px 32px rgba(23,162,184,0.08);
+}
+
+.carousel-wrapper h1 {
+    color: #0d9488;
+    font-family: 'Poppins', 'Nunito', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(23,162,184,0.10);
+}
+
+.carousel-inner-custom {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 16px rgba(23,162,184,0.10);
+    background: #fff;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 16px;
+    transition: none;
+    padding: 12px 0;
+    align-items: center;
+}
+
+/* === УВЕЛИЧЕННЫЕ ЭЛЕМЕНТЫ КАРУСЕЛИ === */
+.carousel-item-custom {
+    min-width: 520px;
+    max-width: 520px;
+    flex: 0 0 320px;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(23,162,184,0.10);
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-item-custom img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.carousel-item-custom img:hover {
+    transform: scale(1.04) rotate(-1deg);
+    box-shadow: 0 4px 16px rgba(204,85,0,0.10);
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: linear-gradient(90deg, #17a2b8 0%, #CC5500 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(23,162,184,0.10);
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.92;
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+    background: linear-gradient(90deg, #CC5500 0%, #17a2b8 100%);
+    box-shadow: 0 4px 16px rgba(204,85,0,0.12);
+    opacity: 1;
+}
+
+.carousel-control-left {
+    left: 8px;
+}
+
+.carousel-control-right {
+    right: 8px;
+}
+
+/* === Адаптация под планшеты === */
+@media (max-width: 991px) {
     .carousel-wrapper {
-        max-width: 900px;
-        position: relative;
-        margin: 0 auto 60px auto;
-        padding: 32px 0 24px 0;
-        background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
-        border-radius: 2rem;
-        box-shadow: 0 8px 32px rgba(23,162,184,0.08);
+        max-width: 98vw;
+        padding: 18px 0 12px 0;
     }
-
-    .carousel-wrapper h1 {
-        color: #0d9488;
-        font-family: 'Poppins', 'Nunito', sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        text-shadow: 0 2px 8px rgba(23,162,184,0.10);
-    }
-
-    .carousel-inner-custom {
-        overflow-x: hidden;
-        width: 100%;
-        margin: 0 auto;
-        border-radius: 1.5rem;
-        box-shadow: 0 2px 16px rgba(23,162,184,0.10);
-        background: #fff;
-    }
-
-    .carousel-track {
-        display: flex;
-        gap: 16px;
-        transition: none;
-        padding: 12px 0;
-        align-items: center;
-    }
-
-    .carousel-item-custom {
-        min-width: 260px;
-        max-width: 260px;
-        flex: 0 0 260px;
-        border-radius: 1.2rem;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(23,162,184,0.10);
-        background: #f8fafc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
+    .carousel-item-custom,
     .carousel-item-custom img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 1.2rem;
-        transition: transform 0.3s;
+        min-width: 240px;
+        max-width: 240px;
+        height: 160px;
     }
-
-    .carousel-item-custom img:hover {
-        transform: scale(1.04) rotate(-1deg);
-        box-shadow: 0 4px 16px rgba(204,85,0,0.10);
-    }
-
     .carousel-control {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 2;
-        background: linear-gradient(90deg, #17a2b8 0%, #CC5500 100%);
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        width: 48px;
-        height: 48px;
-        font-size: 2.2rem;
-        font-weight: 700;
-        box-shadow: 0 2px 8px rgba(23,162,184,0.10);
-        cursor: pointer;
-        transition: background 0.2s, box-shadow 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0.92;
+        width: 38px;
+        height: 38px;
+        font-size: 1.5rem;
     }
+}
 
-    .carousel-control:hover,
-    .carousel-control:focus {
-        background: linear-gradient(90deg, #CC5500 0%, #17a2b8 100%);
-        box-shadow: 0 4px 16px rgba(204,85,0,0.12);
-        opacity: 1;
+/* === Адаптация под телефоны === */
+@media (max-width: 600px) {
+    .carousel-wrapper {
+        padding: 10px 0 6px 0;
     }
-
-    .carousel-control-left { left: 8px; }
-    .carousel-control-right { right: 8px; }
-
-    @media (max-width: 991px) {
-        .carousel-wrapper {
-            max-width: 98vw;
-            padding: 18px 0 12px 0;
-        }
-        .carousel-item-custom,
-        .carousel-item-custom img {
-            min-width: 180px;
-            max-width: 180px;
-            height: 120px;
-        }
-        .carousel-control {
-            width: 38px;
-            height: 38px;
-            font-size: 1.5rem;
-        }
+    .carousel-item-custom,
+    .carousel-item-custom img {
+        min-width: 180px;
+        max-width: 180px;
+        height: 120px;
     }
-
-    @media (max-width: 600px) {
-        .carousel-wrapper {
-            padding: 10px 0 6px 0;
-        }
-        .carousel-item-custom,
-        .carousel-item-custom img {
-            min-width: 120px;
-            max-width: 120px;
-            height: 80px;
-        }
-        .carousel-control {
-            width: 28px;
-            height: 28px;
-            font-size: 1.1rem;
-        }
-        .carousel-wrapper h1 {
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-        }
+    .carousel-control {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
     }
+    .carousel-wrapper h1 {
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+}
 
     /* === ОТЗЫВЫ В ТЕКСТОВОМ ФОРМАТЕ === */
     .reviews-section {
